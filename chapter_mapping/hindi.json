@@ -1,0 +1,41 @@
+{
+  "subject": "Hindi",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "All Streams",
+  "books": [
+    {
+      "book": "Aaroh Part 2 (Poetry)",
+      "chapters": [
+        { "number": 1, "name": "Aatmparichay, Ek Geet — Harivansh Rai Bachchan" },
+        { "number": 2, "name": "Patang — Aalok Dhanwa" },
+        { "number": 3, "name": "Kavita ke Bahaane, Baat Seedhi Thi Par — Kunwar Narain" },
+        { "number": 4, "name": "Camra — Raghuveer Sahay" },
+        { "number": 5, "name": "Usha, Kavitta — Shamsher Bahadur Singh" },
+        { "number": 6, "name": "Baadal Raag — Suryakant Tripathi Nirala" },
+        { "number": 7, "name": "Kavitawali (Uttarakhand Se), Lakshman Murchha — Tulsidas" },
+        { "number": 8, "name": "Rubaaiyaan, Ghazal — Firaq Gorakhpuri" }
+      ]
+    },
+    {
+      "book": "Aaroh Part 2 (Prose)",
+      "chapters": [
+        { "number": 1, "name": "Bazar Darshan — Jainendra Kumar" },
+        { "number": 2, "name": "Kaale Megha Pani De — Dharamvir Bharati" },
+        { "number": 3, "name": "Pahalwan Ki Dholak — Fanishwarnath Renu" },
+        { "number": 4, "name": "Ek Kutta Aur Ek Maina — Hazari Prasad Dwivedi" },
+        { "number": 5, "name": "Shram Vibhajan aur Jati Pratha, Meri Kalpana ka Adarsh Samaj — Baba Saheb Ambedkar" }
+      ]
+    },
+    {
+      "book": "Vitan Part 2",
+      "chapters": [
+        { "number": 1, "name": "Silver Wedding — Manohar Shyam Joshi" },
+        { "number": 2, "name": "Jujh — Anand Yadav" },
+        { "number": 3, "name": "Atit Mein Dabe Paav — Oodaan Prakash" },
+        { "number": 4, "name": "Dayari Ke Panne — Anne Frank" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "subject": "Sociology",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "Arts",
+  "books": [
+    {
+      "book": "Indian Society",
+      "chapters": [
+        { "number": 1, "name": "Introducing Indian Society" },
+        { "number": 2, "name": "The Demographic Structure of the Indian Society" },
+        { "number": 3, "name": "Social Institutions: Continuity and Change" },
+        { "number": 4, "name": "The Market as a Social Institution" },
+        { "number": 5, "name": "Patterns of Social Inequality and Exclusion" },
+        { "number": 6, "name": "The Challenges of Cultural Diversity" }
+      ]
+    },
+    {
+      "book": "Social Change and Development in India",
+      "chapters": [
+        { "number": 1, "name": "Structural Change" },
+        { "number": 2, "name": "Cultural Change" },
+        { "number": 3, "name": "The Story of Indian Democracy" },
+        { "number": 4, "name": "Change and Development in Rural Society" },
+        { "number": 5, "name": "Change and Development in Industrial Society" },
+        { "number": 6, "name": "Globalisation and Social Change" },
+        { "number": 7, "name": "Mass Media and Communications" },
+        { "number": 8, "name": "Social Movements" }
+      ]
+    }
+  ]
+}

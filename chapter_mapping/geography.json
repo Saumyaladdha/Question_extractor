@@ -1,0 +1,40 @@
+{
+  "subject": "Geography",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "books": [
+    {
+      "book": "Fundamentals of Human Geography",
+      "chapters": [
+        { "number": 1,  "name": "Human Geography: Nature and Scope" },
+        { "number": 2,  "name": "The World Population: Distribution, Density and Growth" },
+        { "number": 3,  "name": "Population Composition" },
+        { "number": 4,  "name": "Human Development" },
+        { "number": 5,  "name": "Primary Activities" },
+        { "number": 6,  "name": "Secondary Activities" },
+        { "number": 7,  "name": "Tertiary and Quaternary Activities" },
+        { "number": 8,  "name": "Transport and Communication" },
+        { "number": 9,  "name": "International Trade" },
+        { "number": 10, "name": "Human Settlements" }
+      ]
+    },
+    {
+      "book": "India: People and Economy",
+      "chapters": [
+        { "number": 1,  "name": "Population: Distribution, Density, Growth and Composition" },
+        { "number": 2,  "name": "Migration: Types, Causes and Consequences" },
+        { "number": 3,  "name": "Human Development" },
+        { "number": 4,  "name": "Human Settlements" },
+        { "number": 5,  "name": "Land Resources and Agriculture" },
+        { "number": 6,  "name": "Water Resources" },
+        { "number": 7,  "name": "Mineral and Energy Resources" },
+        { "number": 8,  "name": "Manufacturing Industries" },
+        { "number": 9,  "name": "Planning and Sustainable Development in Indian Context" },
+        { "number": 10, "name": "Transport and Communication" },
+        { "number": 11, "name": "International Trade" },
+        { "number": 12, "name": "Geographical Perspective on Selected Issues and Problems" }
+      ]
+    }
+  ]
+}

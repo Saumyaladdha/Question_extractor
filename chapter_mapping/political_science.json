@@ -1,0 +1,37 @@
+{
+  "subject": "Political Science",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "Arts",
+  "books": [
+    {
+      "book": "Contemporary World Politics",
+      "chapters": [
+        { "number": 1, "name": "The Cold War Era" },
+        { "number": 2, "name": "The End of Bipolarity" },
+        { "number": 3, "name": "US Hegemony in World Politics" },
+        { "number": 4, "name": "Alternative Centres of Power" },
+        { "number": 5, "name": "Contemporary South Asia" },
+        { "number": 6, "name": "International Organisations" },
+        { "number": 7, "name": "Security in the Contemporary World" },
+        { "number": 8, "name": "Environment and Natural Resources" },
+        { "number": 9, "name": "Globalisation" }
+      ]
+    },
+    {
+      "book": "Politics in India since Independence",
+      "chapters": [
+        { "number": 1, "name": "Challenges of Nation Building" },
+        { "number": 2, "name": "Era of One-Party Dominance" },
+        { "number": 3, "name": "Politics of Planned Development" },
+        { "number": 4, "name": "India's External Relations" },
+        { "number": 5, "name": "Challenges to and Restoration of the Congress System" },
+        { "number": 6, "name": "The Crisis of Democratic Order" },
+        { "number": 7, "name": "Rise of Popular Movements" },
+        { "number": 8, "name": "Regional Aspirations" },
+        { "number": 9, "name": "Recent Developments in Indian Politics" }
+      ]
+    }
+  ]
+}

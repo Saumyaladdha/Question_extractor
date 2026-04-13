@@ -1,0 +1,30 @@
+{
+  "subject": "Accountancy",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "Commerce",
+  "books": [
+    {
+      "book": "Accounting for Not-for-Profit Organisations and Partnership Firms",
+      "chapters": [
+        { "number": 1, "name": "Accounting for Not-for-Profit Organisation" },
+        { "number": 2, "name": "Accounting for Partnership: Basic Concepts" },
+        { "number": 3, "name": "Reconstitution of a Partnership Firm: Admission of a Partner" },
+        { "number": 4, "name": "Reconstitution of a Partnership Firm: Retirement and Death of a Partner" },
+        { "number": 5, "name": "Dissolution of Partnership Firm" }
+      ]
+    },
+    {
+      "book": "Company Accounts and Analysis of Financial Statements",
+      "chapters": [
+        { "number": 1, "name": "Accounting for Share Capital" },
+        { "number": 2, "name": "Issue and Redemption of Debentures" },
+        { "number": 3, "name": "Financial Statements of a Company" },
+        { "number": 4, "name": "Analysis of Financial Statements" },
+        { "number": 5, "name": "Accounting Ratios" },
+        { "number": 6, "name": "Cash Flow Statement" }
+      ]
+    }
+  ]
+}

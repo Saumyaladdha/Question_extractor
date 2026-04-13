@@ -1,0 +1,24 @@
+{
+  "subject": "Biology",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "PCMB",
+  "chapters": [
+    { "number": 1,  "name": "Reproduction in Organisms" },
+    { "number": 2,  "name": "Sexual Reproduction in Flowering Plants" },
+    { "number": 3,  "name": "Human Reproduction" },
+    { "number": 4,  "name": "Reproductive Health" },
+    { "number": 5,  "name": "Principles of Inheritance and Variation" },
+    { "number": 6,  "name": "Molecular Basis of Inheritance" },
+    { "number": 7,  "name": "Evolution" },
+    { "number": 8,  "name": "Human Health and Disease" },
+    { "number": 9,  "name": "Strategies for Enhancement in Food Production" },
+    { "number": 10, "name": "Microbes in Human Welfare" },
+    { "number": 11, "name": "Biotechnology: Principles and Processes" },
+    { "number": 12, "name": "Biotechnology and its Applications" },
+    { "number": 13, "name": "Organisms and Populations" },
+    { "number": 14, "name": "Ecosystem" },
+    { "number": 15, "name": "Biodiversity and Conservation" }
+  ]
+}

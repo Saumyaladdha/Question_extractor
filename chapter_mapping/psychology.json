@@ -1,0 +1,18 @@
+{
+  "subject": "Psychology",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "Arts",
+  "chapters": [
+    { "number": 1, "name": "Variations in Psychological Attributes" },
+    { "number": 2, "name": "Self and Personality" },
+    { "number": 3, "name": "Meeting Life Challenges" },
+    { "number": 4, "name": "Psychological Disorders" },
+    { "number": 5, "name": "Therapeutic Approaches" },
+    { "number": 6, "name": "Attitude and Social Cognition" },
+    { "number": 7, "name": "Social Influence and Group Processes" },
+    { "number": 8, "name": "Psychology and Life" },
+    { "number": 9, "name": "Developing Psychological Skills" }
+  ]
+}

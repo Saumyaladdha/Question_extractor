@@ -1,0 +1,22 @@
+{
+  "subject": "Mathematics",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "PCMB and Commerce",
+  "chapters": [
+    { "number": 1,  "name": "Relations and Functions" },
+    { "number": 2,  "name": "Inverse Trigonometric Functions" },
+    { "number": 3,  "name": "Matrices" },
+    { "number": 4,  "name": "Determinants" },
+    { "number": 5,  "name": "Continuity and Differentiability" },
+    { "number": 6,  "name": "Application of Derivatives" },
+    { "number": 7,  "name": "Integrals" },
+    { "number": 8,  "name": "Application of Integrals" },
+    { "number": 9,  "name": "Differential Equations" },
+    { "number": 10, "name": "Vector Algebra" },
+    { "number": 11, "name": "Three Dimensional Geometry" },
+    { "number": 12, "name": "Linear Programming" },
+    { "number": 13, "name": "Probability" }
+  ]
+}

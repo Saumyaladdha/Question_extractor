@@ -1,0 +1,25 @@
+{
+  "subject": "Chemistry",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "PCMB",
+  "chapters": [
+    { "number": 1,  "name": "The Solid State" },
+    { "number": 2,  "name": "Solutions" },
+    { "number": 3,  "name": "Electrochemistry" },
+    { "number": 4,  "name": "Chemical Kinetics" },
+    { "number": 5,  "name": "Surface Chemistry" },
+    { "number": 6,  "name": "General Principles and Processes of Isolation of Elements" },
+    { "number": 7,  "name": "The p-Block Elements" },
+    { "number": 8,  "name": "The d and f Block Elements" },
+    { "number": 9,  "name": "Coordination Compounds" },
+    { "number": 10, "name": "Haloalkanes and Haloarenes" },
+    { "number": 11, "name": "Alcohols, Phenols and Ethers" },
+    { "number": 12, "name": "Aldehydes, Ketones and Carboxylic Acids" },
+    { "number": 13, "name": "Amines" },
+    { "number": 14, "name": "Biomolecules" },
+    { "number": 15, "name": "Polymers" },
+    { "number": 16, "name": "Chemistry in Everyday Life" }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "subject": "English",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "All Streams",
+  "books": [
+    {
+      "book": "Flamingo (Prose)",
+      "chapters": [
+        { "number": 1, "name": "The Last Lesson" },
+        { "number": 2, "name": "Lost Spring" },
+        { "number": 3, "name": "Deep Water" },
+        { "number": 4, "name": "The Rattrap" },
+        { "number": 5, "name": "Indigo" },
+        { "number": 6, "name": "Poets and Pancakes" },
+        { "number": 7, "name": "The Interview" },
+        { "number": 8, "name": "Going Places" }
+      ]
+    },
+    {
+      "book": "Flamingo (Poetry)",
+      "chapters": [
+        { "number": 1, "name": "My Mother at Sixty-six" },
+        { "number": 2, "name": "Keeping Quiet" },
+        { "number": 3, "name": "A Thing of Beauty" },
+        { "number": 4, "name": "A Roadside Stand" },
+        { "number": 5, "name": "Aunt Jennifer's Tigers" }
+      ]
+    },
+    {
+      "book": "Vistas (Supplementary Reader)",
+      "chapters": [
+        { "number": 1, "name": "The Third Level" },
+        { "number": 2, "name": "The Tiger King" },
+        { "number": 3, "name": "Journey to the End of the Earth" },
+        { "number": 4, "name": "The Enemy" },
+        { "number": 5, "name": "Should Wizard Hit Mommy" },
+        { "number": 6, "name": "On the Face of It" },
+        { "number": 7, "name": "Evans Tries an O-level" },
+        { "number": 8, "name": "Memories of Childhood" }
+      ]
+    }
+  ]
+}

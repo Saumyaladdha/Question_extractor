@@ -1,0 +1,24 @@
+{
+  "subject": "History",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "Arts",
+  "chapters": [
+    { "number": 1,  "name": "Bricks, Beads and Bones: The Harappan Civilisation" },
+    { "number": 2,  "name": "Kings, Farmers and Towns: Early States and Economies" },
+    { "number": 3,  "name": "Kinship, Caste and Class: Early Societies" },
+    { "number": 4,  "name": "Thinkers, Beliefs and Buildings: Cultural Developments" },
+    { "number": 5,  "name": "Through the Eyes of Travellers: Perceptions of Society" },
+    { "number": 6,  "name": "Bhakti-Sufi Traditions: Changes in Religious Beliefs and Devotional Texts" },
+    { "number": 7,  "name": "An Imperial Capital: Vijayanagara" },
+    { "number": 8,  "name": "Peasants, Zamindars and the State: Agrarian Society and the Mughal Empire" },
+    { "number": 9,  "name": "Kings and Chronicles: The Mughal Courts" },
+    { "number": 10, "name": "Colonialism and the Countryside: Exploring Official Archives" },
+    { "number": 11, "name": "Rebels and the Raj: The Revolt of 1857 and its Representations" },
+    { "number": 12, "name": "Colonial Cities: Urbanisation, Planning and Architecture" },
+    { "number": 13, "name": "Mahatma Gandhi and the Nationalist Movement: Civil Disobedience and Beyond" },
+    { "number": 14, "name": "Understanding Partition: Politics, Memories, Experiences" },
+    { "number": 15, "name": "Framing the Constitution: The Beginning of a New Era" }
+  ]
+}

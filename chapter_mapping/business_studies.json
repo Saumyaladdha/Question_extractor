@@ -1,0 +1,32 @@
+{
+  "subject": "Business Studies",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "Commerce",
+  "books": [
+    {
+      "book": "Principles and Functions of Management",
+      "chapters": [
+        { "number": 1, "name": "Nature and Significance of Management" },
+        { "number": 2, "name": "Principles of Management" },
+        { "number": 3, "name": "Business Environment" },
+        { "number": 4, "name": "Planning" },
+        { "number": 5, "name": "Organising" },
+        { "number": 6, "name": "Staffing" },
+        { "number": 7, "name": "Directing" },
+        { "number": 8, "name": "Controlling" }
+      ]
+    },
+    {
+      "book": "Business Finance and Marketing",
+      "chapters": [
+        { "number": 9,  "name": "Financial Management" },
+        { "number": 10, "name": "Financial Markets" },
+        { "number": 11, "name": "Marketing Management" },
+        { "number": 12, "name": "Consumer Protection" },
+        { "number": 13, "name": "Entrepreneurship Development" }
+      ]
+    }
+  ]
+}

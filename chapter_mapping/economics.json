@@ -1,0 +1,35 @@
+{
+  "subject": "Economics",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 12,
+  "stream": "Arts and Commerce",
+  "books": [
+    {
+      "book": "Introductory Macroeconomics",
+      "chapters": [
+        { "number": 1, "name": "Introduction to Macroeconomics" },
+        { "number": 2, "name": "National Income Accounting" },
+        { "number": 3, "name": "Money and Banking" },
+        { "number": 4, "name": "Determination of Income and Employment" },
+        { "number": 5, "name": "Government Budget and the Economy" },
+        { "number": 6, "name": "Open Economy Macroeconomics" }
+      ]
+    },
+    {
+      "book": "Indian Economic Development",
+      "chapters": [
+        { "number": 1,  "name": "Indian Economy on the Eve of Independence" },
+        { "number": 2,  "name": "Indian Economy (1950-1990)" },
+        { "number": 3,  "name": "Liberalisation, Privatisation and Globalisation: An Appraisal" },
+        { "number": 4,  "name": "Poverty" },
+        { "number": 5,  "name": "Human Capital Formation in India" },
+        { "number": 6,  "name": "Rural Development" },
+        { "number": 7,  "name": "Employment: Growth, Informalisation and Other Issues" },
+        { "number": 8,  "name": "Infrastructure" },
+        { "number": 9,  "name": "Environment and Sustainable Development" },
+        { "number": 10, "name": "Comparative Development Experiences of India and its Neighbours" }
+      ]
+    }
+  ]
+}
