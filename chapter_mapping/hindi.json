@@ -11,21 +11,24 @@
         { "number": 1, "name": "Aatmparichay, Ek Geet — Harivansh Rai Bachchan" },
         { "number": 2, "name": "Patang — Aalok Dhanwa" },
         { "number": 3, "name": "Kavita ke Bahaane, Baat Seedhi Thi Par — Kunwar Narain" },
-        { "number": 4, "name": "Camra — Raghuveer Sahay" },
+        { "number": 4, "name": "Camra mein Band Apahij — Raghuveer Sahay" },
         { "number": 5, "name": "Usha, Kavitta — Shamsher Bahadur Singh" },
         { "number": 6, "name": "Baadal Raag — Suryakant Tripathi Nirala" },
         { "number": 7, "name": "Kavitawali (Uttarakhand Se), Lakshman Murchha — Tulsidas" },
-        { "number": 8, "name": "Rubaaiyaan, Ghazal — Firaq Gorakhpuri" }
+        { "number": 8, "name": "Rubaaiyaan, Ghazal — Firaq Gorakhpuri" },
+        { "number": 9, "name": "Chhota Mera Khet, Bagulo Ke Pankhon Ki — Umashankhar Joshi" }
       ]
     },
     {
       "book": "Aaroh Part 2 (Prose)",
       "chapters": [
-        { "number": 1, "name": "Bazar Darshan — Jainendra Kumar" },
-        { "number": 2, "name": "Kaale Megha Pani De — Dharamvir Bharati" },
-        { "number": 3, "name": "Pahalwan Ki Dholak — Fanishwarnath Renu" },
-        { "number": 4, "name": "Ek Kutta Aur Ek Maina — Hazari Prasad Dwivedi" },
-        { "number": 5, "name": "Shram Vibhajan aur Jati Pratha, Meri Kalpana ka Adarsh Samaj — Baba Saheb Ambedkar" }
+        { "number": 1, "name": "Bhaktin — Mahadevi Verma" },
+        { "number": 2, "name": "Bazar Darshan — Jainendra Kumar" },
+        { "number": 3, "name": "Kaale Megha Pani De — Dharamvir Bharati" },
+        { "number": 4, "name": "Pahalwan Ki Dholak — Fanishwarnath Renu" },
+        { "number": 5, "name": "Ek Kutta Aur Ek Maina — Hazari Prasad Dwivedi" },
+        { "number": 6, "name": "Shirish ke Phool — Hazari Prasad Dwivedi" },
+        { "number": 7, "name": "Shram Vibhajan aur Jati Pratha, Meri Kalpana ka Adarsh Samaj — Baba Saheb Ambedkar" }
       ]
     },
     {

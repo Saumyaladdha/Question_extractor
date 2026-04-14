@@ -1,0 +1,468 @@
+diff --git a/app.py b/app.py
+index ee6f69a..1cddc61 100644
+--- a/app.py
++++ b/app.py
+@@ -22,7 +22,7 @@ from openai import OpenAI
+  
+ load_dotenv()  # reads OPENAI_API_KEY from .env if present
+  
+-from prompts import MARKS, PROMPTS, chapter_mapping_prompt, extract_structure_prompt
++from prompts import MARKS, PROMPTS, chapter_mapping_prompt, count_validator_prompt, extract_structure_prompt
+  
+ # ──────────────────────────────────────────────────────────────────────────────
+ # Page config
+@@ -59,9 +59,22 @@ def _fix_latex_backslashes(s: str) -> str:
+     Valid JSON escapes after backslash: " \ / b f n r t u
+     Everything else (LaTeX commands) needs to become \\ before json.loads().
+     """
+-    return re.sub(r'\\(?!["\\/bfnrtu])', r'\\\\', s)
+- 
+- 
++    return re.sub(r'(?<!\\)\\(?=[a-zA-Z])', r'\\\\', s)
++ 
++
++_CONTROL_CHARS = frozenset('\x08\x0c\r\t')
++
++def _has_latex_corruption(items: list) -> bool:
++    """Return True if any parsed item has control chars from bad LaTeX escapes."""
++    for item in items:
++        if not isinstance(item, dict):
++            continue
++        text = str(item.get("question") or item.get("text") or item.get("q") or "")
++        if _CONTROL_CHARS.intersection(text):
++            return True
++    return False
++
++
+ def parse_json_response(raw: str, log_label: str = "") -> list[dict]:
+     """
+     Robustly extract a JSON object/array from model output.
+@@ -113,9 +126,12 @@ def parse_json_response(raw: str, log_label: str = "") -> list[dict]:
+     if data is not None:
+         result = _unwrap(data)
+         if result is not None:
+-            if is_sa:
+-                _sa_log(f"  Pass 1 SUCCESS → {len(result)} items")
+-            return result
++            if not _has_latex_corruption(result):
++                if is_sa:
++                    _sa_log(f"  Pass 1 SUCCESS → {len(result)} items")
++                return result
++            elif is_sa:
++                _sa_log("  Pass 1 parsed but LaTeX corruption detected -- falling through")
+  
+     # Pass 2: fix single-backslash LaTeX sequences then parse
+     if is_sa:
+@@ -565,6 +581,94 @@ def _extraction_validator(df: pd.DataFrame) -> pd.DataFrame | None:
+     counts["Status"]       = counts["Diff"].apply(_status)
+     counts["Likely Cause"] = counts.apply(_cause, axis=1)
+     return counts
++
++
++def revalidate_mismatched_category(
++    client: OpenAI,
++    file_id: str,
++    question_type: str,
++    language_to_fix: str,
++    other_language: str,
++    expected_count: int,
++    actual_count: int,
++    exam_type: str,
++    class_name: str,
++    subject: str,
++    year: str,
++    q_nums: list[int] | None = None,
++    marks_each: int | None = None,
++) -> list[dict]:
++    """
++    Re-extract a single (question_type × language) using the count_validator_prompt.
++    Returns a list of row dicts (same schema as extract_one_type) or [] on failure.
++    """
++    prompt_text = count_validator_prompt(
++        question_type=question_type,
++        language=language_to_fix,
++        q_nums=q_nums,
++        expected_count=expected_count,
++        actual_count=actual_count,
++        other_language=other_language,
++    )
++
++    try:
++        response = client.chat.completions.create(
++            model="gpt-5.4-mini",
++            temperature=0,
++            messages=[
++                {
++                    "role": "user",
++                    "content": [
++                        {"type": "file", "file": {"file_id": file_id}},
++                        {"type": "text", "text": prompt_text},
++                    ],
++                }
++            ],
++        )
++        raw = response.choices[0].message.content or ""
++    except Exception as exc:
++        st.warning(f"Validator re-extraction failed for {question_type} ({language_to_fix}): {exc}")
++        return []
++
++    questions = parse_json_response(raw)
++    if not questions:
++        return []
++
++    if marks_each is None:
++        marks_each = MARKS.get(question_type)
++
++    rows = []
++    for q in questions:
++        text = q.get("question") or q.get("text") or q.get("q") or ""
++        text = text.strip()
++        if not text:
++            continue
++
++        if question_type == "Match the Following":
++            marks = q.get("marks") or q.get("mark") or q.get("score")
++            try:
++                marks = int(marks)
++            except (TypeError, ValueError):
++                marks = 0
++        elif marks_each is not None:
++            marks = marks_each
++        else:
++            marks = MARKS[question_type]
++
++        rows.append(
++            {
++                "Exam_Type": exam_type,
++                "Class": class_name,
++                "Language": language_to_fix,
++                "Subject": subject,
++                "Question": text,
++                "Question_Type": question_type,
++                "Marks": marks,
++                "Year": year,
++            }
++        )
++
++    return rows
+  
+  
+ # ──────────────────────────────────────────────────────────────────────────────
+@@ -805,11 +909,6 @@ if extract_btn:
+                 st.markdown("**Raw model response:**")
+                 st.code(dbg_raw if dbg_raw else "(empty — model returned nothing)", language="text")
+  
+-    # ── Clean up uploaded file ────────────────────────────────────────────────
+-    try:
+-        client.files.delete(file_id)
+-    except Exception:
+-        pass
+  
+     # ── Results ───────────────────────────────────────────────────────────────
+     if not all_rows:
+@@ -821,7 +920,7 @@ if extract_btn:
+  
+     df = pd.DataFrame(all_rows)
+  
+-    # ── Extraction validator ──────────────────────────────────────────────────
++    # ── Extraction validator + automatic re-validation ─────────────────────────
+     if len(languages) == 2:
+         val_df = _extraction_validator(df)
+         if val_df is not None:
+@@ -829,6 +928,7 @@ if extract_btn:
+             if issues.empty:
+                 st.success("✅ Extraction complete — Hindi and English counts match for all types.")
+             else:
++                # ── Show initial mismatch summary ──────────────────────────────
+                 review_count = len(val_df[val_df["Status"] == "❌ Review"])
+                 minor_count  = len(val_df[val_df["Status"] == "⚠️ Minor"])
+                 label = (
+@@ -837,13 +937,137 @@ if extract_btn:
+                 )
+                 with st.expander(label, expanded=(review_count > 0)):
+                     st.dataframe(val_df, use_container_width=True, hide_index=True)
+-                    if review_count > 0:
+-                        st.warning(
+-                            "❌ types above likely have missing questions in one language. "
+-                            "Common causes: section boundary issue (English section not reached) "
+-                            "or OCR miss. Check the PDF and re-run if needed."
++
++                # ── Automatic re-validation for mismatched categories ─────────
++                mismatched_types = issues["Question_Type"].tolist()
++                if mismatched_types:
++                    st.info(
++                        f"🔄 Auto-revalidating {len(mismatched_types)} mismatched "
++                        f"categor{'y' if len(mismatched_types) == 1 else 'ies'}: "
++                        + ", ".join(mismatched_types)
++                    )
++                    reval_progress = st.progress(0)
++                    reval_status   = st.empty()
++                    revalidation_log: list[str] = []
++
++                    for ri, qtype in enumerate(mismatched_types):
++                        row_data = issues[issues["Question_Type"] == qtype].iloc[0]
++                        h_count = int(row_data.get("Hindi", 0))
++                        e_count = int(row_data.get("English", 0))
++
++                        # Determine which language to re-extract
++                        if h_count < e_count:
++                            lang_to_fix    = "Hindi"
++                            other_lang     = "English"
++                            expected       = e_count
++                            actual         = h_count
++                        else:
++                            lang_to_fix    = "English"
++                            other_lang     = "Hindi"
++                            expected       = h_count
++                            actual         = e_count
++
++                        reval_status.markdown(
++                            f"Re-validating **{qtype}** ({lang_to_fix}) — "
++                            f"expected {expected}, got {actual}…"
+                         )
+- 
++
++                        # Get q_nums and marks_each from structure
++                        type_info  = structure.get(qtype, {})
++                        q_nums_val = type_info.get("question_numbers") if isinstance(type_info, dict) else None
++                        marks_val  = type_info.get("marks_each") if isinstance(type_info, dict) else None
++                        try:
++                            marks_val = int(marks_val) if marks_val is not None else None
++                        except (TypeError, ValueError):
++                            marks_val = None
++
++                        new_rows = revalidate_mismatched_category(
++                            client=client,
++                            file_id=file_id,
++                            question_type=qtype,
++                            language_to_fix=lang_to_fix,
++                            other_language=other_lang,
++                            expected_count=expected,
++                            actual_count=actual,
++                            exam_type=exam_type,
++                            class_name=class_name,
++                            subject=subject,
++                            year=year,
++                            q_nums=q_nums_val,
++                            marks_each=marks_val,
++                        )
++
++                        new_count = len(new_rows)
++                        old_diff  = abs(expected - actual)
++                        new_diff  = abs(expected - new_count)
++
++                        if new_count > 0 and new_diff < old_diff:
++                            # Re-extraction improved the count — replace rows in df
++                            drop_mask = (df["Question_Type"] == qtype) & (df["Language"] == lang_to_fix)
++                            df = df[~drop_mask]
++                            new_df = pd.DataFrame(new_rows)
++                            df = pd.concat([df, new_df], ignore_index=True)
++                            log_msg = (
++                                f"✅ {qtype} ({lang_to_fix}): {actual} → {new_count} "
++                                f"(expected {expected}, diff improved {old_diff} → {new_diff})"
++                            )
++                        elif new_count > 0 and new_diff == old_diff:
++                            log_msg = (
++                                f"⚠️ {qtype} ({lang_to_fix}): re-extraction got {new_count}, "
++                                f"same diff ({new_diff}) — keeping original"
++                            )
++                        elif new_count > 0 and new_diff > old_diff:
++                            log_msg = (
++                                f"⚠️ {qtype} ({lang_to_fix}): re-extraction got {new_count}, "
++                                f"worse diff ({old_diff} → {new_diff}) — keeping original"
++                            )
++                        else:
++                            log_msg = (
++                                f"❌ {qtype} ({lang_to_fix}): re-extraction returned 0 rows — keeping original"
++                            )
++                        revalidation_log.append(log_msg)
++                        reval_progress.progress((ri + 1) / len(mismatched_types))
++
++                    reval_status.empty()
++                    reval_progress.empty()
++
++                    # Show re-validation results
++                    with st.expander(
++                        f"🔄 Re-validation Results ({len(mismatched_types)} categor{'y' if len(mismatched_types) == 1 else 'ies'})",
++                        expanded=True,
++                    ):
++                        for log_msg in revalidation_log:
++                            if log_msg.startswith("✅"):
++                                st.success(log_msg)
++                            elif log_msg.startswith("⚠️"):
++                                st.warning(log_msg)
++                            else:
++                                st.error(log_msg)
++
++                    # Show updated validator table
++                    val_df_after = _extraction_validator(df)
++                    if val_df_after is not None:
++                        remaining_issues = val_df_after[val_df_after["Diff"] > 0]
++                        if remaining_issues.empty:
++                            st.success("✅ After re-validation — all counts now match!")
++                        else:
++                            with st.expander(
++                                f"⚠️ Post-revalidation status — {len(remaining_issues)} mismatch(es) remain",
++                                expanded=True,
++                            ):
++                                st.dataframe(val_df_after, use_container_width=True, hide_index=True)
++                                st.warning(
++                                    "Some mismatches remain after re-validation. "
++                                    "This may be due to genuine differences in the PDF "
++                                    "or OCR issues. Check the PDF manually."
++                                )
++ 
++    # ── Clean up uploaded file (after re-validation is done) ──────────────────
++    try:
++        client.files.delete(file_id)
++    except Exception:
++        pass
++
+     # ── Phase 3: Chapter mapping ──────────────────────────────────────────────
+     if chapters:
+         chapter_progress = st.progress(0)
+diff --git a/prompts.py b/prompts.py
+index afd89cc..a9696e5 100644
+--- a/prompts.py
++++ b/prompts.py
+@@ -887,6 +887,140 @@ OUTPUT — return ONLY this JSON array, nothing else:
+ ]"""
+  
+  
++# ─────────────────────────────────────────────────────────────────────────────
++# COUNT VALIDATOR — re-extraction prompt for mismatched Hindi/English counts
++# ─────────────────────────────────────────────────────────────────────────────
++def count_validator_prompt(
++    question_type: str,
++    language: str,
++    q_nums: list[int] | None,
++    expected_count: int,
++    actual_count: int,
++    other_language: str,
++) -> str:
++    """
++    Generates a re-extraction prompt for a specific question type + language
++    when the count doesn't match the other language's count.
++
++    Parameters:
++        question_type:  e.g. "Short Answer"
++        language:       the language being re-validated ("Hindi" or "English")
++        q_nums:         question numbers from Phase 1 structure
++        expected_count: how many questions the OTHER language extracted (the target)
++        actual_count:   how many this language originally extracted (the mismatch)
++        other_language: the other language name ("English" or "Hindi")
++    """
++    ref = _q_ref(q_nums, f"Look for the {question_type} section.")
++    lang = _language_instruction(language)
++    boundary = _boundary_instruction(q_nums, language)
++
++    # Build a type-specific hint for what this question type looks like
++    type_hints = {
++        "Multiple Choice Question": (
++            "Each sub-question with 4 options (i)(ii)(iii)(iv) = ONE row."
++        ),
++        "Fill in the Blanks": (
++            "Each statement containing a blank '______' = ONE row."
++        ),
++        "True and False": (
++            "Each declarative statement to be marked True/False = ONE row."
++        ),
++        "One Word Answer": (
++            "Each sub-question expecting a one-word or one-sentence answer = ONE row."
++        ),
++        "Very Short Answer": (
++            "Each 2-mark question = ONE row. If a question has 'अथवा/OR', "
++            "the original part = 1 row AND the alternative = 1 separate row."
++        ),
++        "Short Answer": (
++            "Each 3-mark question = ONE row. If a question has 'अथवा/OR', "
++            "the original part = 1 row AND the alternative = 1 separate row."
++        ),
++        "Long Answer": (
++            "Each 4-mark question = ONE row. If a question has 'अथवा/OR', "
++            "the original part = 1 row AND the alternative = 1 separate row."
++        ),
++        "Very Long Answer": (
++            "Each 5/6-mark question = ONE row. If a question has 'अथवा/OR', "
++            "the original part = 1 row AND the alternative = 1 separate row."
++        ),
++        "Match the Following": (
++            "Each complete match block (Column A + Column B) = ONE row."
++        ),
++    }
++    type_hint = type_hints.get(question_type, "Each question = ONE row.")
++
++    direction = "fewer" if actual_count < expected_count else "more"
++
++    return f"""⚠️ COUNT VALIDATION RE-EXTRACTION ⚠️
++
++You are re-extracting "{question_type}" questions from an exam paper PDF
++because a count mismatch was detected between Hindi and English.
++
++═══════════════════════════════════════════════════════
++MISMATCH DETAILS
++═══════════════════════════════════════════════════════
++  Question Type     : {question_type}
++  Your language     : {language}
++  Your count        : {actual_count} questions
++  {other_language} count : {expected_count} questions
++  Issue             : {language} has {direction} questions than {other_language}
++
++This is a BILINGUAL paper — both languages should have the SAME number of
++"{question_type}" questions. The {other_language} section extracted
++{expected_count} questions, but {language} extracted only {actual_count}.
++
++═══════════════════════════════════════════════════════
++YOUR TASK
++═══════════════════════════════════════════════════════
++Re-read the PDF CAREFULLY and extract ALL "{question_type}" questions
++for the {language} section. Pay special attention to:
++
++{"  • OR/अथवा alternatives — each side of अथवा/OR is a SEPARATE question row." if question_type in ("Very Short Answer", "Short Answer", "Long Answer", "Very Long Answer") else ""}
++  • Do NOT skip any sub-question or alternative.
++  • Do NOT merge two questions into one row.
++  • Do NOT add questions from a different question type or section.
++  • Count your extracted questions — you should get close to {expected_count}.
++
++TARGET: {ref}
++{lang}
++{boundary}
++
++COUNTING RULE: {type_hint}
++
++{"CRITICAL — अथवा/OR HANDLING:" if question_type in ("Very Short Answer", "Short Answer", "Long Answer", "Very Long Answer") else ""}
++{"  If question N says: 'question A अथवा question B' (or 'question A OR question B')" if question_type in ("Very Short Answer", "Short Answer", "Long Answer", "Very Long Answer") else ""}
++{"  → Extract 'question A' as row 1" if question_type in ("Very Short Answer", "Short Answer", "Long Answer", "Very Long Answer") else ""}
++{"  → Extract 'question B' as row 2 (strip leading अथवा/OR)" if question_type in ("Very Short Answer", "Short Answer", "Long Answer", "Very Long Answer") else ""}
++{"  → This means each question number WITH an OR alternative produces 2 rows." if question_type in ("Very Short Answer", "Short Answer", "Long Answer", "Very Long Answer") else ""}
++
++═══════════════════════════════════════════════════════
++SELF-CHECK BEFORE RETURNING
++═══════════════════════════════════════════════════════
++Before returning your JSON, count the items in your "questions" array.
++  • Expected count: {expected_count} (to match {other_language})
++  • If your count is different, re-read the section and look for missed
++    questions or incorrectly merged rows.
++  • Common errors to fix:
++    1. Missed अथवा/OR alternative (each OR splits into 2 rows)
++    2. Skipped a question because it contained Latin/Devanagari mixed text
++    3. Stopped too early due to section boundary confusion
++    4. Merged sub-parts that should be separate rows
++
++═══════════════════════════════════════════════════════
++OUTPUT FORMAT
++═══════════════════════════════════════════════════════
++Return ONLY this JSON:
++{{
++  "questions": [
++    {{"question": "<full question text>"}}
++  ]
++}}
++
++{LATEX_INSTRUCTION}
++Return ONLY the JSON object with "questions" key."""
++
++
+ # ─────────────────────────────────────────────────────────────────────────────
+ # REGISTRY
+ # ─────────────────────────────────────────────────────────────────────────────
