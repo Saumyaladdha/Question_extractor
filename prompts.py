@@ -1062,28 +1062,41 @@ to the most appropriate chapter from the list."""
     if for_language_paper and language == "Hindi":
         language_paper_note = """
 IMPORTANT — HINDI LANGUAGE PAPER SPECIAL RULE:
-The chapter list contains prose/poetry chapters from textbooks. However, some questions in the
-Literature section test WRITING SKILLS or LITERARY FORM KNOWLEDGE — these are NOT tied to any
-specific textbook chapter.
+The chapter list contains prose/poetry chapters from textbooks. Questions NOT tied to any
+specific textbook chapter must be assigned one of three special values. Choose carefully:
 
-Questions that do NOT belong to any textbook chapter:
-  • Definitions or comparisons of literary forms
-    (e.g. नाटक और एकांकी में अंतर, उपन्यास और कहानी में अंतर, विधा की परिभाषा)
-  • Writing technique questions
-    (e.g. संवाद लेखन, पत्र लेखन, निबंध लेखन, अनुच्छेद लेखन)
-  • Grammar or prosody definitions not tied to a lesson
-    (e.g. कविता छंद की परिभाषा, अलंकार की परिभाषा, रस की परिभाषा, समास)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+A) {"chapter_number": 0, "chapter_name": "Rachna Kaushal"}
+   ONLY for creative WRITING TASKS where students must PRODUCE a piece of writing:
+   • संवाद लेखन, पत्र लेखन (औपचारिक / अनौपचारिक), निबंध लेखन
+   • अनुच्छेद लेखन, कहानी लेखन, सारांश लेखन, विज्ञापन लेखन
+   Key test: the question asks the student to WRITE something in a specific form.
 
-For these rchna-kaushal/writing-form questions return:
-  {"chapter_number": 0, "chapter_name": "Rachna Kaushal"}
+B) {"chapter_number": 0, "chapter_name": "व्याकरण"}
+   For GRAMMAR, PROSODY, and RHETORIC definitions/comparisons NOT tied to a textbook lesson:
+   • छंद परिभाषा / भेद / उदाहरण  (कवित्त, दोहा, सोरठा, मात्रिक, वार्णिक…)
+   • अलंकार परिभाषा / भेद / उदाहरण  (अनुप्रास, उपमा, रूपक, विरोधाभास, श्लेष…)
+   • रस / भाव परिभाषा — स्थायी भाव, संचारी भाव, रस-निष्पत्ति
+   • समास, संधि, कारक, वाक्य-भेद, काल, विलोम, पर्यायवाची, तत्सम-तद्भव
+   Key test: the question defines or compares a GRAMMATICAL or LITERARY-THEORY term.
 
-For questions that ARE about a specific chapter/lesson/author — poem or passage analysis,
-questions that name a character, title, or author from the textbook — map to the correct chapter.
+C) {"chapter_number": 0, "chapter_name": "Sahitya Parichay"}
+   For LITERARY HISTORY / GENRE KNOWLEDGE not tied to a specific textbook lesson:
+   • Comparing literary forms/genres (नाटक और एकांकी में अंतर, उपन्यास और कहानी में अंतर)
+   • Questions about authors, works, or movements NOT in the chapter list
+     (e.g. जयशंकर प्रसाद का एकांकी, प्रेमचंद की कहानी-कला, रीतिकाल का परिचय)
+   • काल-विभाजन, साहित्यिक युग, प्रवर्तक कवि, आंदोलन
+   Key test: the question asks about LITERARY HISTORY or GENRES in general.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-DECISION RULE: "Does answering this question require reading a specific textbook chapter,
-or does it test a general writing/grammar/literary-form skill?"
-  → General skill only  →  chapter_number: 0, chapter_name: "Rachna Kaushal"
-  → Specific chapter    →  pick the matching chapter from the list above
+For questions that ARE about a specific textbook chapter — poem/passage analysis, questions
+naming a character, title, or author from the chapter list — map to that chapter.
+
+DECISION FLOW:
+  1. Does it name a lesson/author/character from the chapter list? → map to that chapter
+  2. Is it a WRITING TASK (student must compose something)? → Rachna Kaushal
+  3. Is it a GRAMMAR/PROSODY/RHETORIC term definition or comparison? → व्याकरण
+  4. Is it LITERARY HISTORY / GENRE knowledge not in the chapter list? → Sahitya Parichay
 """
     else:
         language_paper_note = ""

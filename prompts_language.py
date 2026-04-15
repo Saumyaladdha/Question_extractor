@@ -107,21 +107,226 @@ Common misses:
  
 # =============================================================================
 # SHARED SKILL CATEGORY DETECTION RULE
-# (reused verbatim in FillBlanks, OneWordAnswer, MatchFollowing, MCQ)
+# (reused in FillBlanks, OneWordAnswer, MatchFollowing, MCQ, TrueFalse)
+# Call _skill_category_detection(language) to get the language-aware version.
 # =============================================================================
  
-_SKILL_CATEGORY_DETECTION = """
+def _skill_category_detection(language: str = "Hindi") -> str:
+    """
+    Returns the skill_category detection rules block.
+    Hindi uses "Sahitya Parichay" for general literary-history knowledge.
+    English keeps "General".
+    """
+    if language == "Hindi":
+        general_label = "Sahitya Parichay"
+        general_desc  = (
+            "सामान्य साहित्यिक / ऐतिहासिक ज्ञान जो किसी विशिष्ट पाठ्यपुस्तक के "
+            "पाठ/कविता से संबंधित नहीं है — जैसे काल विभाजन, साहित्यिक आंदोलन, "
+            "छायावाद/भक्तिकाल के प्रवर्तक, पत्रकारिता-संबंधी सामान्य प्रश्न"
+        )
+    else:
+        general_label = "General"
+        general_desc  = (
+            "general literary / journalistic / language knowledge not tied to a "
+            "specific textbook chapter"
+        )
+    return f"""
 - skill_category detection rules:
     * If the item names / references a specific lesson, poem, chapter, author, or
       character from the textbook  ->  "Literature"   (also set lesson_name)
     * If the item tests grammar terminology: ras, alankar, chhand, sandhi, samas,
       nipat, vachya, kaal, muhavare, lokokti, shabd shakti, vakya bhed, upasarg,
       pratyay, tatsam-tadbhav, etc.  ->  "Grammar"   (lesson_name = null)
-    * General literary / journalistic / language knowledge not tied to a specific
-      textbook chapter  ->  "General"   (lesson_name = null)
+    * {general_desc}  ->  "{general_label}"   (lesson_name = null)
 - lesson_name: set ONLY when skill_category = "Literature" AND the lesson / poem
   is clearly identifiable from the item text or its options. null in all other cases.
 """
+ 
+ 
+# Backwards-compat alias used where language is not available at call time
+_SKILL_CATEGORY_DETECTION = _skill_category_detection("Hindi")
+ 
+ 
+def _skill_category_field_def(language: str) -> str:
+    """Language-aware skill_category field definition block."""
+    if language == "Hindi":
+        return (
+            'skill_category : Classify using EXACTLY one of these three values:\n'
+            '                 "Literature"        -- item references a specific lesson, poem, chapter,\n'
+            '                                       author, or character from the textbook\n'
+            '                 "Grammar"           -- item tests grammar terminology: sandhi, samas,\n'
+            '                                       alankar, ras, chhand, vachya, kaal, muhavare, etc.\n'
+            '                 "Sahitya Parichay"  -- general literary-history / journalistic knowledge\n'
+            '                                       NOT tied to any specific textbook lesson\n'
+            '                                       (e.g. \u0915\u093e\u0932-\u0935\u093f\u092d\u093e\u091c\u0928, \u0938\u093e\u0939\u093f\u0924\u094d\u092f\u093f\u0915 \u0906\u0902\u0926\u094b\u0932\u0928, \u092a\u094d\u0930\u0935\u0930\u094d\u0924\u0915 \u0915\u0935\u093f, \u0938\u094d\u0935\u0930\u094d\u0923\u0915\u093e\u0932, \u092a\u0924\u094d\u0930\u0915\u093e\u0930\u093f\u0924\u093e-\u0938\u0902\u092c\u0902\u0927\u0940 \u0938\u093e\u092e\u093e\u0928\u094d\u092f \u092a\u094d\u0930\u0936\u094d\u0928)'
+        )
+    else:
+        return (
+            'skill_category : Classify using EXACTLY one of these three values:\n'
+            '                 "Literature"  -- item references a specific lesson, poem, chapter,\n'
+            '                                  author, or character from the textbook\n'
+            '                 "Grammar"     -- item tests grammar concepts (tense, voice, articles,\n'
+            '                                  transformation, reported speech, etc.)\n'
+            '                 "General"     -- general literary / journalistic / language knowledge\n'
+            '                                  not tied to any specific textbook chapter'
+        )
+ 
+ 
+def _objective_output_example(language: str, prompt_type: str) -> str:
+    """Language-aware JSON output example for MCQ / FillBlanks / OWA."""
+    if prompt_type == "mcq":
+        if language == "Hindi":
+            return (
+                '{\n'
+                '  "questions": [\n'
+                '    {\n'
+                '      "question": "(i) \'\u0926\u093f\u0928 \u091c\u0932\u094d\u0926\u0940-\u091c\u0932\u094d\u0926\u0940 \u0922\u0932\u0924\u093e \u0939\u0948\' \u0917\u0940\u0924 \u0915\u093f\u0938 \u0915\u093e\u0935\u094d\u092f-\u0938\u0902\u0917\u094d\u0930\u0939 \u0938\u0947 \u0939\u0948 -\\n'
+                '(\u0905) \u0928\u093f\u0936\u093e \u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923  (\u092c) \u090f\u0915\u093e\u0902\u0924 \u0938\u0902\u0917\u0940\u0924\\n(\u0938) \u0938\u0924\u0930\u0902\u0917\u093f\u0928\u0940  (\u0926) \u092e\u0927\u0941\u0936\u093e\u0932\u093e",\n'
+                '      "skill_category": "Literature",\n'
+                '      "lesson_name": "Aatmparichay, Ek Geet",\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(ii) \u0905\u0930\u094d\u0925 \u0915\u0947 \u0906\u0927\u093e\u0930 \u092a\u0930 \u0935\u093e\u0915\u094d\u092f \u0915\u0947 \u092a\u094d\u0930\u0915\u093e\u0930 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902 -\\n(\u0905) \u0906\u0920  (\u092c) \u0924\u0940\u0928\\n(\u0938) \u0938\u093e\u0924  (\u0926) \u0928\u094c",\n'
+                '      "skill_category": "Grammar",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(iii) \u0939\u093f\u0902\u0926\u0940 \u0938\u093e\u0939\u093f\u0924\u094d\u092f \u092e\u0947\u0902 \u091b\u093e\u092f\u093e\u0935\u093e\u0926 \u0915\u093e \u092a\u094d\u0930\u093e\u0930\u0902\u092d \u0915\u093f\u0938 \u0915\u0935\u093f \u0928\u0947 \u0915\u093f\u092f\u093e -\\n(\u0905) \u092e\u0948\u0925\u093f\u0932\u0940\u0936\u0930\u0923 \u0917\u0941\u092a\u094d\u0924  (\u092c) \u091c\u092f\u0936\u0902\u0915\u0930 \u092a\u094d\u0930\u0938\u093e\u0926\\n(\u0938) \u092e\u0939\u093e\u0926\u0947\u0935\u0940 \u0935\u0930\u094d\u092e\u093e  (\u0926) \u0938\u0941\u092e\u093f\u0924\u094d\u0930\u093e\u0928\u0902\u0926\u0928 \u092a\u0902\u0924",\n'
+                '      "skill_category": "Sahitya Parichay",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    }\n'
+                '  ]\n'
+                '}'
+            )
+        else:
+            return (
+                '{\n'
+                '  "questions": [\n'
+                '    {\n'
+                '      "question": "(i) The central theme of \'The Last Lesson\' is -\\n'
+                '(a) Patriotism  (b) Language loss  (c) Childhood  (d) War",\n'
+                '      "skill_category": "Literature",\n'
+                '      "lesson_name": "The Last Lesson",\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(ii) The figure of speech in \'She is as brave as a lion\' is -\\n'
+                '(a) Simile  (b) Metaphor  (c) Personification  (d) Alliteration",\n'
+                '      "skill_category": "Grammar",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(iii) Which period is the golden age of Hindi literature -\\n'
+                '(a) Adikal  (b) Bhaktikaal  (c) Reetikaal  (d) Adhunik Kal",\n'
+                '      "skill_category": "General",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    }\n'
+                '  ]\n'
+                '}'
+            )
+    elif prompt_type == "fib":
+        if language == "Hindi":
+            return (
+                '{\n'
+                '  "questions": [\n'
+                '    {\n'
+                '      "question": "(i) \'\u092a\u0924\u0902\u0917\' \u0915\u0935\u093f\u0924\u093e \u0915\u0947 \u0915\u0935\u093f ________ \u0939\u0948\u0902\u0964 (\u0906\u0932\u094b\u0915 \u0927\u0928\u094d\u0935\u093e / \u0939\u0930\u093f\u0935\u0902\u0936\u0930\u093e\u092f \u092c\u091a\u094d\u091a\u0928)",\n'
+                '      "skill_category": "Literature",\n'
+                '      "lesson_name": "Patang",\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(ii) \u0938\u094d\u0925\u093e\u092f\u0940 \u092d\u093e\u0935 \u0915\u094b \u091c\u093e\u0917\u0943\u0924 \u0915\u0930\u0928\u0947 \u0935\u093e\u0932\u0947 \u0915\u093e\u0930\u0923 \u0915\u094b ________ \u0915\u0939\u0924\u0947 \u0939\u0948\u0902\u0964 (\u0906\u0932\u0902\u092c\u0928 / \u0909\u0926\u094d\u0926\u0940\u092a\u0928)",\n'
+                '      "skill_category": "Grammar",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(iii) \u0939\u093f\u0902\u0926\u0940 \u0938\u093e\u0939\u093f\u0924\u094d\u092f \u0915\u093e \u0938\u094d\u0935\u0930\u094d\u0923\u0915\u093e\u0932 ________ \u0915\u094b \u092e\u093e\u0928\u093e \u091c\u093e\u0924\u093e \u0939\u0948\u0964 (\u092d\u0915\u094d\u0924\u093f\u0915\u093e\u0932 / \u0930\u0940\u0924\u093f\u0915\u093e\u0932)",\n'
+                '      "skill_category": "Sahitya Parichay",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    }\n'
+                '  ]\n'
+                '}'
+            )
+        else:
+            return (
+                '{\n'
+                '  "questions": [\n'
+                '    {\n'
+                '      "question": "(i) The story \'The Last Lesson\' is set in ________ (Alsace-Lorraine / Bavaria).",\n'
+                '      "skill_category": "Literature",\n'
+                '      "lesson_name": "The Last Lesson",\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(ii) This table is made _____ wood.\\n(a) from  (b) of  (c) with  (d) at",\n'
+                '      "skill_category": "Grammar",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(iii) The novel as a literary form originated in ________ (England / France).",\n'
+                '      "skill_category": "General",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    }\n'
+                '  ]\n'
+                '}'
+            )
+    elif prompt_type == "owa":
+        if language == "Hindi":
+            return (
+                '{\n'
+                '  "questions": [\n'
+                '    {\n'
+                '      "question": "(i) \u0938\u094b\u0930\u0920\u093e \u091b\u0902\u0926 \u092e\u093e\u0924\u094d\u0930\u093e\u0913\u0902 \u0915\u0940 \u0926\u0943\u0937\u094d\u091f\u093f \u0938\u0947 \u0915\u093f\u0938 \u091b\u0902\u0926 \u0915\u093e \u0909\u0932\u091f\u093e \u0939\u094b\u0924\u093e \u0939\u0948?",\n'
+                '      "skill_category": "Grammar",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(ii) \'\u092d\u0915\u094d\u0924\u093f\u0928\' \u092a\u093e\u0920 \u0915\u0940 \u0932\u0947\u0916\u093f\u0915\u093e \u0915\u094c\u0928 \u0939\u0948\u0902?",\n'
+                '      "skill_category": "Literature",\n'
+                '      "lesson_name": "Bhaktin",\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(iii) \u0939\u093f\u0902\u0926\u0940 \u0938\u093e\u0939\u093f\u0924\u094d\u092f \u092e\u0947\u0902 \u091b\u093e\u092f\u093e\u0935\u093e\u0926 \u092f\u0941\u0917 \u0915\u093e \u0915\u093e\u0932 \u0915\u094d\u092f\u093e \u0939\u0948?",\n'
+                '      "skill_category": "Sahitya Parichay",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    }\n'
+                '  ]\n'
+                '}'
+            )
+        else:
+            return (
+                '{\n'
+                '  "questions": [\n'
+                '    {\n'
+                '      "question": "(i) Who is the author of \'The Last Lesson\'?",\n'
+                '      "skill_category": "Literature",\n'
+                '      "lesson_name": "The Last Lesson",\n'
+                '      "marks": 1\n'
+                '    },\n'
+                '    {\n'
+                '      "question": "(ii) Name any one literary form used in English prose.",\n'
+                '      "skill_category": "General",\n'
+                '      "lesson_name": null,\n'
+                '      "marks": 1\n'
+                '    }\n'
+                '  ]\n'
+                '}'
+            )
+    return '{}'
+
  
  
 # =============================================================================
@@ -902,6 +1107,11 @@ question     : COMPLETE text of the question - including any quoted extract (for
                all sub-parts (a)(b)(c) or (ka)(kha)(ga), and all MCQ options.
                Use \\n to separate lines. Do NOT include marks labels here.
  
+skill_category : Question format — use EXACTLY one of:
+               "RTC"          -- Reference to Context / extract-based (quoted passage + sub-questions)
+               "Short Answer" -- 2–3 mark standalone question
+               "Long Answer"  -- 4+ mark standalone question
+ 
 marks        : Integer. TOTAL marks for this question.
                For extract-based / RTC questions with multiple sub-parts (1)(2)(3) each
                worth N marks — sum them all: marks = N × number_of_sub_parts.
@@ -940,6 +1150,7 @@ OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
   "questions": [
     {{
       "question": "What is the central theme of 'The Last Lesson'?",
+      "skill_category": "Short Answer",
       "marks": 3,
       "attempt_any": null,
       "lesson_name": "The Last Lesson",
@@ -947,6 +1158,7 @@ OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
     }},
     {{
       "question": "Read the following extract and answer the questions:\n'Yes, in spite of all / Some shape of beauty moves away the pall...'\n(1) What moves the pall from our dark spirits?\n(a) Any shape of beauty (b) Daffodils (c) Green world (d) Dooms\n(2) What does the poet mean by 'green world'?\n(a) Green forest (b) Daffodil's green surroundings (c) Greenhouse (d) Green walls\n(3) Which poetic device is used in 'Shady boon'?\n(a) Imagery (b) Alliteration (c) Metaphor (d) Personification",
+      "skill_category": "RTC",
       "marks": 3,
       "attempt_any": null,
       "lesson_name": "A Thing of Beauty",
@@ -954,6 +1166,7 @@ OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
     }},
     {{
       "question": "What did Franz notice that was unusual about the school that day?",
+      "skill_category": "Short Answer",
       "marks": 2,
       "attempt_any": 5,
       "lesson_name": "The Last Lesson",
@@ -961,6 +1174,7 @@ OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
     }},
     {{
       "question": "What makes the city of Firozabad famous?",
+      "skill_category": "Short Answer",
       "marks": 2,
       "attempt_any": 5,
       "lesson_name": "Lost Spring",
@@ -968,6 +1182,7 @@ OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
     }},
     {{
       "question": "Why is grandeur associated with the mighty dead?",
+      "skill_category": "Long Answer",
       "marks": 6,
       "attempt_any": 1,
       "lesson_name": "A Thing of Beauty",
@@ -1014,11 +1229,7 @@ question       : Complete sub-item text including its label (i)/(ka) at the STAR
                 Example (English):
                   "(i) Education is a sub-system of the wider ___\\n(a) social system  (b) political system\\n(c) economical system  (d) religious system"
  
-skill_category : Classify the MCQ:
-                 "Literature"  -- question is about a specific lesson/poem/chapter from the textbook
-                 "Grammar"     -- question tests grammar concepts (sandhi, samas, nipat, vakya bhed,
-                                  kaal, vachya, alankar, ras, etc.)
-                 "General"     -- general literary/language knowledge not tied to a specific chapter
+{_skill_category_field_def(language)}
  
 lesson_name    : (OPTIONAL) Name of the specific lesson/poem IF skill_category = "Literature"
                  AND the lesson is identifiable from the question or options. null otherwise.
@@ -1029,32 +1240,15 @@ marks          : Marks for this single item (usually 1).
 GENERAL RULES
 -------------------------------------------------------------
 - Include ALL four options in the question string.
-- Grammar MCQs (vakya bhed, nipat, sandhi, etc.): skill_category = "Grammar", lesson_name = null.
-- Literature MCQs (about a poem/lesson): skill_category = "Literature", lesson_name = lesson title.
 - Do NOT include marks labels in question text.
 - Preserve Devanagari script exactly for Hindi items.
-{_SKILL_CATEGORY_DETECTION}
+{_skill_category_detection(language)}
 {LATEX_INSTRUCTION}
 {final_check}
 -------------------------------------------------------------
 OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
 -------------------------------------------------------------
-{{
-  "questions": [
-    {{
-      "question": "(i) 'दिन जल्दी-जल्दी ढलता है' गीत हरिवंशराय बच्चन के काव्य-संग्रह से लिया गया है -\\n(अ) निशा निमंत्रण  (ब) एकांत संगीत\\n(स) सतरंगिनी  (द) मधुशाला",
-      "skill_category": "Literature",
-      "lesson_name": "Aatmparichay, Ek Geet",
-      "marks": 1
-    }},
-    {{
-      "question": "(iii) अर्थ के आधार पर वाक्य के प्रकार होते हैं -\\n(अ) आठ  (ब) तीन\\n(स) सात  (द) नौ",
-      "skill_category": "Grammar",
-      "lesson_name": null,
-      "marks": 1
-    }}
-  ]
-}}
+{_objective_output_example(language, "mcq")}
 """
  
  
@@ -1090,13 +1284,7 @@ question       : Complete sub-item text including its label at the START,
                     "(i) This table is made _____ wood.\n(a) from  (b) of  (c) with  (d) at"
                 If no options are given, include just the sentence with blank.
  
-skill_category : Classify the item:
-                 "Literature"  -- statement references a specific lesson, poem, chapter,
-                                  author, or character from the textbook.
-                 "Grammar"     -- statement tests grammar terminology (ras, alankar, chhand,
-                                  sandhi, samas, nipat, vachya, muhavare, shabd shakti, etc.)
-                 "General"     -- general literary / journalistic / language knowledge not
-                                  tied to a specific textbook chapter.
+{_skill_category_field_def(language)}
  
 lesson_name    : (OPTIONAL) Name of the specific lesson/poem IF skill_category = "Literature"
                  AND the lesson is clearly identifiable from the statement or its options.
@@ -1112,40 +1300,13 @@ GENERAL RULES
 - For bracket options: append on the same line after the blank.
 - Preserve Devanagari script exactly for Hindi items.
 - Do NOT include marks labels in question text.
-{_SKILL_CATEGORY_DETECTION}
+{_skill_category_detection(language)}
 {LATEX_INSTRUCTION}
 {final_check}
 -------------------------------------------------------------
 OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
 -------------------------------------------------------------
-{{
-  "questions": [
-    {{
-      "question": "(i) 'RaamCharit Manas' mahakavya ki bhasha ________ hai. (Braj / Avadhi)",
-      "skill_category": "Literature",
-      "lesson_name": null,
-      "marks": 1
-    }},
-    {{
-      "question": "(v) sthayi bhav ko jagrat karne wale karan ko ________ kahte hain. (aalamban / uddipan)",
-      "skill_category": "Grammar",
-      "lesson_name": null,
-      "marks": 1
-    }},
-    {{
-      "question": "(iii) duniya ki sabse halki aur rangin cheez ________ hai. (patang / swapna)",
-      "skill_category": "Literature",
-      "lesson_name": "Patang",
-      "marks": 1
-    }},
-    {{
-      "question": "(i) This table is made _____ wood.\n(a) from  (b) of  (c) with  (d) at",
-      "skill_category": "Grammar",
-      "lesson_name": null,
-      "marks": 1
-    }}
-  ]
-}}
+{_objective_output_example(language, "fib")}
 """
  
  
@@ -1183,7 +1344,8 @@ column_a        : Array of OBJECTS — one per left-column item, in original ord
                   {{
                     "text":           full item text with its printed label
                                       (e.g. "(i) Reetikaaleen kavita ki do visheshataen"),
-                    "skill_category": one of "Literature" | "Grammar" | "General"
+                    "skill_category": one of "Literature" | "Grammar" |
+                                      "Sahitya Parichay" (Hindi) / "General" (English)
                                       (see detection rules below),
                     "lesson_name":    name of the lesson/poem if skill_category = "Literature"
                                       AND the lesson is clearly identifiable; null otherwise.
@@ -1198,7 +1360,7 @@ marks           : Integer. Total marks = len(column_a).
 -------------------------------------------------------------
 skill_category DETECTION — apply per column_a item
 -------------------------------------------------------------
-{_SKILL_CATEGORY_DETECTION}
+{_skill_category_detection(language)}
 -------------------------------------------------------------
 GENERAL RULES
 -------------------------------------------------------------
@@ -1215,12 +1377,12 @@ OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
   "column_a_header": "ka",
   "column_b_header": "kha",
   "column_a": [
-    {{"text": "(i) Hindi sahitya ka swarna yug",       "skill_category": "General",    "lesson_name": null}},
-    {{"text": "(ii) Chayavaad ke pravartak kavi",      "skill_category": "General",    "lesson_name": null}},
-    {{"text": "(iii) Masti ka sandesh",                "skill_category": "Literature", "lesson_name": "Aatmparichay, Ek Geet"}},
-    {{"text": "(iv) Chaupai chhand",                   "skill_category": "Grammar",    "lesson_name": null}},
-    {{"text": "(v) Chitrakaar",                        "skill_category": "Literature", "lesson_name": "Atit Mein Dabe Paav"}},
-    {{"text": "(vi) Sampadakiya prishth",              "skill_category": "General",    "lesson_name": null}}
+    {{"text": "(i) Hindi sahitya ka swarna yug",       "skill_category": "Sahitya Parichay", "lesson_name": null}},
+    {{"text": "(ii) Chayavaad ke pravartak kavi",      "skill_category": "Sahitya Parichay", "lesson_name": null}},
+    {{"text": "(iii) Masti ka sandesh",                "skill_category": "Literature",       "lesson_name": "Aatmparichay, Ek Geet"}},
+    {{"text": "(iv) Chaupai chhand",                   "skill_category": "Grammar",          "lesson_name": null}},
+    {{"text": "(v) Chitrakaar",                        "skill_category": "Literature",       "lesson_name": "Atit Mein Dabe Paav"}},
+    {{"text": "(vi) Sampadakiya prishth",              "skill_category": "Sahitya Parichay", "lesson_name": null}}
   ],
   "column_b": [
     "(a) Jaishankar Prasad",
@@ -1260,14 +1422,7 @@ FIELD DEFINITIONS
 question       : Complete sub-item text including its label at the START and the full question.
                 Example: "(i) Soratha chhand matraaon ki drishti se kis chhand ka ulta hota hai?"
  
-skill_category : Classify the item:
-                 "Literature"  -- question is about a specific lesson, poem, chapter,
-                                  author, or character from the textbook.
-                 "Grammar"     -- question tests grammar concepts (chhand, alankar, sandhi,
-                                  muhavare, lokokti, shabd shakti, ras, vakya bhed,
-                                  upasarg, pratyay, etc.)
-                 "General"     -- general literary / journalistic / language knowledge not
-                                  tied to a specific textbook chapter.
+{_skill_category_field_def(language)}
  
 lesson_name    : (OPTIONAL) Name of the specific lesson/poem IF skill_category = "Literature"
                  AND the lesson is clearly identifiable from the question. null otherwise.
@@ -1279,34 +1434,13 @@ GENERAL RULES
 -------------------------------------------------------------
 - Preserve Devanagari script exactly for Hindi items.
 - Do NOT include marks labels in question text.
-{_SKILL_CATEGORY_DETECTION}
+{_skill_category_detection(language)}
 {LATEX_INSTRUCTION}
 {final_check}
 -------------------------------------------------------------
 OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
 -------------------------------------------------------------
-{{
-  "questions": [
-    {{
-      "question": "(i) Soratha chhand matraaon ki drishti se kis chhand ka ulta hota hai?",
-      "skill_category": "Grammar",
-      "lesson_name": null,
-      "marks": 1
-    }},
-    {{
-      "question": "(ii) gadya ki koi char pramukh vidhaon ke naam likhiye.",
-      "skill_category": "General",
-      "lesson_name": null,
-      "marks": 1
-    }},
-    {{
-      "question": "(iii) Raghuveer Sahay konse taar saptak ke kavi hain?",
-      "skill_category": "Literature",
-      "lesson_name": "Camra mein Band Apahij",
-      "marks": 1
-    }}
-  ]
-}}
+{_objective_output_example(language, "owa")}
 """
  
  
@@ -1332,18 +1466,28 @@ Do NOT produce a row for the parent instruction line.
 -------------------------------------------------------------
 FIELD DEFINITIONS
 -------------------------------------------------------------
-question : Complete sub-item text including its label at the START and the full statement.
-           Example: "(i) Shoshkon ke prati ghrina aur shoshiton ke prati karuna pragativaad hai."
- 
-marks    : Marks for this single item (usually 1).
- 
+question       : Complete sub-item text including its label at the START and the full statement.
+                 Example: "(i) Shoshkon ke prati ghrina aur shoshiton ke prati karuna pragativaad hai."
+
+skill_category : Classify the item:
+                 "Literature"  -- statement references a specific lesson, poem, chapter,
+                                  author, or character from the textbook.
+                 "Grammar"     -- statement tests grammar terminology (ras, alankar, chhand,
+                                  sandhi, samas, nipat, vachya, muhavare, shabd shakti, etc.)
+                 (see detection rules below for the third category)
+
+lesson_name    : (OPTIONAL) Name of the specific lesson/poem IF skill_category = "Literature"
+                 AND the lesson is clearly identifiable from the statement. null otherwise.
+
+marks          : Marks for this single item (usually 1).
+
 -------------------------------------------------------------
 GENERAL RULES
 -------------------------------------------------------------
 - Preserve Devanagari script exactly for Hindi items.
 - Do NOT include marks labels in question text.
 - Do NOT add "(satya/asatya)" to the question text - that is the instruction, not the item.
- 
+{_skill_category_detection(language)}
 {LATEX_INSTRUCTION}
 {final_check}
 -------------------------------------------------------------
@@ -1352,7 +1496,21 @@ OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
 {{
   "questions": [
     {{
-      "question": "(i) Shoshkon ke prati ghrina aur shoshiton ke prati karuna pragativaad hai.",
+      "question": "(i) Harivansh Rai Bachchan ne 'Aatmparichay' mein apni anubhuti ka varnan kiya hai.",
+      "skill_category": "Literature",
+      "lesson_name": "Aatmparichay, Ek Geet",
+      "marks": 1
+    }},
+    {{
+      "question": "(ii) Doha chhand mein 24+26 = 50 matraen hoti hain.",
+      "skill_category": "Grammar",
+      "lesson_name": null,
+      "marks": 1
+    }},
+    {{
+      "question": "(iii) Chayavaad ka prarambh sarvapratham Jayshankar Prasad ne kiya.",
+      "skill_category": "Sahitya Parichay",
+      "lesson_name": null,
       "marks": 1
     }}
   ]

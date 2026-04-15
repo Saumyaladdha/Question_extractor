@@ -76,7 +76,15 @@ def _fix_latex_backslashes(s: str) -> str:
 # ── Post-processing helpers ────────────────────────────────────────────────
 
 _DEVANAGARI_RE = re.compile(r'[\u0900-\u097F]')
-_Q_NUM_PREFIX  = re.compile(r'^\s*(?:\(\s*\d+\s*\)\s*|[Qq]?\.?\s*\d+\s*[.):\s]\s*)')
+_Q_NUM_PREFIX  = re.compile(
+    r'^\s*(?:'
+    r'\(\s*\d+\s*\)\s*'                                                    # (1), (2) …
+    r'|[Qq]?\.?\s*\d+\s*[.):\s]\s*'                                       # Q1. / 13. / 1) …
+    r'|\(\s*(?:i{1,4}|iv|vi{0,3}|viii|ix|xi{0,3}|xii)\s*\)\s*'           # (i)(ii)(iii)(iv)(v)(vi)(vii)(viii)(ix)(x)(xi)(xii)
+    r'|\(\s*[a-zA-Z]\s*\)\s*'                                              # (a)(b)(c)…(A)(B)… — single letter only
+    r')',
+    re.IGNORECASE,
+)
 _LEADING_OR    = re.compile(r'^\s*(OR|अथवा)\s+', re.IGNORECASE)
 
 _HEADER_PATTERNS = [
@@ -1061,16 +1069,17 @@ def _build_language_rows(
                 marks = 0
 
             # Chapter name logic:
-            # Literature rows → blank (will be filled by run_language_chapter_mapping)
-            # MCQ with lesson_name → use lesson_name as preliminary chapter (will be mapped)
-            # Grammar MCQs or grammar section → "Grammar" / "व्याकरण"
-            # Everything else → skill_category
+            # Literature rows         → blank (filled by run_language_chapter_mapping)
+            # Objective + Grammar     → "व्याकरण" / "Grammar"
+            # Objective + Literature  → lesson_name if known, else blank (will be mapped)
+            # Objective + Sahitya Parichay / General → use skill as-is (no chapter mapping)
+            # Everything else         → skill_category
             if section_type == "Literature":
                 chapter_name = ""
             elif section_type == "Objective" and skill == "Grammar":
                 chapter_name = "व्याकरण" if language == "Hindi" else "Grammar"
-            elif section_type == "Objective" and lesson_name:
-                chapter_name = lesson_name   # preliminary; chapter mapping will refine it
+            elif section_type == "Objective" and skill == "Literature":
+                chapter_name = lesson_name or ""  # blank = chapter mapping will assign
             else:
                 chapter_name = skill
 
@@ -1188,13 +1197,16 @@ def run_language_chapter_mapping(
     if "Chapter_Name" not in df.columns:
         df["Chapter_Name"] = df.get("Skill_Category", pd.Series("", index=df.index))
 
-    # Map chapters for Literature rows + MCQ rows about specific lessons
-    mcq_lit_mask = (
-        (df["Question_Type"] == "MCQ") &
-        (df["Chapter_Name"].ne("")) &
-        (~df["Chapter_Name"].isin(["Grammar", "व्याकरण", "General", "general"]))
+    # Map chapters for:
+    #  - All Literature-section rows
+    #  - All Objective rows (MCQ / FillBlanks / OWA / TrueFalse) whose
+    #    Skill_Category == "Literature" (set by the extraction prompt)
+    _OBJECTIVE_TYPES = {"MCQ", "FillBlanks", "OneWordAnswer", "TrueFalse"}
+    obj_lit_mask = (
+        (df["Question_Type"].isin(_OBJECTIVE_TYPES)) &
+        (df["Skill_Category"] == "Literature")
     )
-    lit_mask = (df["Question_Type"] == "Literature") | mcq_lit_mask
+    lit_mask = (df["Question_Type"] == "Literature") | obj_lit_mask
     if not chapters or not lit_mask.any():
         return df
 
