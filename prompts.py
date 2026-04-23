@@ -437,6 +437,7 @@ CASE C — History / Social Science special formats (NEVER classify as One Word 
   HISTORICAL DATES (ऐतिहासिक तिथियाँ):
     Keywords: "ऐतिहासिक तिथि" / "historical date" / "तिथि" followed by years like
     "185 B.C." / "320 A.D." / "1857 ईo" / "ईo पूo" listed as sub-items.
+    Sub-items are YEARS labeled with Hindi letters (क/ख/ग…) OR English letters (a/b/c/d/e/f…).
     Sub-items are YEARS, not short-answer questions.
     → Classify as Long Answer or Very Long Answer based on total marks.
     → sub_question_count = number of dates listed.
@@ -910,12 +911,14 @@ RULES:
 5. STOP at the hard boundary above.
 
 SPECIAL FORMAT A — HISTORICAL DATES (ऐतिहासिक तिथियाँ):
-If a question lists historical years as sub-items and asks to write the associated
-event for each — SPLIT into ONE ROW PER DATE (parent instruction + date label).
+If a question lists multiple historical years as sub-items (क/ख/ग… OR a/b/c/d/e/f/g…)
+and asks to write the event for each — keep ALL dates as ONE row. Include the parent
+instruction and all sub-items together in a single question string.
 
 SPECIAL FORMAT B — MAP QUESTION (मानचित्र सम्बन्धी प्रश्न):
-If a question asks to mark places on a map with sub-items (i, ii…) —
-SPLIT into ONE ROW PER PLACE: "मानचित्र में दर्शाइए / Show on map:\\n<place description>".
+If a question asks to mark/show places on a map with sub-items (i, ii, iii…) —
+keep ALL places as ONE row. Include the parent instruction and all sub-items together
+in a single question string.
  
 OUTPUT — return ONLY this JSON:
 {{
@@ -982,27 +985,22 @@ RULES:
 5. STOP at the hard boundary above.
 
 SPECIAL FORMAT A — HISTORICAL DATES (ऐतिहासिक तिथियाँ):
-If a question lists multiple historical years/dates as sub-items (क/a, ख/b, ग/c…)
-and asks to write the associated event for each — SPLIT into ONE ROW PER DATE.
-Each row = parent instruction + the specific date label.
-Example input:
-  "निम्नलिखित ऐतिहासिक तिथियों से सम्बन्धित घटनाओं का उल्लेख कीजिए:
-   क) 185 ईo पूo / 185 B.C.    ख) 320 ईo / 320 A.D.    ग) 1435 ईo / 1435 A.D."
-→ Produces 3 separate rows:
-  {{"question": "निम्नलिखित ऐतिहासिक तिथि से सम्बन्धित घटना का उल्लेख कीजिए / Mention the event related to the following historical date:\\nक) 185 ईo पूo / 185 B.C."}},
-  {{"question": "निम्नलिखित ऐतिहासिक तिथि से सम्बन्धित घटना का उल्लेख कीजिए / Mention the event related to the following historical date:\\nख) 320 ईo / 320 A.D."}},
-  {{"question": "निम्नलिखित ऐतिहासिक तिथि से सम्बन्धित घटना का उल्लेख कीजिए / Mention the event related to the following historical date:\\nग) 1435 ईo / 1435 A.D."}}
+If a question lists multiple historical years as sub-items (क/ख/ग… OR a/b/c/d/e/f/g…)
+and asks to write the event for each — keep ALL dates as ONE row. Include the parent
+instruction and all sub-items together in a single question string.
+Example (English labels — UP Board style):
+  Input: "Mention the events related to the following historical dates:
+   d) 1490 A.D.  e) 1739 A.D.  f) 1765 A.D.  g) 1818 A.D.  h) 1857 A.D."
+→ ONE row: {{"question": "Mention the events related to the following historical dates:\\nd) 1490 A.D.  e) 1739 A.D.  f) 1765 A.D.  g) 1818 A.D.  h) 1857 A.D."}}
 
 SPECIAL FORMAT B — MAP QUESTION (मानचित्र सम्बन्धी प्रश्न):
 If a question asks to mark/show places on a map with sub-items (i, ii, iii…) —
-SPLIT into ONE ROW PER PLACE. Each row = place description only (drop the map-drawing instruction).
-Example input:
-  "दिये गए भारत के रेखा-मानचित्र में निम्नलिखित स्थानों को दर्शाइए:
-   i) वह स्थान जहाँ महावीर स्वामी का जन्म हुआ। / The place where Mahabir Swami took birth.
-   ii) अवन्ति महाजनपद की राजधानी। / The capital of Avanti Mahajanapada."
-→ Produces 2 separate rows:
-  {{"question": "मानचित्र में दर्शाइए / Show on map:\\ni) वह स्थान जहाँ महावीर स्वामी का जन्म हुआ। / The place where Mahabir Swami took birth."}},
-  {{"question": "मानचित्र में दर्शाइए / Show on map:\\nii) अवन्ति महाजनपद की राजधानी। / The capital of Avanti Mahajanapada."}}
+keep ALL places as ONE row. Include the parent instruction and all sub-items together
+in a single question string.
+Example (English — UP Board style):
+  Input: "Show on map: i) The place where Mahabir Swami took birth.
+   ii) The capital of Avanti Mahajanapada.  iii) The meeting place of Ganga-Yamuna."
+→ ONE row: {{"question": "Show on map:\\ni) The place where Mahabir Swami took birth.\\nii) The capital of Avanti Mahajanapada.\\niii) The meeting place of Ganga-Yamuna."}}
 
 OUTPUT — return ONLY this JSON:
 {{
