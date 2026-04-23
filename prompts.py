@@ -870,7 +870,7 @@ TARGET: {ref}
 IMPORTANT: Extract 4-mark questions ONLY.
 Do NOT extract 5-mark or 6-mark questions — those belong to Very Long Answer.
 Do NOT extract 2-mark or 3-mark questions.
- 
+
 RULES:
 1. Each question number in TARGET produces rows based on OR alternatives.
 2. OR / अथवा handling:
@@ -880,6 +880,14 @@ RULES:
 3. Include sub-parts (a)/(b)/(c)/(d) in the same string if they share the question number.
 4. Do NOT extract from question numbers outside TARGET.
 5. STOP at the hard boundary above.
+
+SPECIAL FORMAT A — HISTORICAL DATES (ऐतिहासिक तिथियाँ):
+If a question lists historical years as sub-items and asks to write the associated
+event for each — SPLIT into ONE ROW PER DATE (parent instruction + date label).
+
+SPECIAL FORMAT B — MAP QUESTION (मानचित्र सम्बन्धी प्रश्न):
+If a question asks to mark places on a map with sub-items (i, ii…) —
+SPLIT into ONE ROW PER PLACE: "मानचित्र में दर्शाइए / Show on map:\\n<place description>".
  
 OUTPUT — return ONLY this JSON:
 {{
@@ -944,14 +952,37 @@ RULES:
 3. Include sub-parts (a)/(b)/(c)/(d) in the same string if they share the question number.
 4. Do NOT extract from question numbers outside TARGET.
 5. STOP at the hard boundary above.
- 
+
+SPECIAL FORMAT A — HISTORICAL DATES (ऐतिहासिक तिथियाँ):
+If a question lists multiple historical years/dates as sub-items (क/a, ख/b, ग/c…)
+and asks to write the associated event for each — SPLIT into ONE ROW PER DATE.
+Each row = parent instruction + the specific date label.
+Example input:
+  "निम्नलिखित ऐतिहासिक तिथियों से सम्बन्धित घटनाओं का उल्लेख कीजिए:
+   क) 185 ईo पूo / 185 B.C.    ख) 320 ईo / 320 A.D.    ग) 1435 ईo / 1435 A.D."
+→ Produces 3 separate rows:
+  {{"question": "निम्नलिखित ऐतिहासिक तिथि से सम्बन्धित घटना का उल्लेख कीजिए / Mention the event related to the following historical date:\\nक) 185 ईo पूo / 185 B.C."}},
+  {{"question": "निम्नलिखित ऐतिहासिक तिथि से सम्बन्धित घटना का उल्लेख कीजिए / Mention the event related to the following historical date:\\nख) 320 ईo / 320 A.D."}},
+  {{"question": "निम्नलिखित ऐतिहासिक तिथि से सम्बन्धित घटना का उल्लेख कीजिए / Mention the event related to the following historical date:\\nग) 1435 ईo / 1435 A.D."}}
+
+SPECIAL FORMAT B — MAP QUESTION (मानचित्र सम्बन्धी प्रश्न):
+If a question asks to mark/show places on a map with sub-items (i, ii, iii…) —
+SPLIT into ONE ROW PER PLACE. Each row = place description only (drop the map-drawing instruction).
+Example input:
+  "दिये गए भारत के रेखा-मानचित्र में निम्नलिखित स्थानों को दर्शाइए:
+   i) वह स्थान जहाँ महावीर स्वामी का जन्म हुआ। / The place where Mahabir Swami took birth.
+   ii) अवन्ति महाजनपद की राजधानी। / The capital of Avanti Mahajanapada."
+→ Produces 2 separate rows:
+  {{"question": "मानचित्र में दर्शाइए / Show on map:\\ni) वह स्थान जहाँ महावीर स्वामी का जन्म हुआ। / The place where Mahabir Swami took birth."}},
+  {{"question": "मानचित्र में दर्शाइए / Show on map:\\nii) अवन्ति महाजनपद की राजधानी। / The capital of Avanti Mahajanapada."}}
+
 OUTPUT — return ONLY this JSON:
 {{
   "questions": [
     {{"question": "<full question text>"}}
   ]
 }}
- 
+
 EXAMPLE (Hindi):
 {{
   "questions": [
@@ -960,7 +991,7 @@ EXAMPLE (Hindi):
     {{"question": "ट्रांसफार्मर का वर्णन निम्न बिन्दुओं पर कीजिए:\\n(1) प्रकार\\n(2) नामांकित चित्र\\n(3) सिद्धान्त\\n(4) कोई 2 अनुप्रयोग"}}
   ]
 }}
- 
+
 EXAMPLE (English — same count):
 {{
   "questions": [
@@ -969,7 +1000,7 @@ EXAMPLE (English — same count):
     {{"question": "Describe a transformer under the following headings:\\n(1) Kinds\\n(2) Labelled diagram\\n(3) Principle\\n(4) Any 2 applications"}}
   ]
 }}
- 
+
 {LATEX_INSTRUCTION}
 {self_count}
 Return ONLY the JSON object with "questions" key."""
