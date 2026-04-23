@@ -47,6 +47,30 @@ LATEX FORMATTING — apply to every question you extract:
 - Hindi/English text outside math stays plain — never wrap words in $...$
 - Number+unit: wrap symbol only: "9×10⁸ m/s" → $9\\times10^{8}$ m/s
 
+TABLES — balance sheets, financial statements, data tables:
+When the question contains a table (balance sheet, receipts & payments, trial balance,
+comparative statement, etc.) reproduce it as a LaTeX tabular environment embedded
+inside the question string. Use this format:
+  \\\\begin{tabular}{|l|r|l|r|}
+  \\\\hline
+  \\\\multicolumn{4}{|c|}{\\\\textbf{BALANCE SHEET}} \\\\\\\\
+  \\\\hline
+  \\\\textbf{Liabilities} & \\\\textbf{₹} & \\\\textbf{Assets} & \\\\textbf{₹} \\\\\\\\
+  \\\\hline
+  Creditors & 60,000 & Cash & 36,000 \\\\\\\\
+  \\\\hline
+  \\\\end{tabular}
+Column alignment: l=left  r=right  c=center  | = vertical line
+Row separator   : \\\\\\\\ (four backslashes in JSON = LaTeX \\\\)
+Cell separator  : & (plain ampersand, no escaping)
+Horizontal line : \\\\hline
+Merged cell     : \\\\multicolumn{n}{align}{content}
+Bold text       : \\\\textbf{text}
+Underlined value: \\\\underline{value}  (use for totals/subtotals)
+Extra space     : \\\\quad
+Line break in cell: \\\\newline
+₹ symbol        : keep as plain ₹ (no LaTeX wrapping needed)
+
 JSON BACKSLASH RULE — CRITICAL (questions will be lost if you break this):
 You are outputting JSON. Inside a JSON string every LaTeX backslash MUST be
 written as TWO backslashes so the JSON is valid.
@@ -56,6 +80,8 @@ Rule: wherever you would normally write \\cmd in LaTeX, write \\\\cmd in JSON.
 This applies to EVERY backslash: \\\\frac \\\\vec \\\\hat \\\\int \\\\sqrt
   \\\\alpha \\\\beta \\\\lambda \\\\Omega \\\\pi \\\\infty \\\\times \\\\cdot
   \\\\left \\\\right \\\\lim \\\\sum \\\\log \\\\sin \\\\cos \\\\tan \\\\,
+  \\\\begin \\\\end \\\\hline \\\\multicolumn \\\\textbf \\\\underline \\\\quad \\\\newline
+For the LaTeX row-end \\\\\\\\ (two backslashes): write FOUR backslashes in JSON.
 """
  
  
