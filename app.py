@@ -1570,12 +1570,8 @@ if extract_btn:
         st.dataframe(filtered[display_cols], use_container_width=True, hide_index=True)
 
         lang_excel = build_excel_language(lang_df)
-        file_name  = (
-            f"questions_{exam_type.replace(' ', '_')}"
-            f"_Class{class_name.replace(' ', '')}"
-            f"_{subject.replace(' ', '_')}"
-            f"_{year}.xlsx"
-        )
+        pdf_stem   = os.path.splitext(uploaded_file.name)[0]
+        file_name  = f"{pdf_stem}.xlsx"
         st.download_button(
             label="Download Excel",
             data=lang_excel,
@@ -1989,12 +1985,8 @@ if extract_btn:
     st.dataframe(filtered, use_container_width=True, hide_index=True)
  
     excel_bytes = build_excel(df)
-    file_name   = (
-        f"questions_{exam_type.replace(' ', '_')}"
-        f"_Class{class_name.replace(' ', '')}"
-        f"_{subject.replace(' ', '_')}"
-        f"_{year}.xlsx"
-    )
+    pdf_stem    = os.path.splitext(uploaded_file.name)[0]
+    file_name   = f"{pdf_stem}.xlsx"
     st.download_button(
         label="Download Excel",
         data=excel_bytes,
