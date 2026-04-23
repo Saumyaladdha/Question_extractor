@@ -408,14 +408,14 @@ CASE A — Sub-question block (each sub-question = 1 mark):
     True/False / सत्य/असत्य         → True and False
     Two columns to match            → Match the Following
     Short questions, no options     → One Word Answer
- 
+
   marks_each = 1 (per sub-question, not total)
- 
+
   IMPORTANT — also count sub_question_count:
     Open each parent question number and count how many sub-questions (a),(b),(c)...
     are inside it. Sum across all question_numbers for that type.
     This is the EXACT minimum rows the extractor must produce.
- 
+
 CASE B — Standalone question:
   2 marks → Very Short Answer
   3 marks → Short Answer
@@ -423,6 +423,29 @@ CASE B — Standalone question:
   5 marks → Very Long Answer
   6 marks → Very Long Answer
   sub_question_count = null for all standalone types.
+
+CASE C — History / Social Science special formats (NEVER classify as One Word Answer):
+  These ALWAYS fall under Long Answer or Very Long Answer regardless of sub-item length.
+
+  MAP-BASED QUESTION (मानचित्र सम्बन्धी प्रश्न):
+    Keywords: "मानचित्र" / "map" / "outline map" / "रेखा-मानचित्र" / "⊙ चिह्न"
+    Sub-items list PLACES / LOCATIONS to mark on a map of India.
+    → Classify as Long Answer or Very Long Answer based on total marks.
+    → sub_question_count = number of places listed.
+    NEVER → One Word Answer.
+
+  HISTORICAL DATES (ऐतिहासिक तिथियाँ):
+    Keywords: "ऐतिहासिक तिथि" / "historical date" / "तिथि" followed by years like
+    "185 B.C." / "320 A.D." / "1857 ईo" / "ईo पूo" listed as sub-items.
+    Sub-items are YEARS, not short-answer questions.
+    → Classify as Long Answer or Very Long Answer based on total marks.
+    → sub_question_count = number of dates listed.
+    NEVER → One Word Answer.
+
+  DECISION RULE for One Word Answer:
+    Use "One Word Answer" ONLY when sub-items are short conceptual questions
+    whose answers are a single word or phrase — NOT when sub-items are
+    years/dates or place descriptions to mark on a map.
  
 ════════════════════════════════════════════════════════════
 STEP 3 — SELF-CHECK  (MANDATORY before returning)
@@ -450,6 +473,11 @@ Keys (omit absent types):
   "Multiple Choice Question", "Fill in the Blanks", "True and False",
   "One Word Answer", "Match the Following", "Very Short Answer",
   "Short Answer", "Long Answer", "Very Long Answer"
+
+NOTE: Map-based questions and Historical Dates questions are classified as
+"Long Answer" or "Very Long Answer" (whichever matches the marks).
+Do NOT create separate keys for them — they use the same keys as regular
+Long/Very Long Answer questions.
  
 Each entry:
   {
