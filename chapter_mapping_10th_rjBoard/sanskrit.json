@@ -1,0 +1,59 @@
+{
+  "subject": "Sanskrit",
+  "subject_hindi": "संस्कृत (तृतीय भाषा)",
+  "board": "RJ Board (BSER)",
+  "board_full": "Board of Secondary Education, Rajasthan, Ajmer",
+  "subject_code": "71",
+  "medium": "Hindi",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "papers": 1,
+    "duration_hours": 3.15,
+    "theory_marks": 80,
+    "sessional_marks": 20,
+    "total_marks": 100
+  },
+  "mark_distribution": {
+    "अपठित अवबोधनम्": 8,
+    "रचनात्मकं कार्यम्": 15,
+    "अनुप्रयुक्त-व्याकरणम्": 24,
+    "पठित-अवबोधनम्": 33
+  },
+  "books": [
+    {
+      "book": "Shemushi Dvitiyo Bhag (NCERT)",
+      "book_hindi": "शेमुषी द्वितीयो भागः (NCERT)",
+      "chapters": [
+        { "number": 1,  "name": "Shuchi Paryavaranam",              "name_hindi": "शुचिपर्यावरणम्" },
+        { "number": 2,  "name": "Buddhir Balavati Sada",            "name_hindi": "बुद्धिर्बलवती सदा" },
+        { "number": 3,  "name": "Vyaayamah Sarvada Pathyah",        "name_hindi": "व्यायामः सर्वदा पथ्यः" },
+        { "number": 4,  "name": "Shishulalanam",                    "name_hindi": "शिशुलालनम्" },
+        { "number": 5,  "name": "Jananee Tulyavatsala",             "name_hindi": "जननी तुल्यवत्सला" },
+        { "number": 6,  "name": "Subhashitani",                     "name_hindi": "सुभाषितानि" },
+        { "number": 7,  "name": "Saptabhaginyah",                   "name_hindi": "सप्तभगिन्यः" },
+        { "number": 8,  "name": "Sanskrit Sahitye Lekhikah",        "name_hindi": "संस्कृतसाहित्ये लेखिकाः" },
+        { "number": 9,  "name": "Suktayah",                         "name_hindi": "सूक्तयः" },
+        { "number": 10, "name": "Bhukampavibheeshika",              "name_hindi": "भूकम्पविभीषिका" },
+        { "number": 11, "name": "Praanebhyopi Priyah Suhrid",       "name_hindi": "प्राणेभ्योऽपि प्रियः सुहृद्" },
+        { "number": 12, "name": "Anyoktyah",                        "name_hindi": "अनयोक्त्यः" }
+      ]
+    }
+  ],
+  "grammar_topics": [
+    "संधिकार्यम् (स्वरसंधि, व्यंजनसंधि, विसर्गसंधि)",
+    "समासः (तत्पुरुष, कर्मधारय, द्विगु, द्वन्द्व, बहुव्रीहि, अव्ययीभाव)",
+    "कारकाणि – उपदविभक्तीनां प्रयोगाः",
+    "प्रत्ययाः (कृदन्ताः – तव्यत्, अनीयर्, शतृ, शानच्; तद्धिताः – मतुप्, इन्, ठन्, त्व, तल्; स्त्रीप्रत्ययौ – टाप्, ङीप्)",
+    "अव्ययपदानि – सामान्य-परिचयम्, वाक्ये अव्ययानां प्रयोगः",
+    "वाच्य-परिवर्तनम् – केवलं लट्लकारे (कर्तृ-कर्म-क्रिया)",
+    "समयलेखनम्",
+    "अशुद्धि-संशोधनम् – वचन-लिंग-पुरुष-लकार-विभक्ति दृष्ट्या"
+  ],
+  "writing_topics": [
+    "प्रार्थनापत्रम्/आत्मीयजनान् प्रति अनौपचारिकं पत्रलेखनम्",
+    "चित्राधारितं वर्णनम् अथवा संकेताधारितं संवादलेखनम्",
+    "अनुवादकार्यम् – हिन्दीभाषायाः षड्वाक्येषु चतुर्णां वाक्यानां संस्कृतभाषया अनुवादः",
+    "घटनाक्रमस्य संयोजनम् / संकेताधारितम् अनुच्छेदलेखनम्"
+  ]
+}
