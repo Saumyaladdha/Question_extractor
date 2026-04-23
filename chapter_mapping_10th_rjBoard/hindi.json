@@ -1,0 +1,85 @@
+{
+  "subject": "Hindi",
+  "subject_hindi": "हिन्दी",
+  "board": "RJ Board (BSER)",
+  "board_full": "Board of Secondary Education, Rajasthan, Ajmer",
+  "subject_code": "01",
+  "medium": "Hindi",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "papers": 1,
+    "duration_hours": 3.15,
+    "theory_marks": 80,
+    "sessional_marks": 20,
+    "total_marks": 100
+  },
+  "mark_distribution": {
+    "अपठित बोध": 12,
+    "रचना": 14,
+    "व्यावहारिक-व्याकरण": 10,
+    "पाठ्यपुस्तक क्षितिज-भाग 2": 33,
+    "पूरक-पुस्तक कृतिका-भाग 2": 11
+  },
+  "books": [
+    {
+      "book": "Kshitij Bhag 2 (Main Textbook)",
+      "book_hindi": "क्षितिज भाग 2",
+      "publisher": "NCERT",
+      "marks": 33,
+      "sections": [
+        {
+          "section": "Gadya Khand (Prose)",
+          "section_hindi": "गद्य खंड",
+          "chapters": [
+            { "number": 1, "name": "Netaji Ka Chashma", "name_hindi": "नेताजी का चश्मा", "author": "Swayam Prakash" },
+            { "number": 2, "name": "Balgobin Bhagat", "name_hindi": "बालगोबिन भगत", "author": "Ramvriksha Benipuri" },
+            { "number": 3, "name": "Lakhnavi Andaaz", "name_hindi": "लखनवी अंदाज़", "author": "Yashpal" },
+            { "number": 4, "name": "Ek Kahani Yeh Bhi", "name_hindi": "एक कहानी यह भी", "author": "Mannu Bhandari" },
+            { "number": 5, "name": "Mitti Wali", "name_hindi": "मिट्टी वाली", "author": "Vidyasagar Nautiyal" },
+            { "number": 6, "name": "Raza Sahab", "name_hindi": "रज़ा साहब", "author": "Yatindra Mishra" }
+          ]
+        },
+        {
+          "section": "Kavya Khand (Poetry)",
+          "section_hindi": "काव्य खंड",
+          "chapters": [
+            { "number": 7,  "name": "Surdas Ke Pad", "name_hindi": "सूरदास के पद", "author": "Surdas" },
+            { "number": 8,  "name": "Ram-Lakshman-Parashuram Samvad", "name_hindi": "राम-लक्ष्मण-परशुराम संवाद", "author": "Tulsidas" },
+            { "number": 9,  "name": "Savaiyas / Kavitta", "name_hindi": "सवैया / कविता", "author": "Raskhan" },
+            { "number": 10, "name": "Aatmakathya", "name_hindi": "आत्मकथ्य", "author": "Jayashankar Prasad" },
+            { "number": 11, "name": "Utsaah / Att Nahi Rahi Hai", "name_hindi": "उत्साह / अट नहीं रही है", "author": "Suryakant Tripathi Nirala" },
+            { "number": 12, "name": "Yeh Danturit Muskan / Fasal", "name_hindi": "यह दंतुरित मुसकान / फसल", "author": "Nagarjun" },
+            { "number": 13, "name": "Chhaya Mat Chhuna", "name_hindi": "छाया मत छूना", "author": "Girija Kumar Mathur" },
+            { "number": 14, "name": "Kanyadan", "name_hindi": "कन्यादान", "author": "Rituraj" },
+            { "number": 15, "name": "Sangatkar", "name_hindi": "संगतकार", "author": "Mangalesh Dabral" }
+          ]
+        }
+      ]
+    },
+    {
+      "book": "Kritika Bhag 2 (Supplementary Reader)",
+      "book_hindi": "कृतिका भाग 2",
+      "publisher": "NCERT",
+      "marks": 11,
+      "chapters": [
+        { "number": 1, "name": "Mata Ka Aanchal", "name_hindi": "माता का अँचल", "author": "Shivapujan Sahay" },
+        { "number": 2, "name": "Jo Dekha Use Likhna Hai", "name_hindi": "जो देखा उसे लिखना है", "author": "George Pancham Ki Naak" },
+        { "number": 3, "name": "Saana Saana Haath Jodi", "name_hindi": "साना-साना हाथ जोड़ि", "author": "Madhu Kankaria" },
+        { "number": 4, "name": "Ehi Thaiya Jhumana Baeyan", "name_hindi": "एही ठैयाँ झुलनी हेरानी हो रामा", "author": "Shivprasad Mishra" },
+        { "number": 5, "name": "Main Kyun Likhta Hoon", "name_hindi": "मैं क्यों लिखता हूँ?", "author": "Agyeya" }
+      ]
+    }
+  ],
+  "grammar_topics": [
+    "पद भेद – संज्ञा, सर्वनाम, विशेषण, क्रिया और अव्यय",
+    "उपसर्ग एवं प्रत्यय",
+    "संधि और समास",
+    "मुहावरे और लोकोक्तियाँ पाठ्यपुस्तक के आधार पर"
+  ],
+  "writing_topics": [
+    "संकेत-बिंदुओं पर आधारित निबंध-लेखन (लगभग 300 शब्द)",
+    "पत्र-लेखन (औपचारिक/अनौपचारिक पत्र)",
+    "संक्षिप्तीकरण एवं पल्लवन"
+  ]
+}

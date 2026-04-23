@@ -1,0 +1,40 @@
+{
+  "subject": "English",
+  "subject_hindi": "अंग्रेजी",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 10,
+  "books": [
+    {
+      "book": "First Flight",
+      "chapters": [
+        { "number": 1,  "name": "A Letter to God",                              "name_hindi": "भगवान को पत्र" },
+        { "number": 2,  "name": "Nelson Mandela: Long Walk to Freedom",         "name_hindi": "नेल्सन मंडेला: स्वतंत्रता की लंबी राह" },
+        { "number": 3,  "name": "Two Stories About Flying",                     "name_hindi": "उड़ान की दो कहानियाँ" },
+        { "number": 4,  "name": "From the Diary of Anne Frank",                 "name_hindi": "ऐनी फ्रैंक की डायरी से" },
+        { "number": 5,  "name": "The Hundred Dresses Part 1",                   "name_hindi": "सौ पोशाकें - भाग 1" },
+        { "number": 6,  "name": "The Hundred Dresses Part 2",                   "name_hindi": "सौ पोशाकें - भाग 2" },
+        { "number": 7,  "name": "Glimpses of India",                            "name_hindi": "भारत की झलकियाँ" },
+        { "number": 8,  "name": "Mijbil the Otter",                             "name_hindi": "मिजबिल उद्बिलाव" },
+        { "number": 9,  "name": "Madam Rides the Bus",                          "name_hindi": "मैडम बस चलाती है" },
+        { "number": 10, "name": "The Sermon at Benares",                        "name_hindi": "बनारस में उपदेश" },
+        { "number": 11, "name": "The Proposal",                                 "name_hindi": "प्रस्ताव" }
+      ]
+    },
+    {
+      "book": "Footprints Without Feet (Supplementary Reader)",
+      "chapters": [
+        { "number": 1,  "name": "A Triumph of Surgery",                         "name_hindi": "सर्जरी की विजय" },
+        { "number": 2,  "name": "The Thief's Story",                            "name_hindi": "चोर की कहानी" },
+        { "number": 3,  "name": "The Midnight Visitor",                         "name_hindi": "आधी रात का आगंतुक" },
+        { "number": 4,  "name": "A Question of Trust",                          "name_hindi": "विश्वास का प्रश्न" },
+        { "number": 5,  "name": "Footprints Without Feet",                      "name_hindi": "बिना पैरों के पदचिह्न" },
+        { "number": 6,  "name": "The Making of a Scientist",                    "name_hindi": "एक वैज्ञानिक का निर्माण" },
+        { "number": 7,  "name": "The Necklace",                                 "name_hindi": "हार" },
+        { "number": 8,  "name": "The Hack Driver",                              "name_hindi": "हैक ड्राइवर" },
+        { "number": 9,  "name": "Bholi",                                        "name_hindi": "भोली" },
+        { "number": 10, "name": "The Book That Saved the Earth",                "name_hindi": "वह पुस्तक जिसने पृथ्वी को बचाया" }
+      ]
+    }
+  ]
+}

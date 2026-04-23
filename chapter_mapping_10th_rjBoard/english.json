@@ -1,0 +1,92 @@
+{
+  "subject": "English",
+  "subject_hindi": "अंग्रेजी",
+  "board": "RJ Board (BSER)",
+  "board_full": "Board of Secondary Education, Rajasthan, Ajmer",
+  "subject_code": "02",
+  "medium": "English",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "papers": 1,
+    "duration_hours": 3.15,
+    "theory_marks": 80,
+    "sessional_marks": 20,
+    "total_marks": 100
+  },
+  "mark_distribution": {
+    "Reading": 16,
+    "Writing": 12,
+    "Grammar": 10,
+    "Text Book - First Flight": 30,
+    "Supplementary Book - Footprints Without Feet": 12
+  },
+  "books": [
+    {
+      "book": "First Flight",
+      "publisher": "NCERT",
+      "marks": 42,
+      "sections": [
+        {
+          "section": "Prose",
+          "marks": 18,
+          "chapters": [
+            { "number": 1,  "name": "A Letter to God",                          "author": "G.L. Fuentes" },
+            { "number": 2,  "name": "Nelson Mandela: Long Walk to Freedom",     "author": "Nelson Rolihlahla Mandela" },
+            { "number": 3,  "name": "Two Stories about Flying",                 "author": "Liam O'Flaherty / Frederick Forsyth" },
+            { "number": 4,  "name": "From the Diary of Anne Frank",             "author": "Anne Frank" },
+            { "number": 5,  "name": "Glimpses of India",                        "author": "Lucio Rodrigues / Lokesh Abrol / Arup Kumar Datta" },
+            { "number": 6,  "name": "Mijbil the Otter",                         "author": "Gavin Maxwell" },
+            { "number": 7,  "name": "Madam Rides the Bus",                      "author": "Vallikkannan" },
+            { "number": 8,  "name": "The Sermon at Benares",                    "author": "Betty Renshaw" },
+            { "number": 9,  "name": "The Proposal (Drama)",                     "author": "Anton Chekov" }
+          ]
+        },
+        {
+          "section": "Poetry",
+          "marks": 12,
+          "chapters": [
+            { "number": 1,  "name": "Dust of Snow",                             "author": "Robert Frost" },
+            { "number": 2,  "name": "Fire and Ice",                             "author": "Robert Frost" },
+            { "number": 3,  "name": "A Tiger in the Zoo",                       "author": "Leslie Norris" },
+            { "number": 4,  "name": "How to Tell Wild Animals",                 "author": "Carolyn Wells" },
+            { "number": 5,  "name": "The Ball Poem",                            "author": "John Berryman" },
+            { "number": 6,  "name": "Amanda!",                                  "author": "Robin Klein" },
+            { "number": 7,  "name": "The Trees",                                "author": "Adrienne Rich" },
+            { "number": 8,  "name": "Fog",                                      "author": "Carl Sandburg" },
+            { "number": 9,  "name": "The Tale of Custard the Dragon",           "author": "Ogden Nash" },
+            { "number": 10, "name": "For Anne Gregory",                         "author": "William Butler Yeats" }
+          ]
+        }
+      ]
+    },
+    {
+      "book": "Footprints Without Feet (Supplementary Reader)",
+      "publisher": "NCERT",
+      "marks": 12,
+      "chapters": [
+        { "number": 1,  "name": "A Triumph of Surgery",                         "author": "James Herriot" },
+        { "number": 2,  "name": "The Thief's Story",                            "author": "Ruskin Bond" },
+        { "number": 3,  "name": "The Midnight Visitor",                         "author": "Robert Arthur" },
+        { "number": 4,  "name": "A Question of Trust",                          "author": "Victor Canning" },
+        { "number": 5,  "name": "Footprints Without Feet",                      "author": "H.G. Wells" },
+        { "number": 6,  "name": "The Making of a Scientist",                    "author": "Robert W. Peterson" },
+        { "number": 7,  "name": "The Necklace",                                 "author": "Guy De Maupassant" },
+        { "number": 8,  "name": "Bholi",                                        "author": "K.A. Abbas" },
+        { "number": 9,  "name": "The Book That Saved the Earth",                "author": "Claire Boiko" }
+      ]
+    }
+  ],
+  "grammar_topics": [
+    "Tenses",
+    "Subject-Verb Concord",
+    "Clauses (Complex Sentences)",
+    "Active and Passive Voice",
+    "Reported Speech"
+  ],
+  "writing_topics": [
+    "Letter Writing (Personal / E-mail)",
+    "Short Story on a given outline (~100 words)",
+    "Short writing task based on verbal or visual stimulus (~100 words)"
+  ]
+}

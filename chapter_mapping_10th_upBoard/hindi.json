@@ -1,0 +1,96 @@
+{
+  "subject": "Hindi",
+  "subject_hindi": "हिन्दी",
+  "board": "UP Board (UPMSP)",
+  "board_full": "Uttar Pradesh Madhyamik Shiksha Parishad",
+  "medium": "Hindi",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "written_marks": 70,
+    "internal_assessment_marks": 30,
+    "total_marks": 100,
+    "internal_assessment": {
+      "first_internal_oral": { "month": "August", "marks": 10 },
+      "second_internal_writing": { "month": "December", "marks": 10 },
+      "monthly_tests": { "count": 4, "total_marks": 10 }
+    }
+  },
+  "sections": {
+    "section_a_mcq": { "name": "खण्ड-अ (बहुविकल्पीय प्रश्न)", "marks": 20 },
+    "section_b_descriptive": { "name": "खण्ड-ब (वर्णनात्मक प्रश्न)", "marks": 50 }
+  },
+  "books": [
+    {
+      "section": "Gadya Hetu (Prose)",
+      "section_hindi": "गद्य हेतु",
+      "chapters": [
+        { "name": "Mitrata",          "name_hindi": "मित्रता",                        "author": "Ram Chandra Shukla" },
+        { "name": "Mamata",           "name_hindi": "ममता",                           "author": "Jayshankar Prasad" },
+        { "name": "Bharatiya Sanskriti", "name_hindi": "भारतीय संस्कृति",            "author": "Rajendra Prasad" },
+        { "name": "Ajanta",           "name_hindi": "अजन्ता",                         "author": "Bhagwat Sharan Upadhyay" },
+        { "name": "Kya Likhun",       "name_hindi": "क्या लिखूँ",                     "author": "Padumla Punnalab Bakhshi" },
+        { "name": "Eesha Tu Na Gayi Mere Man Se", "name_hindi": "ईर्ष्या तू न गयी मेरे मन से", "author": "Ramdhari Singh Dinkar" },
+        { "name": "Paani Mein Chanda Aur Chaand Par Aadmi", "name_hindi": "पानी में चन्दा और चाँद पर आदमी", "author": "Jai Prakash Bharti" }
+      ]
+    },
+    {
+      "section": "Kavya Hetu (Poetry)",
+      "section_hindi": "काव्य हेतु",
+      "chapters": [
+        { "name": "Surdas Ke Pad",              "name_hindi": "सूरदास के पद",                "author": "Surdas" },
+        { "name": "Dhanush Bhang / Bon Path Par", "name_hindi": "धनुष भंग / वन पथ पर",      "author": "Tulsidas" },
+        { "name": "Savaiye, Kavitt",             "name_hindi": "सवैये, कविट्ट",              "author": "Raskhan" },
+        { "name": "Bhakti Neeti",                "name_hindi": "भक्ति नीति",                  "author": "Bihari Lal" },
+        { "name": "Swadesh Prem",                "name_hindi": "स्वदेश प्रेम",                "author": "Ram Naresh Tripathi" },
+        { "name": "Bharat Mata Ka Mandir Yeh",   "name_hindi": "भारतमाता का मंदिर यह",       "author": "Maithili Sharan Gupt" },
+        { "name": "Himalay Se / Varsha Sundari Ke Prati", "name_hindi": "हिमालय से / वर्षा सुन्दरी के प्रति", "author": "Mahadevi Varma" },
+        { "name": "Cheenti / Chandralok Mein Pratham Baar", "name_hindi": "चींटी / चन्द्रलोक में प्रथम बार", "author": "Sumitranandan Pant" },
+        { "name": "Pushp Ki Abhilasha / Jawani",  "name_hindi": "पुष्प की अभिलाषा / जवानी",  "author": "Makhan Lal Chaturvedi" },
+        { "name": "Jhansi Ki Rani Ki Samadhi Par", "name_hindi": "झाँसी की रानी की समाधि पर", "author": "Subhadra Kumari Chauhan" },
+        { "name": "Bhasha Ekmaatra Anant Hai / Yuva Jungle", "name_hindi": "भाषा एकमात्र अनंत है / युवा जंगल", "author": "Ashok Bajpai" },
+        { "name": "Haldi Ghati",                  "name_hindi": "हल्दी घाटी",                 "author": "Shyam Narayan Pandey" },
+        { "name": "Nadi",                          "name_hindi": "नदी",                         "author": "Kedar Nath Singh" }
+      ]
+    },
+    {
+      "section": "Sanskrit Khand (Sanskrit Section)",
+      "section_hindi": "संस्कृत खण्ड",
+      "chapters": [
+        { "name": "Varanasi",              "name_hindi": "वाराणसी" },
+        { "name": "Desh Bhakt Chandrashekhar", "name_hindi": "देशभक्त चन्द्रशेखर" },
+        { "name": "Bharatiya Sanskriti",   "name_hindi": "भारतीया संस्कृति:" },
+        { "name": "Veer Virena Poojyate",  "name_hindi": "वीरः वीरेण पूज्यते" },
+        { "name": "Aruni Shwetketu Samvad", "name_hindi": "आरुणि: श्वेतकेतु: संवाद:" },
+        { "name": "Jeevan Sutraani",       "name_hindi": "जीवन-सूत्राणि" },
+        { "name": "Prabuddhagrameenah",    "name_hindi": "प्रबुद्धोग्रामीण:" },
+        { "name": "Ken Kim Vardhate",      "name_hindi": "केन किं वर्धते?" },
+        { "name": "Anyoktivlaas",          "name_hindi": "अन्योक्तिविलास:" }
+      ]
+    }
+  ],
+  "khand_kavya": {
+    "description": "खण्ड काव्य (District-wise allocation)",
+    "books": [
+      { "number": 1, "name": "Muktidoot",          "author": "Ashok Kumar Agrawal" },
+      { "number": 2, "name": "Jyoti",              "author": "Jawahar Mohan Prakash" },
+      { "number": 3, "name": "Agrapuja",           "author": "Hindi Bhawan, Prayagraj" },
+      { "number": 4, "name": "Mewad Mukut",        "author": "Shankar Prakash" },
+      { "number": 5, "name": "Jay Subhash",        "author": "Rohitashva Prakash" },
+      { "number": 6, "name": "Matribhumi Ke Liye", "author": "Adhunik Prakash Grah" },
+      { "number": 7, "name": "Karn",               "author": "Buniyadi Sahitya Mandir, Patna" },
+      { "number": 8, "name": "Karmveer Bharat",    "author": "Hindustan Book House, Meerut" },
+      { "number": 9, "name": "Tumul",              "author": "Indian Press Publications, Prayagraj" }
+    ]
+  },
+  "grammar_topics": [
+    "हिन्दी गद्य के विकास का संक्षिप्त परिचय (शुक्ल युग तथा शुक्लोत्तर युग)",
+    "हिन्दी पद्य के विकास का संक्षिप्त परिचय (रीतिकाल एवं आधुनिककाल)",
+    "काव्य सौन्दर्य के तत्व – रस (हास्य एवं करुण), अलंकार (उपमा, रूपक, उत्प्रेक्षा), छन्द (सोरठा एवं रोला)",
+    "शब्द रचना के तत्व – उपसर्ग, समास (द्वन्द्व, द्विगु, कर्मधारय, बहुव्रीहि), तद्भव-तत्सम शब्द, पर्यायवाची",
+    "संस्कृत व्याकरण – सर्वनाम (तद्, युष्मद्)",
+    "वाक्य का स्वरूप",
+    "वाच्य प्रयोग और वाच्य परिवर्तन",
+    "पद परिचय – विकारी एवं अविकारी शब्द"
+  ]
+}

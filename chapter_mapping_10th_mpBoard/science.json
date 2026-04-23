@@ -1,0 +1,22 @@
+{
+  "subject": "Science",
+  "subject_hindi": "विज्ञान",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 10,
+  "chapters": [
+    { "number": 1,  "name": "Chemical Reactions and Equations",         "name_hindi": "रासायनिक अभिक्रियाएं एवं समीकरण" },
+    { "number": 2,  "name": "Acids, Bases and Salts",                   "name_hindi": "अम्ल क्षार एवं लवण" },
+    { "number": 3,  "name": "Metals and Non-metals",                    "name_hindi": "धातु एवं अधातु" },
+    { "number": 4,  "name": "Carbon and Its Compounds",                 "name_hindi": "कार्बन एवं उसके यौगिक" },
+    { "number": 5,  "name": "Life Processes",                           "name_hindi": "जैव प्रक्रम" },
+    { "number": 6,  "name": "Control and Coordination",                 "name_hindi": "नियंत्रण एवं समन्वय" },
+    { "number": 7,  "name": "How Do Organisms Reproduce?",              "name_hindi": "जीव जनन कैसे करते हैं?" },
+    { "number": 8,  "name": "Heredity",                                 "name_hindi": "अनुवांशिकता" },
+    { "number": 9,  "name": "Light: Reflection and Refraction",         "name_hindi": "प्रकाश परावर्तन एवं अपवर्तन" },
+    { "number": 10, "name": "The Human Eye and the Colourful World",    "name_hindi": "मानव नेत्र एवं रंग बिरंगा संसार" },
+    { "number": 11, "name": "Electricity",                              "name_hindi": "विद्युत" },
+    { "number": 12, "name": "Magnetic Effects of Electric Current",     "name_hindi": "विद्युत धारा के चुंबकीय प्रभाव" },
+    { "number": 13, "name": "Our Environment",                          "name_hindi": "हमारा पर्यावरण" }
+  ]
+}

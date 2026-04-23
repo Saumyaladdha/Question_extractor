@@ -1,0 +1,58 @@
+{
+  "subject": "Social Science",
+  "subject_hindi": "सामाजिक विज्ञान",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 10,
+  "books": [
+    {
+      "book": "India and the Contemporary World - II (History)",
+      "book_hindi": "भारत और समकालीन विश्व - II (इतिहास)",
+      "chapters": [
+        { "number": 1, "name": "The Rise of Nationalism in Europe",             "name_hindi": "यूरोप में राष्ट्रवाद का उदय" },
+        { "number": 2, "name": "Nationalism in India",                          "name_hindi": "भारत में राष्ट्रवाद" },
+        { "number": 3, "name": "The Making of a Global World",                  "name_hindi": "भूमंडलीकृत विश्व का बनना" },
+        { "number": 4, "name": "The Age of Industrialisation",                  "name_hindi": "औद्योगीकरण का युग" },
+        { "number": 5, "name": "Print Culture and the Modern World",            "name_hindi": "मुद्रण संस्कृति और आधुनिक दुनिया" }
+      ]
+    },
+    {
+      "book": "Contemporary India - II (Geography)",
+      "book_hindi": "समकालीन भारत - II (भूगोल)",
+      "chapters": [
+        { "number": 1, "name": "Resources and Development",                     "name_hindi": "संसाधन एवं विकास" },
+        { "number": 2, "name": "Forest and Wildlife Resources",                 "name_hindi": "वन एवं वन्य जीव संसाधन" },
+        { "number": 3, "name": "Water Resources",                               "name_hindi": "जल संसाधन" },
+        { "number": 4, "name": "Agriculture",                                   "name_hindi": "कृषि" },
+        { "number": 5, "name": "Minerals and Energy Resources",                 "name_hindi": "खनिज तथा ऊर्जा संसाधन" },
+        { "number": 6, "name": "Manufacturing Industries",                      "name_hindi": "विनिर्माण उद्योग" },
+        { "number": 7, "name": "Lifelines of National Economy",                 "name_hindi": "राष्ट्रीय अर्थव्यवस्था की जीवन रेखाएँ" }
+      ]
+    },
+    {
+      "book": "Democratic Politics - II (Political Science)",
+      "book_hindi": "लोकतांत्रिक राजनीति - II (राजनीति विज्ञान)",
+      "chapters": [
+        { "number": 1, "name": "Power Sharing",                                 "name_hindi": "सत्ता की साझेदारी" },
+        { "number": 2, "name": "Federalism",                                    "name_hindi": "संघवाद" },
+        { "number": 3, "name": "Democracy and Diversity",                       "name_hindi": "लोकतंत्र और विविधता" },
+        { "number": 4, "name": "Gender, Religion and Caste",                    "name_hindi": "जाति, धर्म और लैंगिक मसले" },
+        { "number": 5, "name": "Popular Struggles and Movements",               "name_hindi": "जन संघर्ष और आंदोलन" },
+        { "number": 6, "name": "Political Parties",                             "name_hindi": "राजनीतिक दल" },
+        { "number": 7, "name": "Outcomes of Democracy",                         "name_hindi": "लोकतंत्र के परिणाम" },
+        { "number": 8, "name": "Challenges to Democracy",                       "name_hindi": "लोकतंत्र की चुनौतियाँ" }
+      ]
+    },
+    {
+      "book": "Understanding Economic Development (Economics)",
+      "book_hindi": "आर्थिक विकास की समझ (अर्थशास्त्र)",
+      "chapters": [
+        { "number": 1, "name": "Development",                                   "name_hindi": "विकास" },
+        { "number": 2, "name": "Sectors of the Indian Economy",                 "name_hindi": "भारतीय अर्थव्यवस्था के क्षेत्रक" },
+        { "number": 3, "name": "Money and Credit",                              "name_hindi": "मुद्रा और साख" },
+        { "number": 4, "name": "Globalisation and the Indian Economy",          "name_hindi": "वैश्वीकरण और भारतीय अर्थव्यवस्था" },
+        { "number": 5, "name": "Consumer Rights",                               "name_hindi": "उपभोक्ता अधिकार" }
+      ]
+    }
+  ]
+}

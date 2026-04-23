@@ -1,0 +1,189 @@
+{
+  "subject": "Science",
+  "subject_hindi": "विज्ञान",
+  "board": "RJ Board (BSER)",
+  "board_full": "Board of Secondary Education, Rajasthan, Ajmer",
+  "subject_code": "07",
+  "medium": "Hindi",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "papers": 1,
+    "duration_hours": 3.15,
+    "theory_marks": 80,
+    "sessional_marks": 20,
+    "total_marks": 100
+  },
+  "prescribed_book": {
+    "book": "Science",
+    "publisher": "NCERT"
+  },
+  "chapters": [
+    {
+      "number": 1,
+      "name": "Chemical Reactions and Equations",
+      "name_hindi": "रासायनिक अभिक्रियाएँ एवं समीकरण",
+      "marks": 6,
+      "topics": [
+        "Writing a Chemical Equation",
+        "Importance of Balanced Chemical Equation",
+        "Types: Combination, Decomposition, Exothermic, Endothermic, Displacement, Double Displacement, Oxidation and Reduction",
+        "Effects of Oxidation in Everyday Life – Corrosion, Rancidity"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "Acids, Bases and Salts",
+      "name_hindi": "अम्ल, क्षारक एवं लवण",
+      "marks": 7,
+      "topics": [
+        "Chemical Properties and Reactions of Acids and Bases",
+        "Similarities in Acids and Bases",
+        "Strength of Acid or Base Solution",
+        "Importance of pH in Everyday Life",
+        "Family of Salt, pH of Salts, Chemicals from Common Salt, Dryness of Salt Crystals"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Metals and Non-Metals",
+      "name_hindi": "धातु एवं अधातु",
+      "marks": 5,
+      "topics": [
+        "Physical and Chemical Properties",
+        "Reactivity Series",
+        "Formation and Properties of Ionic Compounds",
+        "Occurrence and Extraction of Metals",
+        "Corrosion – Prevention of Corrosion"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "Carbon and Its Compounds",
+      "name_hindi": "कार्बन एवं उसके यौगिक",
+      "marks": 7,
+      "topics": [
+        "Bonding in Carbon Compounds – Covalent Bond",
+        "Versatile Nature of Carbon – Saturated and Unsaturated",
+        "Homologous Series",
+        "Nomenclature of Carbon Compounds",
+        "Chemical Properties – Combustion, Oxidation, Addition, Substitution",
+        "Ethanol and Ethanoic Acid, Soaps and Detergents"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "Life Processes",
+      "name_hindi": "जैव प्रक्रम",
+      "marks": 8,
+      "topics": [
+        "Nutrition – Autotrophic, Heterotrophic",
+        "Nutrition in Organisms and Human Beings",
+        "Respiration",
+        "Transportation – Human Beings, Plants",
+        "Excretion – Human Beings, Plants"
+      ]
+    },
+    {
+      "number": 6,
+      "name": "Control and Coordination",
+      "name_hindi": "नियंत्रण एवं समन्वय",
+      "marks": 6,
+      "topics": [
+        "Animals Nervous System – Reflex Action",
+        "Human Brain, Tissue Protection",
+        "Coordination in Plants – Immediate Response to Stimulus, Movement Due to Growth",
+        "Hormones in Animals"
+      ]
+    },
+    {
+      "number": 7,
+      "name": "Reproduction in Organisms",
+      "name_hindi": "जीवों में जनन",
+      "marks": 7,
+      "topics": [
+        "Importance of Variation",
+        "Modes of Reproduction – Fission, Fragmentation, Regeneration, Budding, Vegetative Propagation, Spore Formation",
+        "Sexual Reproduction – in Flowering Plants and Human Beings",
+        "Reproductive Health"
+      ]
+    },
+    {
+      "number": 8,
+      "name": "Heredity",
+      "name_hindi": "आनुवंशिकता",
+      "marks": 4,
+      "topics": [
+        "Accumulation of Variation during Reproduction",
+        "Inherited Traits",
+        "Rules for Inheritance – Mendel's Contribution",
+        "Sex Determination"
+      ]
+    },
+    {
+      "number": 9,
+      "name": "Light: Reflection and Refraction",
+      "name_hindi": "प्रकाश – परावर्तन तथा अपवर्तन",
+      "marks": 8,
+      "topics": [
+        "Reflection of Light",
+        "Spherical Mirrors – Image Formation, Mirror Formula and Magnification",
+        "Refraction of Light – Rectangular Glass Slab",
+        "Refractive Index",
+        "Refraction by Spherical Lenses – Image Formation, Lens Formula, Power of Lens"
+      ]
+    },
+    {
+      "number": 10,
+      "name": "The Human Eye and the Colourful World",
+      "name_hindi": "मानव नेत्र तथा रंग-बिरंगा संसार",
+      "marks": 4,
+      "topics": [
+        "Power of Accommodation",
+        "Defects of Vision and their Correction",
+        "Refraction through Prism, Dispersion, Atmospheric Refraction",
+        "Scattering of Light – Tyndall Effect, Blue Sky"
+      ]
+    },
+    {
+      "number": 11,
+      "name": "Electricity",
+      "name_hindi": "विद्युत",
+      "marks": 7,
+      "topics": [
+        "Electric Current and Circuit",
+        "Electric Potential and Potential Difference",
+        "Ohm's Law",
+        "Resistance of a System of Resistors – Series, Parallel",
+        "Heating Effect of Electric Current",
+        "Electric Power"
+      ]
+    },
+    {
+      "number": 12,
+      "name": "Magnetic Effects of Electric Current",
+      "name_hindi": "विद्युत धारा के चुंबकीय प्रभाव",
+      "marks": 6,
+      "topics": [
+        "Magnetic Field and Field Lines",
+        "Magnetic Field due to Current Carrying Conductor",
+        "Right Hand Thumb Rule",
+        "Magnetic Field due to Circular Loop and Solenoid",
+        "Force on Current Carrying Conductor – Fleming's Left Hand Rule",
+        "Domestic Electric Circuits"
+      ]
+    },
+    {
+      "number": 13,
+      "name": "Our Environment",
+      "name_hindi": "हमारा पर्यावरण",
+      "marks": 5,
+      "topics": [
+        "Eco-system – Food Chains and Webs",
+        "Environmental Problems – Ozone Layer and Depletion",
+        "Garbage Management",
+        "Biodegradable and Non-Biodegradable Substances"
+      ]
+    }
+  ]
+}

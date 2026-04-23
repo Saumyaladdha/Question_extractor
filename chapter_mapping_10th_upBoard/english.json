@@ -1,0 +1,97 @@
+{
+  "subject": "English",
+  "subject_hindi": "अंग्रेजी",
+  "board": "UP Board (UPMSP)",
+  "board_full": "Uttar Pradesh Madhyamik Shiksha Parishad",
+  "medium": "English",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "written_marks": 70,
+    "internal_assessment_marks": 30,
+    "total_marks": 100,
+    "internal_assessment": {
+      "first_internal_oral": { "month": "August", "marks": 10 },
+      "second_internal_writing": { "month": "December", "marks": 10 },
+      "monthly_tests": { "count": 4, "total_marks": 10 }
+    }
+  },
+  "mark_distribution": {
+    "Reading": 10,
+    "Writing Skills": 10,
+    "Grammar": 15,
+    "Literature": 35
+  },
+  "books": [
+    {
+      "book": "First Flight",
+      "publisher": "NCERT",
+      "sections": [
+        {
+          "section": "Prose",
+          "marks": 15,
+          "chapters": [
+            { "number": 1,  "name": "A Letter to God",                          "author": "G.L. Fuentes" },
+            { "number": 2,  "name": "Nelson Mandela: Long Walk to Freedom",     "author": "Nelson Rolihlahla Mandela" },
+            { "number": 3,  "name": "Two Stories About Flying",                 "sub_chapters": ["His First Flight - Liam O'Flaherty", "Black Aeroplane - Frederick Forsyth"] },
+            { "number": 4,  "name": "From the Diary of Anne Frank",             "author": "Anne Frank" },
+            { "number": 5,  "name": "Glimpses of India",                        "sub_chapters": ["A Baker from Goa - Lucio Rodrigues", "Coorg - Lokesh Abrol", "Tea from Assam - Arup Kumar Datta"] },
+            { "number": 6,  "name": "Mijbil the Otter",                         "author": "Gavin Maxwell" },
+            { "number": 7,  "name": "Madam Rides the Bus",                      "author": "Vallikkannan" },
+            { "number": 8,  "name": "The Sermon at Benares" },
+            { "number": 9,  "name": "The Proposal (Drama)",                     "author": "Anton Chekov" }
+          ]
+        },
+        {
+          "section": "Poetry",
+          "marks": 8,
+          "chapters": [
+            { "number": 1,  "name": "Dust of Snow",                             "author": "Robert Frost" },
+            { "number": 2,  "name": "Fire and Ice",                             "author": "Robert Frost" },
+            { "number": 3,  "name": "A Tiger in the Zoo",                       "author": "Leslie Norris" },
+            { "number": 4,  "name": "How to Tell Wild Animals",                 "author": "Carolyn Wells" },
+            { "number": 5,  "name": "The Ball Poem",                            "author": "John Berryman" },
+            { "number": 6,  "name": "Amanda!",                                  "author": "Robin Klein" },
+            { "number": 7,  "name": "The Trees",                                "author": "Adrienne Rich" },
+            { "number": 8,  "name": "Fog",                                      "author": "Carl Sandburg" },
+            { "number": 9,  "name": "The Tale of Custard the Dragon",           "author": "Ogden Nash" },
+            { "number": 10, "name": "For Anne Gregory",                         "author": "William Butler Yeats" }
+          ]
+        }
+      ]
+    },
+    {
+      "book": "Footprints Without Feet (Supplementary Reader)",
+      "publisher": "NCERT",
+      "marks": 12,
+      "chapters": [
+        { "number": 1, "name": "A Triumph of Surgery",              "author": "James Herriot" },
+        { "number": 2, "name": "The Thief's Story",                 "author": "Ruskin Bond" },
+        { "number": 3, "name": "The Midnight Visitor",              "author": "Robert Arthur" },
+        { "number": 4, "name": "A Question of Trust",               "author": "Victor Canning" },
+        { "number": 5, "name": "Footprints Without Feet",           "author": "H.G. Wells" },
+        { "number": 6, "name": "The Making of a Scientist",         "author": "Robert W. Peterson" },
+        { "number": 7, "name": "The Necklace",                      "author": "Guy De Maupassant" },
+        { "number": 8, "name": "Bholi",                             "author": "K.A. Abbas" },
+        { "number": 9, "name": "The Book That Saved the Earth",     "author": "Claire Boiko" }
+      ]
+    },
+    {
+      "book": "Words & Expression (English Work Book)",
+      "publisher": "NCERT",
+      "note": "For Internal Assessment activities"
+    }
+  ],
+  "grammar_topics": [
+    "Parts of Speech, Tenses, Articles",
+    "Reordering of Sentences, Spellings",
+    "Narration (Direct and Indirect Speech)",
+    "Voice (Active and Passive)",
+    "Punctuation",
+    "Translation of a short passage from Hindi to English (4 sentences)"
+  ],
+  "writing_topics": [
+    "Letter (Formal/Informal) / Application",
+    "Descriptive Paragraph / Report / Article (~80-100 words)"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "subject": "Mathematics",
+  "subject_hindi": "गणित",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 10,
+  "note": "Same syllabus for Maths Basic and Maths Standard. Difficulty level of question paper differs.",
+  "chapters": [
+    { "number": 1,  "name": "Real Numbers",                                      "name_hindi": "वास्तविक संख्याएँ" },
+    { "number": 2,  "name": "Polynomials",                                       "name_hindi": "बहुपद" },
+    { "number": 3,  "name": "Pair of Linear Equations in Two Variables",         "name_hindi": "दो चर वाले रैखिक समीकरण युग्म" },
+    { "number": 4,  "name": "Quadratic Equations",                               "name_hindi": "द्विघात समीकरण" },
+    { "number": 5,  "name": "Arithmetic Progressions",                           "name_hindi": "समांतर श्रेढ़ियाँ" },
+    { "number": 6,  "name": "Triangles",                                         "name_hindi": "त्रिभुज" },
+    { "number": 7,  "name": "Coordinate Geometry",                               "name_hindi": "निर्देशांक ज्यामिति" },
+    { "number": 8,  "name": "Introduction to Trigonometry",                      "name_hindi": "त्रिकोणमिति का परिचय" },
+    { "number": 9,  "name": "Some Applications of Trigonometry",                 "name_hindi": "त्रिकोणमिति के कुछ अनुप्रयोग" },
+    { "number": 10, "name": "Circles",                                           "name_hindi": "वृत्त" },
+    { "number": 11, "name": "Areas Related to Circles",                          "name_hindi": "वृत्तों से संबंधित क्षेत्रफल" },
+    { "number": 12, "name": "Surface Areas and Volumes",                         "name_hindi": "पृष्ठीय क्षेत्रफल और आयतन" },
+    { "number": 13, "name": "Statistics",                                        "name_hindi": "सांख्यिकी" },
+    { "number": 14, "name": "Probability",                                       "name_hindi": "प्रायिकता" }
+  ]
+}

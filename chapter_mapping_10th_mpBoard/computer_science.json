@@ -1,0 +1,12 @@
+{
+  "subject": "Computer Science",
+  "subject_hindi": "कम्प्यूटर",
+  "board": "MP Board",
+  "medium": "English",
+  "class": 10,
+  "chapters": [
+    { "number": 1, "name": "Networking",    "name_hindi": "नेटवर्किंग" },
+    { "number": 2, "name": "HTML/CSS",      "name_hindi": "एच.टी.एम.एल. / सी.एस.एस." },
+    { "number": 3, "name": "Cyber Ethics",  "name_hindi": "साइबर एथिक्स" }
+  ]
+}

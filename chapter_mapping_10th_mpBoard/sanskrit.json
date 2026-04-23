@@ -1,0 +1,28 @@
+{
+  "subject": "Sanskrit",
+  "subject_hindi": "संस्कृत",
+  "board": "MP Board",
+  "medium": "Hindi",
+  "class": 10,
+  "chapters": [
+    { "number": 1,  "name": "Shabdroopani + Avyayah (Word Forms and Indeclinables)",       "name_hindi": "शब्दरूपाणि + अव्ययाः" },
+    { "number": 2,  "name": "Dhaturoopani + Upasargah (Verb Forms and Prefixes)",          "name_hindi": "धातुरूपाणि + उपसर्गाः" },
+    { "number": 3,  "name": "Sandhayah + Samasah (Sandhi and Compound Words)",             "name_hindi": "सन्धयः + समासाः" },
+    { "number": 4,  "name": "Pratyayah + Ek Padena Prashnotrani (Suffixes and One-word Answers)", "name_hindi": "प्रत्ययाः + एकपदेन प्रश्नोत्तराणि" },
+    { "number": 5,  "name": "Visheshan + Visheshyam + Paryayah + Vilomah (Adjectives, Synonyms and Antonyms)", "name_hindi": "विशेषणं/विशेष्यम् + पर्यायः + विलोमः" },
+    { "number": 6,  "name": "Pathgat Prashnotrani (Textbook Questions)",                  "name_hindi": "पाठगतप्रश्नोत्तराणि" },
+    { "number": 7,  "name": "Prashanirmanam (Question Formation)",                        "name_hindi": "प्रश्ननिर्माणम्" },
+    { "number": 8,  "name": "Kah Kam Prati Kathayati (Who Says What to Whom)",            "name_hindi": "कः कं प्रति कथयति" },
+    { "number": 9,  "name": "Shlokkanthasthikaranam (Memorisation of Verses)",            "name_hindi": "श्लोककण्ठस्थीकरणम्" },
+    { "number": 10, "name": "Ashuddhakarak Sanshodhanam (Error Correction)",              "name_hindi": "अशुद्धकारकसंशोधनम्" },
+    { "number": 11, "name": "Pathgatriktasthanpoorti (Fill in the Blanks from Text)",     "name_hindi": "पाठगतरिक्तस्थानपूर्तिः" },
+    { "number": 12, "name": "Pathadharitkathakramsanyojanam (Story Sequencing)",           "name_hindi": "पाठाधारितकथाक्रमसंयोजनम्" },
+    { "number": 13, "name": "Vachyaparivarttanam (Voice Change)",                         "name_hindi": "वाच्यपरिवर्तनम्" },
+    { "number": 14, "name": "Gadyansham Comprehension Questions",                         "name_hindi": "गद्यांशम् अधिकृत्य अवबोधनात्मकप्रश्नानि" },
+    { "number": 15, "name": "Padyansham Comprehension Questions",                         "name_hindi": "पद्यांशम् अधिकृत्य अवबोधनात्मकप्रश्नानि" },
+    { "number": 16, "name": "Natransham Comprehension Questions",                         "name_hindi": "नाट्यांशम् अधिकृत्य अवबोधनात्मकप्रश्नानि" },
+    { "number": 17, "name": "Apadhitagadyansham (Unseen Passage)",                        "name_hindi": "अपठितगद्यांशम्" },
+    { "number": 18, "name": "Patralekhnam / Avedan Patralekhnam (Letter Writing)",        "name_hindi": "पत्रलेखनम् / आवेदनपत्रलेखनम्" },
+    { "number": 19, "name": "Nibandhlekhnam (Essay Writing)",                             "name_hindi": "निबन्धलेखनम्" }
+  ]
+}

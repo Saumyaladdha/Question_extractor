@@ -1,0 +1,165 @@
+{
+  "subject": "Mathematics",
+  "subject_hindi": "गणित",
+  "board": "RJ Board (BSER)",
+  "board_full": "Board of Secondary Education, Rajasthan, Ajmer",
+  "subject_code": "09",
+  "medium": "Hindi",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "papers": 1,
+    "duration_hours": 3.15,
+    "theory_marks": 80,
+    "sessional_marks": 20,
+    "total_marks": 100
+  },
+  "prescribed_book": {
+    "book": "Mathematics - Text Book for Class X",
+    "publisher": "NCERT"
+  },
+  "chapters": [
+    {
+      "number": 1,
+      "name": "Real Numbers",
+      "name_hindi": "वास्तविक संख्याएँ",
+      "marks": 4,
+      "topics": [
+        "The Fundamental Theorem of Arithmetic",
+        "Revisiting Irrational Numbers"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "Polynomials",
+      "name_hindi": "बहुपद",
+      "marks": 4,
+      "topics": [
+        "Geometrical Meaning of the Zeroes of a Polynomial",
+        "Relationship between Zeroes and Coefficients of a Polynomial"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Pair of Linear Equations in Two Variables",
+      "name_hindi": "दो चर वाले रैखिक समीकरण युग्म",
+      "marks": 4,
+      "topics": [
+        "Algebraic Methods – Substitution Method",
+        "Algebraic Methods – Elimination Method"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "Quadratic Equations",
+      "name_hindi": "द्विघात समीकरण",
+      "marks": 4,
+      "topics": [
+        "Quadratic Equations",
+        "Solution by Factorisation",
+        "Nature of Roots"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "Arithmetic Progressions",
+      "name_hindi": "समांतर श्रेढ़ियाँ",
+      "marks": 6,
+      "topics": [
+        "Arithmetic Progressions",
+        "nth Term of an AP",
+        "Sum of First n Terms of an AP"
+      ]
+    },
+    {
+      "number": 6,
+      "name": "Triangles",
+      "name_hindi": "त्रिभुज",
+      "marks": 4,
+      "topics": [
+        "Similar Figures",
+        "Similarity of Triangles",
+        "Criteria for Similarity of Triangles"
+      ]
+    },
+    {
+      "number": 7,
+      "name": "Circles",
+      "name_hindi": "वृत्त",
+      "marks": 6,
+      "topics": [
+        "Tangent to a Circle",
+        "Number of Tangents from a Point on a Circle"
+      ]
+    },
+    {
+      "number": 8,
+      "name": "Coordinate Geometry",
+      "name_hindi": "निर्देशांक ज्यामिति",
+      "marks": 7,
+      "topics": [
+        "Distance Formula",
+        "Section Formula"
+      ]
+    },
+    {
+      "number": 9,
+      "name": "Introduction to Trigonometry",
+      "name_hindi": "त्रिकोणमिति का परिचय",
+      "marks": 8,
+      "topics": [
+        "Trigonometric Ratios",
+        "Trigonometric Ratios of Some Specific Angles",
+        "Trigonometric Identities"
+      ]
+    },
+    {
+      "number": 10,
+      "name": "Some Applications of Trigonometry",
+      "name_hindi": "त्रिकोणमिति के कुछ अनुप्रयोग",
+      "marks": 5,
+      "topics": [
+        "Heights and Distances"
+      ]
+    },
+    {
+      "number": 11,
+      "name": "Areas Related to Circles",
+      "name_hindi": "वृत्तों से संबंधित क्षेत्रफल",
+      "marks": 5,
+      "topics": [
+        "Areas of Sector and Segment of a Circle"
+      ]
+    },
+    {
+      "number": 12,
+      "name": "Surface Areas and Volumes",
+      "name_hindi": "पृष्ठीय क्षेत्रफल और आयतन",
+      "marks": 6,
+      "topics": [
+        "Surface Area of a Combination of Solids",
+        "Volume of a Combination of Solids"
+      ]
+    },
+    {
+      "number": 13,
+      "name": "Statistics",
+      "name_hindi": "सांख्यिकी",
+      "marks": 9,
+      "topics": [
+        "Mean of Grouped Data",
+        "Mode of Grouped Data",
+        "Median of Grouped Data"
+      ]
+    },
+    {
+      "number": 14,
+      "name": "Probability",
+      "name_hindi": "प्रायिकता",
+      "marks": 4,
+      "topics": [
+        "Probability: A Theoretical Approach"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "subject": "Urdu",
+  "subject_hindi": "उर्दू",
+  "board": "MP Board",
+  "medium": "Urdu",
+  "class": 10,
+  "books": [
+    {
+      "book": "Nawa-e-Urdu - Prose Section (Hissa-e-Nasr)",
+      "chapters": [
+        { "number": 1, "name": "Bhagola (Prose)",                    "name_hindi": "भगोला" },
+        { "number": 2, "name": "Naya Qanoon (Prose)",                "name_hindi": "नया कानून" },
+        { "number": 3, "name": "Sir Said ki Bachpan (Biography)",    "name_hindi": "सर सय्यद का बचपन" },
+        { "number": 4, "name": "Aazmaish (Biography)",               "name_hindi": "आज़माइश" },
+        { "number": 5, "name": "Chor Aur Uska Kafara (Prose)",       "name_hindi": "चोरी और उसका कफ़ारा" },
+        { "number": 6, "name": "Aurton ke Huqooq (Prose)",           "name_hindi": "औरतों के हक़ूक़" },
+        { "number": 7, "name": "Ghaltfehmi (Prose)",                 "name_hindi": "ग़लतफ़हमी" },
+        { "number": 8, "name": "Maahol Bachaaiye (Prose)",           "name_hindi": "माहौल बचाइए" }
+      ]
+    },
+    {
+      "book": "Nawa-e-Urdu - Poetry Section (Hissa-e-Nazm)",
+      "chapters": [
+        { "number": 9,  "name": "Ghazaliyat - Zauq: Layi Hayat (Ghazal)",               "name_hindi": "ज़ौक़: लाई हयात" },
+        { "number": 10, "name": "Ghazaliyat - Shaad Azimabadi: Dhowdoge Agar Malkoo (Ghazal)", "name_hindi": "शाद अज़ीमाबादी: ढूँढोगे अगर मुल्कों" },
+        { "number": 11, "name": "Ghazaliyat - Faani: Duniya Bula Jaane (Ghazal)",       "name_hindi": "फ़ानी: दुनिया बुला जाने" },
+        { "number": 12, "name": "Ghazaliyat - Yas Yagana Changezi: Adab Ne Dil Ke (Ghazal)", "name_hindi": "यास यगाना चंगेज़ी: अदब ने दिल के" },
+        { "number": 13, "name": "Manzoomaat - Josh Maleeh Abadi: Garmi Aur Dehati Bazaar (Nazm)", "name_hindi": "जोश मलीह आबादी: गर्मी और देहाती बाज़ार" },
+        { "number": 14, "name": "Manzoomaat - Kaifi Azmi: Aandhi (Nazm)",               "name_hindi": "कैफ़ी आज़मी: आँधी" },
+        { "number": 15, "name": "Rubaiyaat - Anees: Gulshan Mein (Rubai)",              "name_hindi": "अनीस: गुलशन में" },
+        { "number": 16, "name": "Rubaiyaat - Lok ke Chehre (Rubai)",                    "name_hindi": "लोक के चेहरे" },
+        { "number": 17, "name": "Rubaiyaat - Firaq: Ek Halqa-e-Zanjeere (Rubai)",      "name_hindi": "फ़िराक़: एक हल्क़ा-ए-जंजीर" }
+      ]
+    }
+  ]
+}

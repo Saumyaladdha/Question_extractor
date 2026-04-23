@@ -1,0 +1,218 @@
+{
+  "subject": "Social Science",
+  "subject_hindi": "सामाजिक विज्ञान",
+  "board": "UP Board (UPMSP)",
+  "board_full": "Uttar Pradesh Madhyamik Shiksha Parishad",
+  "medium": "Hindi",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "written_marks": 70,
+    "internal_assessment_marks": 30,
+    "total_marks": 100,
+    "internal_assessment": {
+      "first_internal_project_activity": { "month": "August", "marks": "5+5" },
+      "second_internal_project_activity": { "month": "December", "marks": "5+5" },
+      "monthly_tests": { "count": 4, "total_marks": 10 }
+    }
+  },
+  "unit_mark_distribution": {
+    "इतिहास (History)": 20,
+    "भूगोल (Geography)": 20,
+    "नागरिक शास्त्र (Political Science)": 15,
+    "अर्थशास्त्र (Economics)": 15
+  },
+  "books": [
+    {
+      "book": "India and the Contemporary World – II (History)",
+      "book_hindi": "भारत और समकालीन विश्व – 2 (इतिहास)",
+      "publisher": "NCERT",
+      "marks": 20,
+      "chapters": [
+        {
+          "number": 1,
+          "name": "The Rise of Nationalism in Europe",
+          "name_hindi": "यूरोप में राष्ट्रवाद का उदय",
+          "marks": 8,
+          "topics": [
+            "1830 के बाद यूरोप में राष्ट्रवाद का उदय",
+            "जोसेफ मेत्सिनी आदि के विचार",
+            "पोलैण्ड, हंगरी, इटली, जर्मनी और ग्रीस आंदोलन की सामान्य विशेषताएँ"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "Nationalism in India",
+          "name_hindi": "भारत में राष्ट्रवाद",
+          "marks": 8,
+          "topics": [
+            "प्रथम विश्व युद्ध का प्रभाव, खिलाफत, असहयोग एवं विभिन्न आंदोलनों के मध्य विचारधाराएँ",
+            "नमक सत्याग्रह",
+            "जनजातियों, श्रमिकों एवं किसानों के आंदोलन",
+            "सविनय अवज्ञा आंदोलन की सीमाएँ",
+            "सामूहिक अपनत्व की भावना"
+          ]
+        },
+        {
+          "number": 3,
+          "name": "The Making of a Global World",
+          "name_hindi": "भूमंडलीकृत विश्व का बनना",
+          "topics": [
+            "पूर्व आधुनिक विश्व",
+            "उन्नीसवीं शताब्दी (1815-1914) – विश्व अर्थव्यवस्था, उपनिवेशवाद",
+            "महायुद्धों के बीच अर्थव्यवस्था, आर्थिक महामंदी",
+            "विश्व अर्थव्यवस्था का पुनर्निर्माण – वैश्वीकरण की शुरुआत"
+          ]
+        },
+        {
+          "number": 4,
+          "name": "The Age of Industrialisation",
+          "name_hindi": "औद्योगीकरण का युग",
+          "topics": [
+            "औद्योगिक क्रांति से पहले एवं औद्योगिक परिवर्तन की रफ्तार",
+            "उपनिवेशों में औद्योगीकरण",
+            "प्रारंभिक उद्यमी, विभिन्न स्थानों से मजदूरों का आगमन",
+            "औद्योगिक विकास का अनूठापन, वस्तुओं के लिए बाजार"
+          ]
+        },
+        {
+          "number": 5,
+          "name": "Print Culture and the Modern World",
+          "name_hindi": "मुद्रण संस्कृति और आधुनिक दुनिया",
+          "topics": [
+            "यूरोप में मुद्रण का आना – गुटेनबर्ग और प्रिंटिंग प्रेस",
+            "19वीं सदी – बच्चे, महिलाएँ और मजदूर",
+            "भारत का मुद्रण संसार – धार्मिक सुधार और सार्वजनिक बहसें",
+            "प्रकाशन के नए रूप, प्रिंट और प्रतिबंध"
+          ]
+        }
+      ]
+    },
+    {
+      "book": "Contemporary India – II (Geography)",
+      "book_hindi": "समकालीन भारत – 2 (भूगोल)",
+      "publisher": "NCERT",
+      "marks": 20,
+      "chapters": [
+        {
+          "number": 1,
+          "name": "Resources and Development",
+          "name_hindi": "संसाधन एवं विकास",
+          "topics": ["Classification and Development of Resources", "Land Resources, Land Use Pattern, Land Degradation", "Soil as Resource, Classification of Soils, Soil Erosion and Conservation"]
+        },
+        {
+          "number": 2,
+          "name": "Forest and Wildlife Resources",
+          "name_hindi": "वन एवं वन्य जीव संसाधन",
+          "topics": ["Flora and Fauna in India", "Conservation of Forest and Wildlife", "Types and Distribution, Community and Conservation"]
+        },
+        {
+          "number": 3,
+          "name": "Water Resources",
+          "name_hindi": "जल संसाधन",
+          "topics": ["Water Scarcity and Need for Conservation", "Multi-Purpose River Projects", "Integrated Water Resources Management", "Rain Water Harvesting"]
+        },
+        {
+          "number": 4,
+          "name": "Agriculture",
+          "name_hindi": "कृषि",
+          "topics": ["Types of Farming", "Cropping Pattern – Major Crops", "Technological and Institutional Reforms"]
+        },
+        {
+          "number": 5,
+          "name": "Minerals and Energy Resources",
+          "name_hindi": "खनिज तथा ऊर्जा संसाधन",
+          "topics": ["Ferrous and Non-Ferrous Minerals", "Non-Metallic and Rock Minerals", "Conservation of Minerals", "Energy Resources – Conventional and Non-Conventional"]
+        },
+        {
+          "number": 6,
+          "name": "Manufacturing Industries",
+          "name_hindi": "विनिर्माण उद्योग",
+          "topics": ["Importance and Classification of Industries", "Agricultural Based, Mineral Based Industries", "Industrial Pollution and Environmental Degradation", "Control of Environmental Degradation"]
+        },
+        {
+          "number": 7,
+          "name": "Lifelines of National Economy",
+          "name_hindi": "राष्ट्रीय अर्थव्यवस्था की जीवन रेखाएँ",
+          "topics": ["Transport – Roadways, Railways, Pipelines, Waterways, Airways", "Communication Services", "International Trade", "Tourism as a Trade"]
+        }
+      ]
+    },
+    {
+      "book": "Democratic Politics – II (Political Science)",
+      "book_hindi": "लोकतांत्रिक राजनीति – 2 (नागरिक शास्त्र)",
+      "publisher": "NCERT",
+      "marks": 15,
+      "chapters": [
+        {
+          "number": 1,
+          "name": "Power Sharing",
+          "name_hindi": "सत्ता की साझेदारी",
+          "topics": ["Belgium and Sri Lanka", "Majoritarianism in Sri Lanka", "Accommodation in Belgium", "Need and Forms of Power Sharing"]
+        },
+        {
+          "number": 2,
+          "name": "Federalism",
+          "name_hindi": "संघवाद",
+          "topics": ["Federal System in India", "Linguistic States, Language Policy", "Centre-State Relations", "Decentralisation in India"]
+        },
+        {
+          "number": 3,
+          "name": "Gender, Religion and Caste",
+          "name_hindi": "जाति, धर्म और लैंगिक मसले",
+          "topics": ["Gender and Politics", "Religion, Communalism and Politics", "Caste and Politics", "Social and Religious Diversity of India"]
+        },
+        {
+          "number": 4,
+          "name": "Political Parties",
+          "name_hindi": "राजनीतिक दल",
+          "topics": ["Importance, Functions and Types of Political Parties", "National Parties, Regional Parties", "Dimensions of Change in Parties"]
+        },
+        {
+          "number": 5,
+          "name": "Outcomes of Democracy",
+          "name_hindi": "लोकतंत्र के परिणाम",
+          "topics": ["Accountable, Responsive and Legitimate Government", "Economic Growth and Development", "Reduction of Inequality and Poverty", "Dignity and Freedom of Citizens"]
+        }
+      ]
+    },
+    {
+      "book": "Understanding Economic Development (Economics)",
+      "book_hindi": "आर्थिक विकास की समझ (अर्थशास्त्र)",
+      "publisher": "NCERT",
+      "marks": 15,
+      "chapters": [
+        {
+          "number": 1,
+          "name": "Development",
+          "name_hindi": "विकास",
+          "topics": ["Development Promises – Different People, Different Goals", "National Development", "Income and Other Criteria, Public Facilities", "Human Development Report", "Sustainability of Development"]
+        },
+        {
+          "number": 2,
+          "name": "Sectors of the Indian Economy",
+          "name_hindi": "भारतीय अर्थव्यवस्था के क्षेत्रक",
+          "topics": ["Comparing the Three Sectors", "Historical Change in Sectors", "Primary, Secondary and Tertiary in India", "MGNREGA 2005", "Organised and Unorganised, Public and Private Sectors"]
+        },
+        {
+          "number": 3,
+          "name": "Money and Credit",
+          "name_hindi": "मुद्रा और साख",
+          "topics": ["Money as Medium of Exchange", "Modern Forms of Money, Banking", "Terms of Credit", "Formal and Informal Credit", "Self Help Groups"]
+        },
+        {
+          "number": 4,
+          "name": "Globalisation and the Indian Economy",
+          "name_hindi": "वैश्वीकरण और भारतीय अर्थव्यवस्था",
+          "topics": ["Production Across Countries", "Foreign Trade and Integration of Markets", "Globalisation – Enabling Factors, Liberalisation", "WTO", "Impact of Globalisation in India"]
+        },
+        {
+          "number": 5,
+          "name": "Consumer Rights",
+          "name_hindi": "उपभोक्ता अधिकार",
+          "topics": ["Consumer Movement", "Consumer Rights", "ISI, AGMARK", "Consumer Awareness", "RTI, Consumer Forums"]
+        }
+      ]
+    }
+  ]
+}

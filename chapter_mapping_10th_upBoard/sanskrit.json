@@ -1,0 +1,75 @@
+{
+  "subject": "Sanskrit",
+  "subject_hindi": "संस्कृत",
+  "board": "UP Board (UPMSP)",
+  "board_full": "Uttar Pradesh Madhyamik Shiksha Parishad",
+  "medium": "Hindi",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "written_marks": 70,
+    "internal_assessment_marks": 30,
+    "total_marks": 100,
+    "internal_assessment": {
+      "first_internal_oral": { "month": "August", "marks": 10 },
+      "second_internal_writing": { "month": "December", "marks": 10 },
+      "monthly_tests": { "count": 4, "total_marks": 10 }
+    }
+  },
+  "sections": {
+    "khand_ka_gadya_padya_aashupatha": { "name": "खण्ड क – गद्य, पद्य, आशुपाठ", "marks": 35 },
+    "khand_kha_vyakaran_anuvad_rachna": { "name": "खण्ड ख – व्याकरण, अनुवाद, रचना", "marks": 35 }
+  },
+  "prescribed_books": [
+    {
+      "book": "Sanskrit Gadya Bharati",
+      "book_hindi": "संस्कृत गद्य भारती",
+      "chapters": [
+        { "name": "Kavi Kulguruhu Kalidasa",       "name_hindi": "कविकुलगुरु: कालिदास:" },
+        { "name": "Udbhijja Parishad",             "name_hindi": "उद्भिज्ज-परिषद्" },
+        { "name": "Naithik Moolyani",              "name_hindi": "नैतिकमूल्यानि" },
+        { "name": "Vishvakavi Ravindra",           "name_hindi": "विश्वकवि: रवीन्द्र:" },
+        { "name": "Karya Va Sadhayeyam Deham Va Paatayyame", "name_hindi": "कार्यं वा साधयेयं देहं वा पातयेम्" },
+        { "name": "Aadi Shankaracharyaha",         "name_hindi": "आदिशङ्कराचार्य:" },
+        { "name": "Sanskrit Bhashaya Gaurvam",     "name_hindi": "संस्कृतभाषाया: गौरवम्" },
+        { "name": "Madanmohan Malaviyaha",         "name_hindi": "मदनमोहनमालवीय:" }
+      ]
+    },
+    {
+      "book": "Sanskrit Padya Peeyusham",
+      "book_hindi": "संस्कृत पद्य पीयूषम्",
+      "chapters": [
+        { "name": "Lakshya Vedha Pariksha",        "name_hindi": "लक्ष्य-वेध-परीक्षा" },
+        { "name": "Vrikshana Chetanatvam",         "name_hindi": "वृक्षाणां चेतनत्वम्" },
+        { "name": "Sukti Sudha",                   "name_hindi": "सूक्ति-सुधा" },
+        { "name": "Kshanti Saukhyam",             "name_hindi": "क्षान्तिसौख्यम्" },
+        { "name": "Vidyarthicharyaa",              "name_hindi": "विद्यार्थिचर्या" },
+        { "name": "Geetamritam",                   "name_hindi": "गीतामृतम्" },
+        { "name": "Jeevyaad Bharatavarsham",       "name_hindi": "जीव्याद् भारतवर्षम्" }
+      ]
+    },
+    {
+      "book": "Sanskrit Katha Nataak Kaumudi",
+      "book_hindi": "संस्कृत कथा नाटक कौमुदी",
+      "chapters": [
+        { "name": "Mahatmana Smaranani",           "name_hindi": "महात्मन: स्मरणानि" },
+        { "name": "Karunikah Jeetuvahanah",        "name_hindi": "कारुणिको जीतूवाहन:" },
+        { "name": "Dhairyadhana Hi Sadhavaha",     "name_hindi": "धैर्यधना: हि साधव:" },
+        { "name": "Yautukam Papasanchayah",        "name_hindi": "यौतुकम् पापसंचय:" },
+        { "name": "Bhojasya Shalyachikitsa",       "name_hindi": "भोजस्य शल्यचिकित्सा" },
+        { "name": "Jnanam Pootaratam Sada",        "name_hindi": "ज्ञानं पूततरं सदा" },
+        { "name": "Vayam Bharatiyah",              "name_hindi": "वयम् भारतीया:" }
+      ]
+    }
+  ],
+  "grammar_topics": [
+    "प्रत्याहारों का सामान्य परिचय एवं वर्णों का उच्चारण स्थान",
+    "सन्धि – व्यंजन एवं विसर्ग सन्धियों का परिचय एवं अभ्यास",
+    "समास – अव्ययीभाव, द्विगु, बहुव्रीहि",
+    "कारक एवं विभक्ति परिचय",
+    "वाच्य-परिवर्तन",
+    "प्रत्यय – कृत्, तद्धित, स्त्री प्रत्यय",
+    "शब्द रूप – संज्ञा, सर्वनाम (तीनों लिंगों में)",
+    "धातु रूप – परस्मैपद, आत्मनेपद, उभयपद"
+  ]
+}

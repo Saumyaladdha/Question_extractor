@@ -1,0 +1,42 @@
+{
+  "subject": "Hindi",
+  "subject_hindi": "हिन्दी",
+  "board": "MP Board",
+  "medium": "Hindi",
+  "class": 10,
+  "books": [
+    {
+      "book": "Kshitij Bhag 2 - Kavya Khand (Poetry)",
+      "book_hindi": "क्षितिज भाग 2 - काव्य खण्ड",
+      "chapters": [
+        { "number": 1,  "name": "Oodho, Tum Ho Ati Bade Bhaaghi (Surdas)",     "name_hindi": "ऊधौ, तुम हौ अति बड़भागी" },
+        { "number": 2,  "name": "Ram-Lakshman-Parashuram Samvad (Tulsidas)",    "name_hindi": "राम-लक्ष्मण परशुराम संवाद" },
+        { "number": 3,  "name": "Aatmakathya (Jayashankar Prasad)",             "name_hindi": "आत्मकथ्य" },
+        { "number": 4,  "name": "Utsaah / Att Nahi Rahi Hai (Suryakant Tripathi Nirala)", "name_hindi": "उत्साह / अट नहीं रही है" },
+        { "number": 5,  "name": "Yeh Danturit Muskan / Fasal (Nagarjun)",       "name_hindi": "यह दंतुरित मुसकान / फसल" },
+        { "number": 6,  "name": "Sangatkar (Mangalesh Dabral)",                 "name_hindi": "संगतकार" }
+      ]
+    },
+    {
+      "book": "Kshitij Bhag 2 - Gadya Khand (Prose)",
+      "book_hindi": "क्षितिज भाग 2 - गद्य खण्ड",
+      "chapters": [
+        { "number": 7,  "name": "Netaji Ka Chashma (Swayam Prakash)",           "name_hindi": "नेताजी का चश्मा" },
+        { "number": 8,  "name": "Balgobin Bhagat (Ramvriksha Benipuri)",        "name_hindi": "बालगोबिन भगत" },
+        { "number": 9,  "name": "Lakhnavi Andaaz (Yashpal)",                    "name_hindi": "लखनवी अंदाज" },
+        { "number": 10, "name": "Ek Kahani Yeh Bhi (Mannu Bhandari)",           "name_hindi": "एक कहानी यह भी" },
+        { "number": 11, "name": "Naubtakhane Mein Ibadat (Yatindra Mishra)",    "name_hindi": "नौबतखाने में इबादत" },
+        { "number": 12, "name": "Sanskriti (Bhagwat Sharan Upadhyay)",          "name_hindi": "संस्कृति" }
+      ]
+    },
+    {
+      "book": "Kritika Bhag 2 (Supplementary)",
+      "book_hindi": "कृतिका भाग 2",
+      "chapters": [
+        { "number": 1,  "name": "Mata Ka Aanchal (Shivaapujan Sahay)",          "name_hindi": "माता का अँचल" },
+        { "number": 2,  "name": "Saana Saana Haath Jodi (Madhu Kankaria)",      "name_hindi": "साना-साना हाथ जोड़ि" },
+        { "number": 3,  "name": "Main Kyun Likhta Hoon (Agyeya)",              "name_hindi": "मैं क्यों लिखता हूँ?" }
+      ]
+    }
+  ]
+}

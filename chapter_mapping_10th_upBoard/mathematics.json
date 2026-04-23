@@ -1,0 +1,181 @@
+{
+  "subject": "Mathematics",
+  "subject_hindi": "गणित",
+  "board": "UP Board (UPMSP)",
+  "board_full": "Uttar Pradesh Madhyamik Shiksha Parishad",
+  "medium": "Hindi",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "written_marks": 70,
+    "internal_assessment_marks": 30,
+    "total_marks": 100,
+    "internal_assessment": {
+      "first_internal_exam_project": { "month": "August", "marks": "5+5" },
+      "second_internal_exam_project": { "month": "December", "marks": "5+5" },
+      "monthly_tests": { "count": 4, "total_marks": 10 }
+    }
+  },
+  "unit_mark_distribution": {
+    "संख्या पद्धति": 5,
+    "बीजगणित": 18,
+    "निर्देशांक ज्यामिति": 5,
+    "ज्यामिति": 10,
+    "त्रिकोणमिति": 12,
+    "मेन्सुरेशन": 10,
+    "सांख्यिकी तथा प्रायिकता": 10
+  },
+  "prescribed_book": {
+    "book": "Mathematics - Text Book for Class X",
+    "publisher": "NCERT"
+  },
+  "chapters": [
+    {
+      "number": 1,
+      "name": "Real Numbers",
+      "name_hindi": "वास्तविक संख्याएँ",
+      "unit": "संख्या पद्धति",
+      "marks": 5,
+      "topics": [
+        "The Fundamental Theorem of Arithmetic (with examples)",
+        "Revisiting Irrational Numbers – Proving irrationality"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "Polynomials",
+      "name_hindi": "बहुपद",
+      "unit": "बीजगणित",
+      "topics": [
+        "Zeroes of a Polynomial",
+        "Relationship between Zeroes and Coefficients of a Quadratic Polynomial"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Pair of Linear Equations in Two Variables",
+      "name_hindi": "दो चर वाले रैखिक समीकरण युग्म",
+      "unit": "बीजगणित",
+      "topics": [
+        "Algebraic Methods – Substitution Method",
+        "Algebraic Methods – Elimination Method"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "Quadratic Equations",
+      "name_hindi": "द्विघात समीकरण",
+      "unit": "बीजगणित",
+      "topics": [
+        "Standard form ax² + bx + c = 0 (a ≠ 0)",
+        "Solution by Factorisation and Quadratic Formula (real roots only)",
+        "Discriminant and Nature of Roots",
+        "Daily life application and word problems"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "Arithmetic Progressions",
+      "name_hindi": "समांतर श्रेढ़ियाँ",
+      "unit": "बीजगणित",
+      "topics": [
+        "nth Term of an AP",
+        "Sum of First n Terms of an AP",
+        "Application to daily life problems"
+      ]
+    },
+    {
+      "number": 6,
+      "name": "Triangles",
+      "name_hindi": "त्रिभुज",
+      "unit": "ज्यामिति",
+      "topics": [
+        "Similar Figures – Definition, Examples, Counter-Examples",
+        "Basic Proportionality Theorem (Thales Theorem)",
+        "Criteria for Similarity of Triangles"
+      ]
+    },
+    {
+      "number": 7,
+      "name": "Circles",
+      "name_hindi": "वृत्त",
+      "unit": "ज्यामिति",
+      "topics": [
+        "Tangent to a Circle",
+        "Number of Tangents from a Point on a Circle"
+      ]
+    },
+    {
+      "number": 8,
+      "name": "Coordinate Geometry",
+      "name_hindi": "निर्देशांक ज्यामिति",
+      "unit": "निर्देशांक ज्यामिति",
+      "marks": 5,
+      "topics": [
+        "Distance Formula",
+        "Section Formula (Internal Division)",
+        "Graphs of Linear Equations"
+      ]
+    },
+    {
+      "number": 9,
+      "name": "Introduction to Trigonometry",
+      "name_hindi": "त्रिकोणमिति का परिचय",
+      "unit": "त्रिकोणमिति",
+      "topics": [
+        "Trigonometric Ratios of acute angles",
+        "Ratios of Specific Angles – 0°, 30°, 45°, 60°, 90°",
+        "Trigonometric Identities"
+      ]
+    },
+    {
+      "number": 10,
+      "name": "Some Applications of Trigonometry",
+      "name_hindi": "त्रिकोणमिति के कुछ अनुप्रयोग",
+      "unit": "त्रिकोणमिति",
+      "topics": [
+        "Heights and Distances (elevation/depression angles: 30°, 45°, 60° only)"
+      ]
+    },
+    {
+      "number": 11,
+      "name": "Areas Related to Circles",
+      "name_hindi": "वृत्तों से संबंधित क्षेत्रफल",
+      "unit": "मेन्सुरेशन",
+      "topics": [
+        "Areas of Sector and Segment of a Circle"
+      ]
+    },
+    {
+      "number": 12,
+      "name": "Surface Areas and Volumes",
+      "name_hindi": "पृष्ठीय क्षेत्रफल और आयतन",
+      "unit": "मेन्सुरेशन",
+      "topics": [
+        "Surface Area of a Combination of Solids (Cone, Cylinder, Sphere, Hemisphere)",
+        "Volume of a Combination of Solids (max two different types)"
+      ]
+    },
+    {
+      "number": 13,
+      "name": "Statistics",
+      "name_hindi": "सांख्यिकी",
+      "unit": "सांख्यिकी तथा प्रायिकता",
+      "topics": [
+        "Mean of Grouped Data",
+        "Mode of Grouped Data",
+        "Median of Grouped Data"
+      ]
+    },
+    {
+      "number": 14,
+      "name": "Probability",
+      "name_hindi": "प्रायिकता",
+      "unit": "सांख्यिकी तथा प्रायिकता",
+      "topics": [
+        "Probability: A Theoretical Approach",
+        "Simple Problems on Single Events"
+      ]
+    }
+  ]
+}

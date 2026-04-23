@@ -1,0 +1,193 @@
+{
+  "subject": "Science",
+  "subject_hindi": "विज्ञान",
+  "board": "UP Board (UPMSP)",
+  "board_full": "Uttar Pradesh Madhyamik Shiksha Parishad",
+  "medium": "Hindi",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "written_marks": 70,
+    "internal_assessment_marks": 30,
+    "total_marks": 100,
+    "internal_assessment": {
+      "first_internal_practical_project": { "month": "August", "marks": 10 },
+      "second_internal_practical_project": { "month": "December", "marks": 10 },
+      "monthly_tests": { "count": 4, "total_marks": 10 }
+    }
+  },
+  "unit_mark_distribution": {
+    "रासायनिक पदार्थ – प्रकृति एवं व्यवहार": 20,
+    "जैव जगत": 20,
+    "प्राकृतिक घटनाएं (सर्वृतियाँ)": 12,
+    "विद्युत का प्रभाव": 13,
+    "प्राकृतिक संसाधन": 5
+  },
+  "prescribed_book": {
+    "book": "Science",
+    "publisher": "NCERT"
+  },
+  "chapters": [
+    {
+      "number": 1,
+      "name": "Chemical Reactions and Equations",
+      "name_hindi": "रासायनिक अभिक्रियाएँ एवं समीकरण",
+      "unit": "रासायनिक पदार्थ – प्रकृति एवं व्यवहार",
+      "topics": [
+        "Chemical Equation – Writing and Balancing",
+        "Types of Chemical Reactions: Combination, Decomposition, Displacement, Double Displacement",
+        "Exothermic and Endothermic Reactions",
+        "Oxidation and Reduction, Corrosion, Rancidity"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "Acids, Bases and Salts",
+      "name_hindi": "अम्ल क्षार तथा लवण",
+      "unit": "रासायनिक पदार्थ – प्रकृति एवं व्यवहार",
+      "topics": [
+        "Chemical Properties and Reactions of Acids and Bases",
+        "pH concept and Importance in Everyday Life",
+        "Sodium Hydroxide, Bleaching Powder, Baking Soda, Washing Soda, Plaster of Paris"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Metals and Non-Metals",
+      "name_hindi": "धातु एवं अधातु",
+      "unit": "रासायनिक पदार्थ – प्रकृति एवं व्यवहार",
+      "topics": [
+        "Physical and Chemical Properties of Metals and Non-metals",
+        "Reactivity Series",
+        "Ionic Compounds – Formation and Properties",
+        "Occurrence and Extraction of Metals",
+        "Corrosion and its Prevention"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "Carbon and Its Compounds",
+      "name_hindi": "कार्बन एवं उसके यौगिक",
+      "unit": "रासायनिक पदार्थ – प्रकृति एवं व्यवहार",
+      "topics": [
+        "Covalent Bond in Carbon Compounds",
+        "Versatile Nature of Carbon – Saturated and Unsaturated",
+        "Functional Groups – Halogens, Alcohol, Ketone, Aldehyde, Alkane, Alkene",
+        "Nomenclature of Carbon Compounds",
+        "Chemical Properties – Combustion, Oxidation, Addition, Substitution",
+        "Ethanol and Ethanoic Acid, Soaps and Detergents"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "Life Processes",
+      "name_hindi": "जैव प्रक्रम",
+      "unit": "जैव जगत",
+      "topics": [
+        "Basic concept of living organisms",
+        "Nutrition – Autotrophic, Heterotrophic, in Organisms and Human Beings",
+        "Respiration",
+        "Transportation – Human Beings, Plants",
+        "Excretion – Human Beings, Plants"
+      ]
+    },
+    {
+      "number": 6,
+      "name": "Control and Coordination",
+      "name_hindi": "नियंत्रण एवं समन्वय",
+      "unit": "जैव जगत",
+      "topics": [
+        "Nervous System – Voluntary and Involuntary Muscles",
+        "Reflex Action, Human Brain",
+        "Coordination in Plants – Immediate Response, Movement Due to Growth",
+        "Hormones in Animals"
+      ]
+    },
+    {
+      "number": 7,
+      "name": "Reproduction in Organisms",
+      "name_hindi": "जीव जनन कैसे करते हैं?",
+      "unit": "जैव जगत",
+      "topics": [
+        "Asexual Reproduction – Fission, Fragmentation, Regeneration, Budding, Vegetative Propagation, Spore Formation",
+        "Sexual Reproduction – In Flowering Plants and Human Beings",
+        "Reproductive Health, Family Planning methods, HIV/AIDS",
+        "Safe sex and care during pregnancy"
+      ]
+    },
+    {
+      "number": 8,
+      "name": "Heredity",
+      "name_hindi": "अनुवांशिकता",
+      "unit": "जैव जगत",
+      "topics": [
+        "Heredity – Inherited Traits",
+        "Mendel's Contribution – Rules for Inheritance",
+        "Sex Determination (brief introduction)"
+      ]
+    },
+    {
+      "number": 9,
+      "name": "Light: Reflection and Refraction",
+      "name_hindi": "प्रकाश परावर्तन एवं अपवर्तन",
+      "unit": "प्राकृतिक घटनाएं",
+      "topics": [
+        "Reflection of Light – Spherical Mirrors, Image Formation",
+        "Mirror Formula and Magnification (no derivation)",
+        "Refraction – Refractive Index",
+        "Refraction by Spherical Lenses – Image Formation, Lens Formula, Power of Lens"
+      ]
+    },
+    {
+      "number": 10,
+      "name": "The Human Eye and the Colourful World",
+      "name_hindi": "मानव नेत्र एवं रंग बिरंगा संसार",
+      "unit": "प्राकृतिक घटनाएं",
+      "topics": [
+        "Human Eye – Power of Accommodation",
+        "Defects of Vision and their Correction",
+        "Refraction through Prism, Dispersion",
+        "Atmospheric Refraction, Scattering of Light – Tyndall Effect, Blue Sky"
+      ]
+    },
+    {
+      "number": 11,
+      "name": "Electricity",
+      "name_hindi": "विद्युत",
+      "unit": "विद्युत का प्रभाव",
+      "topics": [
+        "Electric Current and Circuit, Electric Potential and Potential Difference",
+        "Ohm's Law, Factors on which Resistance Depends",
+        "Resistance in Series and Parallel",
+        "Heating Effect of Electric Current and its Applications",
+        "Electric Power; P, V, I, R relationship"
+      ]
+    },
+    {
+      "number": 12,
+      "name": "Magnetic Effects of Electric Current",
+      "name_hindi": "विद्युत धारा के चुंबकीय प्रभाव",
+      "unit": "विद्युत का प्रभाव",
+      "topics": [
+        "Magnetic Field and Field Lines",
+        "Magnetic Field due to Current – Straight Conductor, Right Hand Thumb Rule",
+        "Magnetic Field due to Circular Loop and Solenoid",
+        "Force on Current Carrying Conductor – Fleming's Left Hand Rule",
+        "Domestic Electric Circuits"
+      ]
+    },
+    {
+      "number": 13,
+      "name": "Our Environment",
+      "name_hindi": "हमारा पर्यावरण",
+      "unit": "प्राकृतिक संसाधन",
+      "marks": 5,
+      "topics": [
+        "Ecosystem – Food Chains and Webs",
+        "Environmental Problems – Ozone Layer Depletion",
+        "Waste Management",
+        "Biodegradable and Non-Biodegradable Substances"
+      ]
+    }
+  ]
+}

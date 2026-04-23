@@ -1,0 +1,357 @@
+{
+  "subject": "Social Science",
+  "subject_hindi": "सामाजिक विज्ञान",
+  "board": "RJ Board (BSER)",
+  "board_full": "Board of Secondary Education, Rajasthan, Ajmer",
+  "subject_code": "08",
+  "medium": "Hindi",
+  "class": 10,
+  "session": "2025-2026",
+  "exam_scheme": {
+    "papers": 1,
+    "duration_hours": 3.15,
+    "theory_marks": 80,
+    "sessional_marks": 20,
+    "total_marks": 100
+  },
+  "books": [
+    {
+      "book": "India and the Contemporary World – Part II (History)",
+      "book_hindi": "भारत और समकालीन विश्व – भाग 2 (इतिहास)",
+      "publisher": "NCERT",
+      "marks": 20,
+      "sections": [
+        {
+          "section": "Events and Processes",
+          "chapters": [
+            {
+              "number": 1,
+              "name": "The Rise of Nationalism in Europe",
+              "name_hindi": "यूरोप में राष्ट्रवाद का उदय",
+              "marks": 4,
+              "topics": [
+                "The French Revolution and the Idea of the Nation",
+                "The Making of Nationalism in Europe",
+                "Liberal Nationalism, A New Conservatism after 1815",
+                "The Age of Revolutions: 1830-1848",
+                "The Making of Germany and Italy",
+                "Nationalism and Imperialism"
+              ]
+            },
+            {
+              "number": 2,
+              "name": "Nationalism in India",
+              "name_hindi": "भारत में राष्ट्रवाद",
+              "marks": 4,
+              "topics": [
+                "The First World War, Khilafat and Non-Cooperation",
+                "The Idea of Satyagraha, Rowlatt Act",
+                "Non-Cooperation Movement",
+                "Towards Civil Disobedience – Salt March",
+                "Participation of People in the Movement",
+                "The Sense of Collective Belonging – Quit India Movement"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "Livelihoods, Economies and Societies",
+          "chapters": [
+            {
+              "number": 3,
+              "name": "The Making of a Global World",
+              "name_hindi": "भूमंडलीकृत विश्व का बनना",
+              "marks": 4,
+              "topics": [
+                "The Pre-modern world – Silk Routes",
+                "The Nineteenth Century (1815-1914)",
+                "Indentured Labour Migration from India",
+                "The Inter-war Economy – Great Depression",
+                "Rebuilding a World Economy: The Post-War Era"
+              ]
+            },
+            {
+              "number": 4,
+              "name": "The Age of Industrialisation",
+              "name_hindi": "औद्योगीकरण का युग",
+              "marks": 4,
+              "topics": [
+                "Before the Industrial Revolution",
+                "Hand Labour and Steam Power",
+                "Industrialisation in the Colonies – Indian Textiles",
+                "Factories Come Up – Early Entrepreneurs",
+                "Peculiarities of Industrial Growth"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "Everyday Life, Culture and Politics",
+          "chapters": [
+            {
+              "number": 5,
+              "name": "Print Culture and the Modern World",
+              "name_hindi": "मुद्रण संस्कृति और आधुनिक दुनिया",
+              "marks": 4,
+              "topics": [
+                "Print in Japan, Print Comes to Europe – Gutenberg and the Printing Press",
+                "The Print Revolution and its Impact",
+                "Print Culture and the French Revolution",
+                "The Nineteenth Century – Children, Women and Workers",
+                "India and the World of Print",
+                "Religious Reform and Public Debates, Print and Censorship"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "book": "Contemporary India – II (Geography)",
+      "book_hindi": "समकालीन भारत – 2 (भूगोल)",
+      "publisher": "NCERT",
+      "marks": 20,
+      "chapters": [
+        {
+          "number": 1,
+          "name": "Resources and Development",
+          "name_hindi": "संसाधन एवं विकास",
+          "marks": 3,
+          "topics": [
+            "Classification of Resources",
+            "Resources Planning in India",
+            "Land Resources, Land Utilisation, Land Degradation",
+            "Soil as a Resource, Classification of Soils, Soil Erosion and Conservation"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "Forest and Wildlife Resources",
+          "name_hindi": "वन एवं वन्य जीव संसाधन",
+          "marks": 2,
+          "topics": [
+            "Flora and Fauna in India",
+            "Conservation of Forest and Wildlife",
+            "Types and Distribution of Forest and Wildlife Resources",
+            "Community and Conservation"
+          ]
+        },
+        {
+          "number": 3,
+          "name": "Water Resources",
+          "name_hindi": "जल संसाधन",
+          "marks": 3,
+          "topics": [
+            "Water Scarcity and Need for Conservation",
+            "Multi-Purpose River Projects",
+            "Integrated Water Resources Management",
+            "Rain Water Harvesting"
+          ]
+        },
+        {
+          "number": 4,
+          "name": "Agriculture",
+          "name_hindi": "कृषि",
+          "marks": 3,
+          "topics": [
+            "Types of Farming – Primitive, Intensive, Commercial",
+            "Cropping Pattern",
+            "Major Crops – Rice, Wheat, Millets, Pulses",
+            "Food Crops, Horticulture, Non-Food Crops, Fibre Crops",
+            "Technological and Institutional Reforms"
+          ]
+        },
+        {
+          "number": 5,
+          "name": "Minerals and Energy Resources",
+          "name_hindi": "खनिज तथा ऊर्जा संसाधन",
+          "marks": 4,
+          "topics": [
+            "Meaning and Mode of Occurrence of Minerals",
+            "Ferrous and Non-Ferrous Minerals, Non-Metallic Minerals, Rock Minerals",
+            "Conservation of Minerals",
+            "Energy Resources – Conventional and Non-Conventional",
+            "Conservation of Energy Resources"
+          ]
+        },
+        {
+          "number": 6,
+          "name": "Manufacturing Industries",
+          "name_hindi": "विनिर्माण उद्योग",
+          "marks": 2,
+          "topics": [
+            "Importance of Manufacturing",
+            "Classification of Industries",
+            "Industrial Pollution and Environmental Degradation",
+            "Control of Environmental Degradation"
+          ]
+        },
+        {
+          "number": 7,
+          "name": "Lifelines of National Economy",
+          "name_hindi": "राष्ट्रीय अर्थव्यवस्था की जीवन रेखाएँ",
+          "marks": 3,
+          "topics": [
+            "Transport – Roadways, Railways, Pipelines, Waterways, Airways",
+            "Communication Services",
+            "International Trade",
+            "Tourism – as a Trade"
+          ]
+        }
+      ]
+    },
+    {
+      "book": "Democratic Politics – II (Political Science)",
+      "book_hindi": "लोकतांत्रिक राजनीति – II (राजनीति विज्ञान)",
+      "publisher": "NCERT",
+      "marks": 20,
+      "chapters": [
+        {
+          "number": 1,
+          "name": "Power Sharing",
+          "name_hindi": "सत्ता की साझेदारी",
+          "marks": 4,
+          "topics": [
+            "Belgium and Sri Lanka",
+            "Majoritarianism in Sri Lanka",
+            "Accommodation in Belgium",
+            "Need of Power Sharing",
+            "Forms of Power-Sharing"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "Federalism",
+          "name_hindi": "संघवाद",
+          "marks": 4,
+          "topics": [
+            "Federal System in India",
+            "Working Procedure of Federalism",
+            "Linguistic States, Language Policy",
+            "Centre-State Relations",
+            "Decentralisation in India"
+          ]
+        },
+        {
+          "number": 3,
+          "name": "Gender, Religion and Caste",
+          "name_hindi": "जाति, धर्म और लैंगिक मसले",
+          "marks": 4,
+          "topics": [
+            "Gender and Politics – Feminist Movements",
+            "Woman Political Representation",
+            "Religion, Communalism and Politics",
+            "Caste and Politics",
+            "Social and Religious Diversity of India",
+            "Caste Inequality"
+          ]
+        },
+        {
+          "number": 4,
+          "name": "Political Parties",
+          "name_hindi": "राजनीतिक दल",
+          "marks": 5,
+          "topics": [
+            "Importance and Functions of Political Parties",
+            "Type of Political Parties",
+            "Popular Participation in Political Parties",
+            "National Parties, Regional Parties",
+            "Dimensions of Change in Parties"
+          ]
+        },
+        {
+          "number": 5,
+          "name": "Outcomes of Democracy",
+          "name_hindi": "लोकतंत्र के परिणाम",
+          "marks": 3,
+          "topics": [
+            "Accountable, Responsive and Legitimate Government",
+            "Economic Growth and Development",
+            "Reduction of Inequality and Poverty",
+            "Accommodation of Social Diversity",
+            "Dignity and Freedom of the Citizens"
+          ]
+        }
+      ]
+    },
+    {
+      "book": "Understanding Economic Development (Economics)",
+      "book_hindi": "आर्थिक विकास की समझ (अर्थशास्त्र)",
+      "publisher": "NCERT",
+      "marks": 20,
+      "chapters": [
+        {
+          "number": 1,
+          "name": "Development",
+          "name_hindi": "विकास",
+          "marks": 3,
+          "topics": [
+            "Development Promises – Different People, Different Goals",
+            "Income and Other Goals",
+            "National Development",
+            "Income and Other Criteria, Public Facilities",
+            "Human Development Report",
+            "Sustainability of Development"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "Sectors of the Indian Economy",
+          "name_hindi": "भारतीय अर्थव्यवस्था के क्षेत्रक",
+          "marks": 5,
+          "topics": [
+            "Sectors of Economic Activities",
+            "Comparing the Three Sectors",
+            "Historical Change in Sectors",
+            "Primary, Secondary and Tertiary in India",
+            "Create More Employment – MGNREGA 2005",
+            "Organised and Unorganised Sectors",
+            "Public and Private Sectors"
+          ]
+        },
+        {
+          "number": 3,
+          "name": "Money and Credit",
+          "name_hindi": "मुद्रा और साख",
+          "marks": 5,
+          "topics": [
+            "Money as Medium of Exchange",
+            "Modern Forms of Money – Currency, Deposits with Banks",
+            "Loan Activities of Banks",
+            "Two Different Credit Situations, Terms of Credit",
+            "Formal Sector Credit in India",
+            "Comparative Study of Formal and Informal Credit",
+            "Self Help Groups for the Poor"
+          ]
+        },
+        {
+          "number": 4,
+          "name": "Globalisation and the Indian Economy",
+          "name_hindi": "वैश्वीकरण और भारतीय अर्थव्यवस्था",
+          "marks": 5,
+          "topics": [
+            "Production Across Countries",
+            "Foreign Trade and Integration of Markets",
+            "Meaning of Globalisation – Enabling Factors",
+            "Liberalisation of Foreign Trade and Foreign Investment Policy",
+            "World Trade Organization",
+            "Impact of Globalisation in India",
+            "The Struggle for a Fair Globalisation"
+          ]
+        },
+        {
+          "number": 5,
+          "name": "Consumer Rights",
+          "name_hindi": "उपभोक्ता अधिकार",
+          "marks": 2,
+          "topics": [
+            "The Consumer in the Marketplace",
+            "Consumer Movement",
+            "Consumer Rights – Right to Safety, Information, Choice, Seek Redressal",
+            "Learning to Become Well Informed Consumers"
+          ]
+        }
+      ]
+    }
+  ]
+}
