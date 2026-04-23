@@ -27,30 +27,19 @@ MARKS = {
 # LATEX FORMATTING
 # ─────────────────────────────────────────────────────────────────────────────
 LATEX_INSTRUCTION = """
-LATEX FORMATTING — apply to every question you extract:
-- Wrap ALL mathematical expressions, symbols, and formulas in $...$ (inline math).
-- Use $$...$$ only for standalone display equations on their own line.
-- Common conversions:
-    Superscripts  : x²→$x^{2}$  10⁸→$10^{8}$  e⁻→$e^{-}$
-    Subscripts    : H₂O→$H_{2}O$  E₀→$E_{0}$
-    Fractions     : 1/2→$\\frac{1}{2}$  c/λ→$\\frac{c}{\\lambda}$
-    Greek letters : α→$\\alpha$ β→$\\beta$ γ→$\\gamma$ λ→$\\lambda$ μ→$\\mu$
-                    ε→$\\varepsilon$ ω→$\\omega$ θ→$\\theta$ φ→$\\phi$
-                    Ω→$\\Omega$ Φ→$\\Phi$ ρ→$\\rho$ σ→$\\sigma$
-    Operators     : ×→$\\times$ ·→$\\cdot$ ±→$\\pm$ ∝→$\\propto$
-                    ≈→$\\approx$ ≠→$\\neq$ ≥→$\\geq$ ≤→$\\leq$
-                    √→$\\sqrt{}$ ∞→$\\infty$ ∫→$\\int$ Σ→$\\sum$
-    Vectors       : F⃗→$\\vec{F}$  E⃗→$\\vec{E}$  B⃗→$\\vec{B}$
-    Units         : Ω→$\\Omega$  μF→$\\mu F$  μC→$\\mu C$
-                    μ₀→$\\mu_0$  ε₀→$\\varepsilon_0$  m/s²→$m/s^{2}$
-    Blanks (FIB)  : keep as ______  (never wrap in LaTeX)
-- Hindi/English text outside math stays plain — never wrap words in $...$
-- Number+unit: wrap symbol only: "9×10⁸ m/s" → $9\\times10^{8}$ m/s
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MANDATORY PRE-STEP — TABLE DETECTION (do this BEFORE building JSON)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Scan every question for any multi-column tabular data:
+  • Balance Sheet / आर्थिक चिट्ठा
+  • Trading / Profit & Loss / Income & Expenditure Account
+  • Receipts & Payments / Trial Balance / Comparative Statement
+  • Any table with two or more columns of financial or scientific data
 
-TABLES — balance sheets, financial statements, data tables:
-When the question contains a table (balance sheet, receipts & payments, trial balance,
-comparative statement, etc.) reproduce it as a LaTeX tabular environment embedded
-inside the question string. Use this format:
+If a table is present it MUST be embedded in the "question" string as a
+LaTeX tabular environment. Outputting a table as plain prose text is WRONG.
+
+EXACT FORMAT to use (copy the structure, fill in the actual data):
   \\\\begin{tabular}{|l|r|l|r|}
   \\\\hline
   \\\\multicolumn{4}{|c|}{\\\\textbf{BALANCE SHEET}} \\\\\\\\
@@ -59,29 +48,55 @@ inside the question string. Use this format:
   \\\\hline
   Creditors & 60,000 & Cash & 36,000 \\\\\\\\
   \\\\hline
+  General Reserve & 10,000 & Debtors \\\\quad 46,000 & \\\\\\\\
+  \\\\hline
+   & & (--) PBD \\\\quad \\\\underline{2,000} & 44,000 \\\\\\\\
+  \\\\hline
+   & \\\\textbf{1,60,000} & & \\\\textbf{1,60,000} \\\\\\\\
+  \\\\hline
   \\\\end{tabular}
-Column alignment: l=left  r=right  c=center  | = vertical line
-Row separator   : \\\\\\\\ (four backslashes in JSON = LaTeX \\\\)
-Cell separator  : & (plain ampersand, no escaping)
-Horizontal line : \\\\hline
-Merged cell     : \\\\multicolumn{n}{align}{content}
-Bold text       : \\\\textbf{text}
-Underlined value: \\\\underline{value}  (use for totals/subtotals)
-Extra space     : \\\\quad
-Line break in cell: \\\\newline
-₹ symbol        : keep as plain ₹ (no LaTeX wrapping needed)
 
-JSON BACKSLASH RULE — CRITICAL (questions will be lost if you break this):
-You are outputting JSON. Inside a JSON string every LaTeX backslash MUST be
-written as TWO backslashes so the JSON is valid.
-  CORRECT  →  "\\\\frac{1}{2}"   "\\\\vec{a}"   "\\\\hat{i}"   "\\\\int"   "\\\\,"
-  WRONG    →  "\\frac{1}{2}"    "\\vec{a}"    "\\hat{i}"    "\\int"    "\\,"
-Rule: wherever you would normally write \\cmd in LaTeX, write \\\\cmd in JSON.
-This applies to EVERY backslash: \\\\frac \\\\vec \\\\hat \\\\int \\\\sqrt
-  \\\\alpha \\\\beta \\\\lambda \\\\Omega \\\\pi \\\\infty \\\\times \\\\cdot
-  \\\\left \\\\right \\\\lim \\\\sum \\\\log \\\\sin \\\\cos \\\\tan \\\\,
-  \\\\begin \\\\end \\\\hline \\\\multicolumn \\\\textbf \\\\underline \\\\quad \\\\newline
-For the LaTeX row-end \\\\\\\\ (two backslashes): write FOUR backslashes in JSON.
+Quick reference:
+  Column spec      : l=left-align  r=right-align  c=center  | = vertical border
+  Row end          : \\\\\\\\ (FOUR backslashes in JSON → two backslashes = LaTeX row-end)
+  Cell separator   : & (plain ampersand, no escaping needed)
+  Horizontal line  : \\\\hline
+  Merged cell      : \\\\multicolumn{n}{|c|}{content}
+  Bold header      : \\\\textbf{text}
+  Underlined total : \\\\underline{value}
+  Indent / gap     : \\\\quad
+  Line break in cell: \\\\newline
+  ₹ symbol         : keep as plain ₹ (no LaTeX wrapper needed)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MATH / FORMULA FORMATTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Wrap ALL mathematical expressions and formulas in $...$ (inline math).
+- Use $$...$$ only for standalone display equations on their own line.
+- Common conversions:
+    Superscripts  : x²→$x^{2}$  10⁸→$10^{8}$  e⁻→$e^{-}$
+    Subscripts    : H₂O→$H_{2}O$  E₀→$E_{0}$
+    Fractions     : 1/2→$\\\\frac{1}{2}$  c/λ→$\\\\frac{c}{\\\\lambda}$
+    Greek letters : α→$\\\\alpha$ β→$\\\\beta$ γ→$\\\\gamma$ λ→$\\\\lambda$ μ→$\\\\mu$
+                    ε→$\\\\varepsilon$ ω→$\\\\omega$ θ→$\\\\theta$ φ→$\\\\phi$
+                    Ω→$\\\\Omega$ Φ→$\\\\Phi$ ρ→$\\\\rho$ σ→$\\\\sigma$
+    Operators     : ×→$\\\\times$ ·→$\\\\cdot$ ±→$\\\\pm$ ∝→$\\\\propto$
+                    ≈→$\\\\approx$ ≠→$\\\\neq$ ≥→$\\\\geq$ ≤→$\\\\leq$
+                    √→$\\\\sqrt{}$ ∞→$\\\\infty$ ∫→$\\\\int$ Σ→$\\\\sum$
+    Vectors       : F⃗→$\\\\vec{F}$  E⃗→$\\\\vec{E}$  B⃗→$\\\\vec{B}$
+    Units         : Ω→$\\\\Omega$  μF→$\\\\mu F$  μC→$\\\\mu C$
+                    μ₀→$\\\\mu_0$  ε₀→$\\\\varepsilon_0$  m/s²→$m/s^{2}$
+    Blanks (FIB)  : keep as ______  (never wrap in LaTeX)
+- Hindi/English text outside math stays plain — never wrap words in $...$
+- Number+unit: wrap symbol only: "9×10⁸ m/s" → $9\\\\times10^{8}$ m/s
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+JSON BACKSLASH RULE — CRITICAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Every LaTeX backslash MUST be written as TWO backslashes inside a JSON string.
+  CORRECT  →  "\\\\frac{1}{2}"  "\\\\vec{a}"  "\\\\begin{tabular}"  "\\\\hline"
+  WRONG    →  "\\frac{1}{2}"   "\\vec{a}"   "\\begin{tabular}"   "\\hline"
+LaTeX row-end \\\\ (two backslashes) → write FOUR backslashes in JSON: \\\\\\\\
 """
  
  
