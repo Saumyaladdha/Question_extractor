@@ -117,7 +117,7 @@ def _skill_category_detection(language: str = "Hindi") -> str:
     Hindi uses "Sahitya Parichay" for general literary-history knowledge.
     English keeps "General".
     """
-    if language == "Hindi":
+    if language in ("Hindi", "Sanskrit"):
         general_label = "Sahitya Parichay"
         general_desc  = (
             "सामान्य साहित्यिक / ऐतिहासिक ज्ञान जो किसी विशिष्ट पाठ्यपुस्तक के "
@@ -149,7 +149,7 @@ _SKILL_CATEGORY_DETECTION = _skill_category_detection("Hindi")
  
 def _skill_category_field_def(language: str) -> str:
     """Language-aware skill_category field definition block."""
-    if language == "Hindi":
+    if language in ("Hindi", "Sanskrit"):
         return (
             'skill_category : Classify using EXACTLY one of these three values:\n'
             '                 "Literature"        -- item references a specific lesson, poem, chapter,\n'
@@ -175,7 +175,7 @@ def _skill_category_field_def(language: str) -> str:
 def _objective_output_example(language: str, prompt_type: str) -> str:
     """Language-aware JSON output example for MCQ / FillBlanks / OWA."""
     if prompt_type == "mcq":
-        if language == "Hindi":
+        if language in ("Hindi", "Sanskrit"):
             return (
                 '{\n'
                 '  "questions": [\n'
@@ -230,7 +230,7 @@ def _objective_output_example(language: str, prompt_type: str) -> str:
                 '}'
             )
     elif prompt_type == "fib":
-        if language == "Hindi":
+        if language in ("Hindi", "Sanskrit"):
             return (
                 '{\n'
                 '  "questions": [\n'
@@ -281,7 +281,7 @@ def _objective_output_example(language: str, prompt_type: str) -> str:
                 '}'
             )
     elif prompt_type == "owa":
-        if language == "Hindi":
+        if language in ("Hindi", "Sanskrit"):
             return (
                 '{\n'
                 '  "questions": [\n'
@@ -558,7 +558,7 @@ ENGLISH-SPECIFIC RULES
 - total_marks = sum of marks written after each sub-question.
 """
  
-    language_block = hindi_instructions if language == "Hindi" else english_instructions
+    language_block = hindi_instructions if language in ("Hindi", "Sanskrit") else english_instructions
  
     return f"""You are an expert at extracting comprehension questions from {language} examination papers.
  
@@ -631,7 +631,7 @@ OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
 def writing_engine_prompt(language: str, q_nums: list[int] | None = None):
     qref = _qref(q_nums, "Extract ALL writing tasks found in the paper.")
     boundary = _boundary_instruction(q_nums)
-    or_word = "अथवा / OR  (either word, or both, acts as separator)" if language == "Hindi" else "OR"
+    or_word = "अथवा / OR  (either word, or both, acts as separator)" if language in ("Hindi", "Sanskrit") else "OR"
     or_step = _or_counting_instruction(or_word)
     final_check = _final_count_check("questions")
  
@@ -697,7 +697,7 @@ Detection keywords:
     story                                                     -> "Story Writing"
 """
  
-    categories_block = hindi_categories if language == "Hindi" else english_categories
+    categories_block = hindi_categories if language in ("Hindi", "Sanskrit") else english_categories
  
     return f"""You are an expert at extracting writing tasks from {language} examination papers.
  
@@ -1011,7 +1011,7 @@ OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
 def literature_prompt(language: str, q_nums: list[int] | None = None):
     qref = _qref(q_nums, "Extract ALL literature questions found in the paper.")
     boundary = _boundary_instruction(q_nums)
-    or_word = "अथवा / OR  (either word, or both, acts as separator)" if language == "Hindi" else "OR"
+    or_word = "अथवा / OR  (either word, or both, acts as separator)" if language in ("Hindi", "Sanskrit") else "OR"
     or_step = _or_counting_instruction(or_word)
     final_check = _final_count_check("questions")
  
@@ -1089,7 +1089,7 @@ lesson_name / author: if the question explicitly names a lesson/poem/author, cap
     in the optional "lesson_name" and "author" fields (null if not mentioned).
 """
  
-    literature_block = hindi_notes if language == "Hindi" else english_notes
+    literature_block = hindi_notes if language in ("Hindi", "Sanskrit") else english_notes
  
     return f"""You are an expert at extracting literature questions from {language} examination papers.
  
@@ -1522,9 +1522,81 @@ OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
 # REGISTRY
 # =============================================================================
  
+def language_structure_prompt_sanskrit():
+    return """You are an expert at analysing Sanskrit examination papers (Indian state boards).
+Your task is to read the FULL paper and identify its major sections.
+
+-------------------------------------------------------------
+OBJECTIVE
+-------------------------------------------------------------
+Read the paper's instruction block (निर्देश at the top) AND the paper body.
+Identify every major section and classify it.
+
+SECTION TYPES:
+    Objective       ->  Q1-Q5 style objective blocks (MCQ, Fill blanks, Match, OWA, T/F)
+    Comprehension   ->  गद्यांशम् / पद्यांशम् / नाट्यांशम् — unseen or seen passage + questions
+    Writing         ->  पत्रलेखनम्, निबन्धलेखनम्, अनुवादकार्यम्, संवादलेखनम्
+    Grammar         ->  व्याकरणम् — सन्धि, समास, प्रत्यय, शब्दरूप, धातुरूप, वाच्य
+
+OBJECTIVE SUB-TYPES — detect by FORMAT of the question:
+    sub_type "MCQ"            -> उचित विकल्पं चित्वा लिखत; options (अ)(ब)(स)(द)
+    sub_type "FillBlanks"     -> रिक्तस्थानानि पूरयत्; words given in brackets
+    sub_type "MatchFollowing" -> युग्ममेलनं कुरुत; two columns (अ) and (ब)
+    sub_type "OneWordAnswer"  -> एकपदेन उत्तरं लिखत
+    sub_type "TrueFalse"      -> शुद्धवाक्यानां समक्षं 'आम्' लिखत / 'न' लिखत
+
+PROMPT ROUTING — fill the "prompt" field for each section:
+    sub_type MCQ              -> "mcq_prompt"
+    sub_type FillBlanks       -> "fill_blanks_prompt"
+    sub_type MatchFollowing   -> "match_following_prompt"
+    sub_type OneWordAnswer    -> "one_word_answer_prompt"
+    sub_type TrueFalse        -> "true_false_prompt"
+    type Comprehension        -> "comprehension_engine_prompt"
+    type Writing              -> "writing_engine_prompt"
+    type Grammar              -> "grammar_hindi_prompt"
+    type Literature           -> "literature_prompt"
+
+-------------------------------------------------------------
+SELF-CHECK BEFORE OUTPUT
+-------------------------------------------------------------
+Rule 1: Every question number 1 ... N must appear in EXACTLY ONE section.
+Rule 2: sum(marks_total for all sections) MUST equal the paper's declared Maximum Marks.
+        If Rule 2 fails, set "marks_discrepancy" to a string describing the issue.
+
+-------------------------------------------------------------
+OUTPUT FORMAT - return ONLY valid JSON, no extra text, no markdown fences
+-------------------------------------------------------------
+{
+  "declared_max_marks": 75,
+  "sections_marks_sum": 75,
+  "marks_discrepancy": null,
+  "sections": [
+    {"name": "वस्तुनिष्ठ - MCQ",         "type": "Objective",      "sub_type": "MCQ",            "q_nums": [1],    "marks_total": 6,  "prompt": "mcq_prompt"},
+    {"name": "वस्तुनिष्ठ - रिक्तस्थान",  "type": "Objective",      "sub_type": "FillBlanks",     "q_nums": [2],    "marks_total": 6,  "prompt": "fill_blanks_prompt"},
+    {"name": "वस्तुनिष्ठ - युग्ममेलनम्", "type": "Objective",      "sub_type": "MatchFollowing", "q_nums": [3],    "marks_total": 6,  "prompt": "match_following_prompt"},
+    {"name": "वस्तुनिष्ठ - एकपद",        "type": "Objective",      "sub_type": "OneWordAnswer",  "q_nums": [4],    "marks_total": 6,  "prompt": "one_word_answer_prompt"},
+    {"name": "वस्तुनिष्ठ - शुद्ध/अशुद्ध","type": "Objective",      "sub_type": "TrueFalse",      "q_nums": [5],    "marks_total": 6,  "prompt": "true_false_prompt"},
+    {"name": "गद्यांशम्",                 "type": "Comprehension",  "sub_type": null,             "q_nums": [6],    "marks_total": 5,  "prompt": "comprehension_engine_prompt"},
+    {"name": "व्याकरणम्",                 "type": "Grammar",        "sub_type": null,             "q_nums": [7,8],  "marks_total": 15, "prompt": "grammar_hindi_prompt"},
+    {"name": "पत्रलेखनम्",               "type": "Writing",        "sub_type": null,             "q_nums": [9],    "marks_total": 5,  "prompt": "writing_engine_prompt"}
+  ]
+}
+
+Rules for the JSON:
+- "name"        : exact label from paper; if absent use canonical Sanskrit/Hindi name.
+- "type"        : one of "Comprehension", "Writing", "Grammar", "Literature", "Objective".
+- "sub_type"    : one of "MCQ","FillBlanks","MatchFollowing","OneWordAnswer","TrueFalse", or null.
+- "q_nums"      : ascending array of integers.
+- "marks_total" : integer.
+- "prompt"      : extraction prompt to call for this section (see PROMPT ROUTING above).
+- Output ONLY the JSON object. No markdown fences, no explanation text.
+"""
+
+
 LANGUAGE_STRUCTURE_PROMPTS = {
-    "Hindi":   language_structure_prompt_hindi,
-    "English": language_structure_prompt_english,
+    "Hindi":    language_structure_prompt_hindi,
+    "English":  language_structure_prompt_english,
+    "Sanskrit": language_structure_prompt_sanskrit,
 }
  
 # Maps Phase-1 "prompt" field value → callable(language, q_nums) → prompt string

@@ -790,7 +790,12 @@ def build_excel(df: pd.DataFrame) -> bytes:
 # Language paper helpers
 # ─────────────────────────────────────────────────────────────────────────────
 
-_LANGUAGE_SUBJECTS = {"hindi", "english", "हिंदी", "अंग्रेजी", "hindi language", "english language"}
+_LANGUAGE_SUBJECTS = {
+    "hindi", "हिंदी", "hindi language",
+    "english", "अंग्रेजी", "english language",
+    "sanskrit", "संस्कृत", "sanskrit language",
+    "urdu", "उर्दू",
+}
 
 def _is_language_subject(subject: str) -> bool:
     return subject.strip().lower() in _LANGUAGE_SUBJECTS
@@ -800,6 +805,10 @@ def _detect_language_from_subject(subject: str) -> str:
     s = subject.strip().lower()
     if s in {"hindi", "हिंदी", "hindi language"}:
         return "Hindi"
+    if s in {"sanskrit", "संस्कृत", "sanskrit language"}:
+        return "Sanskrit"
+    if s in {"urdu", "उर्दू"}:
+        return "Urdu"
     return "English"
 
 
@@ -1269,32 +1278,74 @@ _SUBJECT_ALIASES = {
     "pol science": "political_science", "political science": "political_science",
     "business studies": "business_studies", "business_studies": "business_studies",
     "pol. science": "political_science",
+    "sst": "social_science", "social studies": "social_science",
+    "computer": "computer_science", "cs": "computer_science",
 }
- 
-def load_chapter_mapping(subject: str) -> list:
-    base_dir   = os.path.join(os.path.dirname(os.path.abspath(__file__)), "chapter_mapping")
-    normalized = subject.strip().lower().replace(" ", "_")
-    normalized = _SUBJECT_ALIASES.get(normalized, normalized)
-    path       = os.path.join(base_dir, f"{normalized}.json")
+
+_BOARD_FOLDER = {
+    "up board": "upBoard",
+    "upmsp":    "upBoard",
+    "rj board": "rjBoard",
+    "bser":     "rjBoard",
+    "rajasthan": "rjBoard",
+}
+
+def _get_mapping_dir(board: str, class_name: str) -> str:
+    base = os.path.dirname(os.path.abspath(__file__))
+    cls  = str(class_name).strip().replace("Class ", "").replace("class ", "").strip()
+    if cls == "12":
+        return os.path.join(base, "chapter_mapping_12th")
+    b_key = board.strip().lower()
+    suffix = next((v for k, v in _BOARD_FOLDER.items() if k in b_key), "mpBoard")
+    return os.path.join(base, f"chapter_mapping_10th_{suffix}")
+
+def _flatten_chapters(data: dict) -> list:
+    flat: list = []
+    seq = 1
+
+    # Format 1: flat top-level chapters list
+    if "chapters" in data and isinstance(data["chapters"], list):
+        for i, ch in enumerate(data["chapters"], 1):
+            flat.append({"number": ch.get("number", i), "name": ch.get("name", "")})
+        return flat
+
+    # Formats 2-5: books / prescribed_books
+    books_key = next((k for k in ("books", "prescribed_books") if k in data), None)
+    if not books_key:
+        return flat
+
+    for book_entry in data[books_key]:
+        book_name = book_entry.get("book") or book_entry.get("section") or ""
+
+        # Format 3: book → sections → chapters  (rjBoard)
+        if "sections" in book_entry:
+            for sec in book_entry["sections"]:
+                sec_name = sec.get("section", "")
+                label = f"[{book_name} – {sec_name}]" if book_name and sec_name else f"[{book_name or sec_name}]"
+                for ch in sec.get("chapters", []):
+                    flat.append({"number": seq, "name": f"{label} {ch['name']}"})
+                    seq += 1
+        else:
+            # Format 2, 4, 5: direct chapters inside book/section/prescribed_book entry
+            label = f"[{book_name}]" if book_name else ""
+            for ch in book_entry.get("chapters", []):
+                name = f"{label} {ch['name']}" if label else ch["name"]
+                flat.append({"number": seq, "name": name})
+                seq += 1
+
+    return flat
+
+def load_chapter_mapping(subject: str, board: str = "", class_name: str = "") -> list:
+    mapping_dir = _get_mapping_dir(board, class_name)
+    normalized  = subject.strip().lower().replace(" ", "_")
+    normalized  = _SUBJECT_ALIASES.get(normalized, normalized)
+    path        = os.path.join(mapping_dir, f"{normalized}.json")
     if not os.path.exists(path):
         return []
     try:
         with open(path, encoding="utf-8") as fh:
             data = json.load(fh)
-        if "chapters" in data and isinstance(data["chapters"], list):
-            return data["chapters"]
-        if "books" in data and isinstance(data["books"], list):
-            flat: list = []
-            seq = 1
-            for book in data["books"]:
-                book_name = book.get("book", "")
-                for ch in book.get("chapters", []):
-                    flat.append({
-                        "number": seq,
-                        "name": f"[{book_name}] {ch['name']}" if book_name else ch["name"],
-                    })
-                    seq += 1
-            return flat
+        return _flatten_chapters(data)
     except Exception:
         pass
     return []
@@ -1351,10 +1402,14 @@ with st.sidebar:
  
     st.divider()
     st.subheader("Paper Details")
-    exam_type  = st.text_input("Exam Type",  placeholder="e.g., MP Board, CBSE")
-    class_name = st.text_input("Class",      placeholder="e.g., 12, Class 10")
-    subject    = st.text_input("Subject",    placeholder="e.g., Physics, Chemistry")
-    year       = st.text_input("Year",       placeholder="e.g., 2025")
+    board = st.selectbox(
+        "Board",
+        ["MP Board", "UP Board", "RJ Board (BSER)", "CBSE", "Other"],
+    )
+    class_name = st.selectbox("Class", ["10", "12"])
+    subject    = st.text_input("Subject", placeholder="e.g., Hindi, Physics, Sanskrit")
+    year       = st.text_input("Year",    placeholder="e.g., 2025")
+    exam_type  = f"{board} – Class {class_name}"
     language   = st.selectbox(
         "Extract Language",
         ["Hindi", "English", "Both (Hindi + English)"],
@@ -1387,11 +1442,9 @@ if extract_btn:
     _clear_sa_logs()
  
     errors = []
-    if not api_key:    errors.append("OpenAI API Key is required.")
-    if not exam_type:  errors.append("Exam Type is required.")
-    if not class_name: errors.append("Class is required.")
-    if not subject:    errors.append("Subject is required.")
-    if not year:       errors.append("Year is required.")
+    if not api_key: errors.append("OpenAI API Key is required.")
+    if not subject: errors.append("Subject is required.")
+    if not year:    errors.append("Year is required.")
     if errors:
         for e in errors:
             st.error(e)
@@ -1407,11 +1460,11 @@ if extract_btn:
     do_bilingual   = len(languages) == 2
  
     # Load chapters
-    chapters = load_chapter_mapping(subject)
+    chapters = load_chapter_mapping(subject, board, class_name)
     if chapters:
-        st.info(f"Chapter mapping loaded for **{subject}** — {len(chapters)} chapters.")
+        st.info(f"Chapter mapping loaded for **{subject}** ({board} Class {class_name}) — {len(chapters)} chapters.")
     else:
-        st.warning(f"No chapter mapping found for '{subject}' — Chapter columns will be blank.")
+        st.warning(f"No chapter mapping found for '{subject}' ({board} Class {class_name}) — Chapter columns will be blank.")
  
     # Upload PDF
     with st.spinner("Uploading PDF to OpenAI Files API..."):
